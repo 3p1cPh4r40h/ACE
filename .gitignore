@@ -1,3 +1,13 @@
+# Dataset Files
+The-McGill-Billboard-Project-master.zip
+chords/
+chromas/
+old/
+test_dataset.pkl
+train_dataset.pkl
+val_dataset.pkl
+train_job.sh
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
