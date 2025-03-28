@@ -8,6 +8,13 @@ train_dataset.pkl
 val_dataset.pkl
 train_job.sh
 
+data/billboard-2.0-chordino
+data/billboard-2.0.1-mirex
+data/majmin
+data/majmin7
+data/majmininv
+data/majmin7inv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
