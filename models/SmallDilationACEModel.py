@@ -62,6 +62,15 @@ class SqueezeExcitationBlock(nn.Module):
         # Scale: Reshape and multiply
         y = y.view(batch, channels, 1, 1)  # Reshape to (batch, channels, 1, 1)
         return x * y  # Scale input by attention weights
+    
+class MaxPooling(nn.Module):
+    # Fill in to see about reducing network size
+    def __init__(self, factor=2):
+        self.pool = nn.MaxPooling(factor)
+
+    def forward(self, x):
+        return self.pool(x)
+        
 
 # Define the parts of the model
 class Part1BatchNorm(nn.Module):
@@ -101,10 +110,10 @@ class Part1BatchNorm(nn.Module):
         return x
 
 class Part2Dilation(nn.Module):
-    def __init__(self):
+    def __init__(self, in_channels=128):
         super(Part2Dilation, self).__init__()
         # Starting dilation
-        self.conv8 = nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, padding=1, dilation=1)
+        self.conv8 = nn.Conv2d(in_channels=in_channels, out_channels=256, kernel_size=3, padding=1, dilation=1)
         self.conv9 = nn.Conv2d(in_channels=256, out_channels=512, kernel_size=3, padding=1, dilation=1)
         self.conv10 = nn.Conv2d(in_channels=512, out_channels=512, kernel_size=3, padding=1, dilation=1)
     
@@ -115,10 +124,10 @@ class Part2Dilation(nn.Module):
         return x
 
 class Part3AttentionBlock(nn.Module):
-    def __init__(self, num_classes):
+    def __init__(self, in_channels, num_classes):
         super(Part3AttentionBlock, self).__init__()
         # Attention block: Squeeze-and-Excitation
-        self.attention = SqueezeExcitationBlock(channels=512, reduction=16)
+        self.attention = SqueezeExcitationBlock(channels=in_channels, reduction=16)
 
         # Fully connected layers
         # Shape before flattening: torch.Size([8, 8192, 9, 24])
@@ -139,19 +148,24 @@ class Part3AttentionBlock(nn.Module):
 class SmallDilationModel(nn.Module):
     def __init__(self, num_classes):
         super(SmallDilationModel, self).__init__()
-        
+
+        # Max pooling layer
+        self.pool = MaxPooling()
+                
         # Part 1: Initial Convolution Layers with BatchNorm
         self.part1 = Part1BatchNorm()
-        
+
         # Part 2: Convolution Layers with Dilation
-        self.part2 = Part2Dilation()
+        self.part2 = Part2Dilation(128/2) # Default without pooling is 128
         
         # Part 3: Attention Block + Fully Connected Layers
-        self.part3 = Part3AttentionBlock(num_classes)
+        self.part3 = Part3AttentionBlock(512/2, num_classes) # Default without pooling is 512
         
     def forward(self, x):
         x = self.part1(x)
+        x = self.pool(x)
         x = self.part2(x)
+        x = self.pool(x)
         x = self.part3(x)
         return x
 
@@ -258,7 +272,7 @@ def train(model, data, epochs=10, loss_hit_epochs=50, early_stop_epochs=200, dev
     
     return [model.state_dict(), losses, val_losses]
 
-model_state, losses, val_losses = train(model, train_dataloader, num_epochs, device=device)
+# model_state, losses, val_losses = train(model, train_dataloader, num_epochs, device=device)
 
 def evaluate_model(model, dataloader, device):
     model.eval()  # Set model to evaluation mode
@@ -282,4 +296,4 @@ def evaluate_model(model, dataloader, device):
     print(f"Accuracy: {acc:.4f}, F1 Score: {f1:.4f}")
     return acc, f1
 
-evaluate_model(model, test_dataloader, device)
+# evaluate_model(model, test_dataloader, device)
