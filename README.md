@@ -46,3 +46,4 @@ The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill
 ## Immediate Goals
 -  Find a train/test/val split based on literature
 - CNN-LSTM from the [Caursault et al 2024](10.3390/electronics10212634) paper.
+- Show 10 examples for each class randomly pulled from training and testing sets (and visualize how they were generated).
