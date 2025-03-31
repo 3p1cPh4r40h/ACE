@@ -30,7 +30,7 @@ The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill
 
 | Dataset  | Accuracy | F1 Score | GFLOPS | Params |
 | --- | --- | --- | --- | --- |
-| M1  | 0.3177%  | 0.3057  | 0.0019  | 264541
+| M1  | 31.77%  | 0.3057  | 0.0019  | 264,541
 | M2  | X%  | F1  | GFLOP  | Params
 | M3  | X%  | F1  | GFLOP  | Params
 | M4  | X%  | F1  | GFLOP  | Params
@@ -38,7 +38,7 @@ The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill
 ### Base model with dilation
 | Dataset  | Accuracy | F1 Score | GFLOPS | Params | Effectiveness |
 | --- | --- | --- | --- | --- | --- |
-| M1  | X%  | F1  | GFLOP  | Params | Effective
+| M1  | 33.06%  | 0.3346  | 1.7435  | 32,260,328 | 0.07715
 | M2  | X%  | F1  | GFLOP  | Params | Effective
 | M3  | X%  | F1  | GFLOP  | Params | Effective
 | M4  | X%  | F1  | GFLOP  | Params | Effective
