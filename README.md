@@ -26,19 +26,23 @@ The idea is to use short-time fourier transforms (STFT) to process the data, cre
 ## Tests and results
 The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill_Billboard_Project_(Chord_Analysis_Dataset)/) has 4 sets of labels it provides, these are the Major/Minor dataset, Major/Minor/Sevenths dataset, Major/Minor/Inversions dataset and the Major/Minor/Sevenths/Inversions dataset; these datasets have 37, 84, 90 and 213 labels respectively, including an X label to represent no chord values (these are stored as `None`, `"N"` and `"X"` in the original dataset and simplified to just `"X"` in the `clean_data.py` file). For our purposes we will refer to the datasets as M1, M2, M3 and M4 respectively, working from a the base model provided by Carsault [(a different paper)](https://doi.org/10.48550/arXiv.1911.04973).
 
-### Base model performance
+### [Base model](10.3390/electronics10212634) performance
 
 | Dataset  | Accuracy | F1 Score | GFLOPS | Params |
 | --- | --- | --- | --- | --- |
-| M1  | X%  | F1  | GFLOP  | Params
+| M1  | 0.3177%  | 0.3057  | 0.0019  | 264541
 | M2  | X%  | F1  | GFLOP  | Params
 | M3  | X%  | F1  | GFLOP  | Params
 | M4  | X%  | F1  | GFLOP  | Params
 
-## Base model with dilation
+### Base model with dilation
 | Dataset  | Accuracy | F1 Score | GFLOPS | Params | Effectiveness |
 | --- | --- | --- | --- | --- | --- |
 | M1  | X%  | F1  | GFLOP  | Params | Effective
 | M2  | X%  | F1  | GFLOP  | Params | Effective
 | M3  | X%  | F1  | GFLOP  | Params | Effective
 | M4  | X%  | F1  | GFLOP  | Params | Effective
+
+## Immediate Goals
+-  Find a train/test/val split based on literature
+- CNN-LSTM from the [Caursault et al 2024](10.3390/electronics10212634) paper.
