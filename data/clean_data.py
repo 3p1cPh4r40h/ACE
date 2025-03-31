@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 import pickle
 import re
+from tqdm import tqdm
 
 # Helper function to flatten nested lists
 def flatten(xss):
@@ -10,14 +11,16 @@ def flatten(xss):
 
 def label_data_split(full_dataset, key):
     # Extract all unique chord labels from the dataset
+
+    print(f"{key} labels")
     all_labels = []
     i=0
     for dataframe in full_dataset:
+        dataframe['chord'] = dataframe['chord'].replace([None, "N"], "X")
         temp_labels = dataframe['chord'].tolist()
         all_labels.append(temp_labels)
     all_labels = flatten(all_labels)
     all_labels = list(set(all_labels))
-    print("All labels:")
     print(all_labels)
     print(len(all_labels))
 
@@ -30,10 +33,8 @@ def label_data_split(full_dataset, key):
 
     # Process the dataset using a sliding window approach
     tracker = 0
-    for dataframe in full_dataset:
+    for dataframe in tqdm(full_dataset, desc='Processing DataFrames', unit='df'):
         tracker += 1
-        if tracker%100 == 0:
-            print(f'{tracker}/890')
         length = len(dataframe)
         # Create chunks of data using the sliding window
         for i in range(0, length - length%window, window):
@@ -51,7 +52,6 @@ def label_data_split(full_dataset, key):
     for i in range(len(data)):
         if labels[i] != None:
             index.append(i)
-    print(index)
     labels = [labels[i] for i in index]
     data = [data[i] for i in index]
 

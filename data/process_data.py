@@ -8,6 +8,12 @@ import numpy as np
 import pandas as pd
 import os
 import pickle
+import logging
+from tqdm import tqdm
+
+# Set up logging
+logging.basicConfig(filename='logs/process_data.log', level=logging.ERROR,
+                    format='%(asctime)s:%(levelname)s:%(message)s')
 
 def import_labels(path):
     """
@@ -20,25 +26,25 @@ def import_labels(path):
         pd.DataFrame: DataFrame containing start_time, end_time, and chord labels
     """
     chords = []
-    print(path)
-    # Read each line from the file and parse chord data
-    with open(path, 'r') as file:
-        for line in file:
-            # Split each line by whitespace and validate format
-            parts = line.strip().split()
-            if len(parts) >= 3:
-                # Convert time values to float32, keep chord label as string
-                chords.append([np.float32(parts[0]), np.float32(parts[1]), parts[2]])
-            else:
-                print(f"Skipping line due to unexpected format: {line}")
+
+    try:
+        with open(path, 'r') as file:
+            for line in file:
+                parts = line.strip().split()
+                if len(parts) >= 3:
+                    chords.append([np.float32(parts[0]), np.float32(parts[1]), parts[2]])
+                else:
+                    logging.error(f"Skipping line due to unexpected format: {line}")
+    except Exception as e:
+        logging.error(f"Error processing file {path}: {e}")
 
     # Create DataFrame with parsed chord data
     time_labels_df = pd.DataFrame(chords, columns=['start_time', 'end_time', 'label'])
     
     # Validate time intervals
     if (time_labels_df['start_time'] > time_labels_df['end_time']).any():
-        print(time_labels_df['start_time'])
-        print(time_labels_df['end_time'])
+        logging.error(time_labels_df['start_time'])
+        logging.error(time_labels_df['end_time'])
     else:
         # Create an IntervalIndex for inclusive time intervals
         time_labels_df['interval'] = pd.IntervalIndex.from_arrays(
@@ -59,7 +65,7 @@ def import_chromas(path):
     Returns:
         pd.DataFrame: DataFrame containing time and chroma bin values
     """
-    print(path)
+
     # Load chroma features from CSV, excluding the first column
     chroma = np.genfromtxt(path, delimiter=',', usecols=range(1,26))
 
@@ -76,7 +82,7 @@ print("Reading majmin.lab files...")
 chords_directory = 'data/billboard-2.0.1-mirex/McGill-Billboard'
 majmin_labels = []
 # Process each folder in the chords directory
-for folder in os.listdir(chords_directory):
+for folder in tqdm(os.listdir(chords_directory), desc='Processing chord labels'):
     folder_path = os.path.join(chords_directory, folder)
     if os.path.isdir(folder_path):
         for file in os.listdir(folder_path):
@@ -87,7 +93,7 @@ for folder in os.listdir(chords_directory):
 print("Reading majmin7.lab files...")
 majmin7_labels = []
 # Process each folder in the chords directory
-for folder in os.listdir(chords_directory):
+for folder in tqdm(os.listdir(chords_directory), desc='Processing chord labels'):
     folder_path = os.path.join(chords_directory, folder)
     if os.path.isdir(folder_path):
         for file in os.listdir(folder_path):
@@ -98,7 +104,7 @@ for folder in os.listdir(chords_directory):
 print("Reading majmininv.lab files...")
 majmininv_labels = []
 # Process each folder in the chords directory
-for folder in os.listdir(chords_directory):
+for folder in tqdm(os.listdir(chords_directory), desc='Processing chord labels'):
     folder_path = os.path.join(chords_directory, folder)
     if os.path.isdir(folder_path):
         for file in os.listdir(folder_path):
@@ -109,7 +115,7 @@ for folder in os.listdir(chords_directory):
 print("Reading majmin7inv.lab files...")
 majmin7inv_labels = []
 # Process each folder in the chords directory
-for folder in os.listdir(chords_directory):
+for folder in tqdm(os.listdir(chords_directory), desc='Processing chord labels'):
     folder_path = os.path.join(chords_directory, folder)
     if os.path.isdir(folder_path):
         for file in os.listdir(folder_path):
@@ -123,7 +129,7 @@ chromas_directory = 'data/billboard-2.0-chordino/McGill-Billboard'
 all_chromas = []
 
 # Process each folder in the chromas directory
-for folder in os.listdir(chromas_directory):
+for folder in tqdm(os.listdir(chromas_directory), desc='Processing chroma features'):
     folder_path = os.path.join(chromas_directory, folder)
     if os.path.isdir(folder_path):
         for file in os.listdir(folder_path):
@@ -153,48 +159,44 @@ def get_chord_for_time(time, time_labels_df):
 print("Consolidating datasets...")
 
 print("Consolidating majmin dataset...")
-majmin_dataset = all_chromas.copy()
+majmin_dataset = []
 # Process each song in the dataset
-for i in range(len(all_chromas)):
-    if i % 50 == 0:
-        print(str(i+1) + '/890')
-    temp_df = all_chromas[i]
+for i in tqdm(range(len(all_chromas)), desc='Consolidating majmin dataset'):
+    temp_df = all_chromas[i].copy()  # Create a deep copy of the DataFrame
     temp_labels_df = majmin_labels[i]
     # Map chord labels to each time point
-    majmin_dataset[i]['chord'] = temp_df['time'].apply(lambda time: get_chord_for_time(time, temp_labels_df))
+    temp_df['chord'] = temp_df['time'].apply(lambda time: get_chord_for_time(time, temp_labels_df))
+    majmin_dataset.append(temp_df)
 
 print("Consolidating majmin7 dataset...")
-majmin7_dataset = all_chromas.copy()
+majmin7_dataset = []
 # Process each song in the dataset
-for i in range(len(all_chromas)):
-    if i % 50 == 0:
-        print(str(i+1) + '/890')
-    temp_df = all_chromas[i]
-    temp_labels_df = majmin_labels[i]
+for i in tqdm(range(len(all_chromas)), desc='Consolidating majmin7 dataset'):
+    temp_df = all_chromas[i].copy()  # Create a deep copy of the DataFrame
+    temp_labels_df = majmin7_labels[i]
     # Map chord labels to each time point
-    majmin7_dataset[i]['chord'] = temp_df['time'].apply(lambda time: get_chord_for_time(time, temp_labels_df))
+    temp_df['chord'] = temp_df['time'].apply(lambda time: get_chord_for_time(time, temp_labels_df))
+    majmin7_dataset.append(temp_df)
 
 print("Consolidating majmininv dataset...")
-majmininv_dataset = all_chromas.copy()
+majmininv_dataset = []
 # Process each song in the dataset
-for i in range(len(all_chromas)):
-    if i % 50 == 0:
-        print(str(i+1) + '/890')
-    temp_df = all_chromas[i]
-    temp_labels_df = majmin_labels[i]
+for i in tqdm(range(len(all_chromas)), desc='Consolidating majmininv dataset'):
+    temp_df = all_chromas[i].copy()  # Create a deep copy of the DataFrame
+    temp_labels_df = majmininv_labels[i]
     # Map chord labels to each time point
-    majmininv_dataset[i]['chord'] = temp_df['time'].apply(lambda time: get_chord_for_time(time, temp_labels_df))
+    temp_df['chord'] = temp_df['time'].apply(lambda time: get_chord_for_time(time, temp_labels_df))
+    majmininv_dataset.append(temp_df)
 
 print("Consolidating majmin7inv dataset...")
-majmin7inv_dataset = all_chromas.copy()
+majmin7inv_dataset = []
 # Process each song in the dataset
-for i in range(len(all_chromas)):
-    if i % 50 == 0:
-        print(str(i+1) + '/890')
-    temp_df = all_chromas[i]
-    temp_labels_df = majmin_labels[i]
+for i in tqdm(range(len(all_chromas)), desc='Consolidating majmin7inv dataset'):
+    temp_df = all_chromas[i].copy()  # Create a deep copy of the DataFrame
+    temp_labels_df = majmin7inv_labels[i]
     # Map chord labels to each time point
-    majmin7inv_dataset[i]['chord'] = temp_df['time'].apply(lambda time: get_chord_for_time(time, temp_labels_df))
+    temp_df['chord'] = temp_df['time'].apply(lambda time: get_chord_for_time(time, temp_labels_df))
+    majmin7inv_dataset.append(temp_df)
 
 # Save processed datasets to pickle files
 print("Saving full datasets...")
@@ -205,14 +207,14 @@ with open('data/majmin_dataset.pkl', 'wb') as f:
 
 print("Saving majmin7 dataset...")
 with open('data/majmin7_dataset.pkl', 'wb') as f:
-    pickle.dump(majmin_dataset, f)
+    pickle.dump(majmin7_dataset, f)
 
 print("Saving majmininv dataset...")
 with open('data/majmininv_dataset.pkl', 'wb') as f:
-    pickle.dump(majmin_dataset, f)
+    pickle.dump(majmininv_dataset, f)
 
 print("Saving majmin7inv dataset...")
 with open('data/majmin7inv_dataset.pkl', 'wb') as f:
-    pickle.dump(majmin_dataset, f)
+    pickle.dump(majmin7inv_dataset, f)
 
 print("Done!")
