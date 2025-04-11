@@ -202,19 +202,19 @@ for i in tqdm(range(len(all_chromas)), desc='Consolidating majmin7inv dataset'):
 print("Saving full datasets...")
 
 print("Saving majmin dataset...")
-with open('data/majmin_dataset.pkl', 'wb') as f:
+with open('data/majmin/majmin_dataset.pkl', 'wb') as f:
     pickle.dump(majmin_dataset, f)
 
 print("Saving majmin7 dataset...")
-with open('data/majmin7_dataset.pkl', 'wb') as f:
+with open('data/majmin7/majmin7_dataset.pkl', 'wb') as f:
     pickle.dump(majmin7_dataset, f)
 
 print("Saving majmininv dataset...")
-with open('data/majmininv_dataset.pkl', 'wb') as f:
+with open('data/majmininv/majmininv_dataset.pkl', 'wb') as f:
     pickle.dump(majmininv_dataset, f)
 
 print("Saving majmin7inv dataset...")
-with open('data/majmin7inv_dataset.pkl', 'wb') as f:
+with open('data/majmin7inv/majmin7inv_dataset.pkl', 'wb') as f:
     pickle.dump(majmin7inv_dataset, f)
 
 print("Done!")
