@@ -11,7 +11,9 @@ Note that running `process_data.py` takes a long time; however, `clean_data.py` 
 Models are stored in the `model_architecture` folder under `architectures`. To add a new model:
 1. The architecture should be definined similarly to `carsault.py` (or `semi_supervised.py` if using semi-supervised techniques).
 2. The model should be imported into `main.py` (see line 16 for an example).
-3. The model (along with if it requires pretraining or not) should be defined in `run_models.py` in the `model_types` dict on line 12.
+3. The model should be included in the list of models in the `main.py` arguments (line 25). 
+3. The model should be included in the `if` statement in `main.py` that allocates models (see line 99 for example).
+3. The model (along with whether it requires pretraining or not) should be defined in `run_models.py` in the `model_types` dict on line 12.
 
 ## Idea behind the design
 The [Caursault et al](10.3390/electronics10212634) paper, [Chordify app](https://chordify.net/) and a personal desire for the tool along with an interest in convolutional neural networks and signal processing.
