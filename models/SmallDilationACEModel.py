@@ -26,13 +26,13 @@ import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Train Carsault ACE Model')
+    parser = argparse.ArgumentParser(description='Train Dilation ACE Model')
     parser.add_argument('--epochs', type=int, default=1000,
                       help='Number of epochs to train (default: 1000)')
     parser.add_argument('--num_classes', type=int, default=28,
                       help='Number of classes (default: 28)')
-    parser.add_argument('--model_name', type=str, default='Baseline',
-                      help='Name of the model folder in ModelResults (default: Baseline)')
+    parser.add_argument('--model_name', type=str, default='Dilation',
+                      help='Name of the model folder in ModelResults (default: Dilation)')
     parser.add_argument('--data_type', type=str, default='majmin',
                       help='Type of data to use (e.g., majmin, majmin7, majmininv, majmin7inv) (default: majmin)')
     parser.add_argument('--loss_hit_epochs', type=int, default=50,
