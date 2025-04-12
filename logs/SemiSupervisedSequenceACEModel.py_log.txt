@@ -1,0 +1,11 @@
+
+===== Running SemiSupervisedSequenceACEModel.py at 2025-04-12 01:26:02 =====
+
+[2025-04-12 01:27:00] ERROR:
+forrtl: error (200): program aborting due to window-CLOSE event
+Image              PC                Routine            Line        Source             
+libifcoremd.dll    00007FF8593EDF54  Unknown               Unknown  Unknown
+KERNELBASE.dll     00007FF91BFFC383  Unknown               Unknown  Unknown
+KERNEL32.DLL       00007FF91CDD7374  Unknown               Unknown  Unknown
+ntdll.dll          00007FF91E89CC91  Unknown               Unknown  Unknown
+

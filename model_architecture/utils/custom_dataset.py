@@ -16,4 +16,4 @@ class CustomDataset(Dataset):
         label = self.label_to_index[self.labels[idx]]
         if self.transform:
             sample = self.transform(sample)
-        return sample, label
+        return sample, label 
