@@ -50,6 +50,8 @@ The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill
 | Multi Dilation - Majmin7  | 54                | 0.5328   | 0.3231   | 0.0022 | 1,002,856  |
 | Multi Dilation - Majmininv| 73                | 0.4910   | 0.1702   | 0.0022 | 1,005,307  |
 | Semi Supervised - Majmin  | 28                | 0.1191   | 0.0076   | 0.0019 | 263,122    |
+| Semi Supervised - Majmin7 | 54                | 0.1191   | 0.0039   | 0.0019 | 266,476    |
+| Semi Supervised - Majmininv| 73               | 0.3781   | 0.1317   | 0.0019 | 268,927    |
 
 ### Loss Graphs
 
@@ -65,6 +67,8 @@ The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill
 | Multi Dilation - Majmin7  | ![Multi Dilation - Majmin7 Loss](ModelResults/multi_dilation/majmin7/loss_plot_majmin7_classification.png) |
 | Multi Dilation - Majmininv| ![Multi Dilation - Majmininv Loss](ModelResults/multi_dilation/majmininv/loss_plot_majmininv_classification.png) |
 | Semi Supervised - Majmin  | ![Semi Supervised - Majmin Loss](ModelResults/semi_supervised/majmin/loss_plot_majmin_classification.png) |
+| Semi Supervised - Majmin7  | ![Semi Supervised - Majmin Loss](ModelResults/semi_supervised/majmin7/loss_plot_majmin7_classification.png) |
+| Semi Supervised - Majmininv  | ![Semi Supervised - Majmin Loss](ModelResults/semi_supervised/majmininv/loss_plot_majmininv_classification.png) |
 
 ## Immediate Goals
 -  Find a train/test/val split based on literature
