@@ -59,130 +59,191 @@ The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill
 
 ## References
 
-1. Bhardwaj, S., Salim, S. M., Khan, D. T. A., & JavadiMasoudian, S. (2022). Automated Music Generation using Deep Learning. pp. 193–198.
+[1]
+S. Bhardwaj, S. M. Salim, D. T. A. Khan, and S. J. Masoudian, ‘Automated Music Generation using Deep Learning’, 2022, pp. 193–198.
 
-2. Choi, J., & Lee, K. (2023). Pop2Piano: Pop Audio-Based Piano Cover Generation. pp. 1-5.
+[2]
+J. Choi and K. Lee, ‘Pop2Piano : Pop Audio-Based Piano Cover Generation’, 2023, pp. 1–5.
 
-3. Wu, Y., Carsault, T., & Yoshii, K. (2019). Automatic Chord Estimation Based on a Frame-wise Convolutional Recurrent Neural Network with Non-Aligned Annotations. pp. 1-5.
+[3]
+Y. Wu, T. Carsault, and K. Yoshii, ‘Automatic Chord Estimation Based on a Frame-wise Convolutional Recurrent Neural Network with Non-Aligned Annotations’, 2019, pp. 1–5.
 
-4. Yamaga, H., Momma, T., Kojima, K., & Itoh, Y. (2023). Ensemble of Transformer and Convolutional Recurrent Neural Network for Improving Discrimination Accuracy in Automatic Chord Recognition. pp. 2299–2305.
+[4]
+H. Yamaga, T. Momma, K. Kojima, and Y. Itoh, ‘Ensemble of Transformer and Convolutional Recurrent Neural Network for Improving Discrimination Accuracy in Automatic Chord Recognition’, 2023, pp. 2299–2305.
 
-5. Humphrey, E. J., & Bello, J. P. (2012). Rethinking Automatic Chord Recognition with Convolutional Neural Networks. vol. 2, pp. 357–362.
+[5]
+E. J. Humphrey and J. P. Bello, ‘Rethinking Automatic Chord Recognition with Convolutional Neural Networks’, 2012, vol. 2, pp. 357–362.
 
-6. Maruo, S., Yoshii, K., Itoyama, K., Mauch, M., & Goto, M. (2015). A feedback framework for improved chord recognition based on NMF-based approximate note transcription. pp. 196–200.
+[6]
+S. Maruo, K. Yoshii, K. Itoyama, M. Mauch, and M. Goto, ‘A feedback framework for improved chord recognition based on NMF-based approximate note transcription’, 2015, pp. 196–200.
 
-7. Durán, G., & de la Cuadra, P. (2021). Transcribing Lead Sheet-Like Chord Progressions of Jazz Recordings. Computer Music Journal, vol. 44, pp. 26–42.
+[7]
+G. Durán and P. de la Cuadra, ‘Transcribing Lead Sheet-Like Chord Progressions of Jazz Recordings’, Computer Music Journal, vol. 44, pp. 26–42, 2021.
 
-8. Vaca, K., Gajjar, A., & Yang, X. (2019). Real-Time Automatic Music Transcription (AMT) with Zync FPGA. pp. 378–384.
+[8]
+K. Vaca, A. Gajjar, and X. Yang, ‘Real-Time Automatic Music Transcription (AMT) with Zync FPGA’, 2019, pp. 378–384.
 
-9. Shibata, K., et al. (2019). Joint Transcription of Lead, Bass, and Rhythm Guitars Based on a Factorial Hidden Semi-Markov Model. pp. 236–240.
+[9]
+K. Shibata et al., ‘Joint Transcription of Lead, Bass, and Rhythm Guitars Based on a Factorial Hidden Semi-Markov Model’, 2019, pp. 236–240.
 
-10. Pedroza, H., Abreu, W., Corey, R. M., & Roman, I. R. (2025). Guitar-TECHS: An Electric Guitar Dataset Covering Techniques, Musical Excerpts, Chords and Scales Using a Diverse Array of Hardware. pp. 1-5.
+[10]
+H. Pedroza, W. Abreu, R. M. Corey, and I. R. Roman, ‘Guitar-TECHS: An Electric Guitar Dataset Covering Techniques, Musical Excerpts, Chords and Scales Using a Diverse Array of Hardware’, 2025, pp. 1–5.
 
-11. Sun, J., Li, H., & Lei, L. (2009). Key detection through pitch class distribution model and ANN. pp. 1-6.
+[11]
+J. Sun, H. Li, and L. Lei, ‘Key detection through pitch class distribution model and ANN’, 2009, pp. 1–6.
 
-12. Humphrey, E. J., & Bello, J. P. (2014). From music audio to chord tablature: Teaching deep convolutional networks to play guitar. In 2014 IEEE International Conference on Acoustic, Speech and Signal Processing (ICASSP).
+[12]
+E. J. Humphrey and J. P. Bello, ‘From music audio to chord tablature: Teaching deep convolutional networks toplay guitar’, in 2014 IEEE International Conference on Acoustic, Speech and Signal Processing (ICASSP), 2014.
 
-13. Bortolozzo, M., Schramm, R., & Jung, C. R. (2021). Improving the Classification of Rare Chords With Unlabeled Data. In ICASSP 2021 - 2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP).
+[13]
+M. Bortolozzo, R. Schramm, and C. R. Jung, ‘Improving the Classification of Rare Chords With Unlabeled Data’, in ICASSP 2021 - 2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) |, 2021.
 
-14. Carsault, T., Nika, J., Esling, P., & Assayag, G. (2021). Combining Real-Time Extraction and Prediction of Musical Chord Progressions for Creative Applications. vol. 10.
+[14]
+T. Carsault, J. Nika, P. Esling, and G. Assayag, ‘Combining Real-Time Extraction and Prediction of Musical Chord Progressions for Creative Applications’, 2021, vol. 10.
 
-15. Jadhav, Y., Patel, A., Jhaveri, R. H., & Raut, R. (2022). Transfer Learning for Audio Waveform to Guitar Chord Spectrograms Using the Convolution Neural Network. Mobile Information Systems, vol. 2022, pp. 1–11.
+[15]
+Y. Jadhav, A. Patel, R. H. Jhaveri, and R. Raut, ‘Transfer Learning for Audio Waveform to Guitar Chord Spectrograms Using the Convolution Neural Network’, Mobile Information Systems, vol. 2022, pp. 1–11, Aug. 2022.
 
-16. Lee, Y.-S., Chiang, Y.-L., Lin, P.-R., Lin, C.-H., & Tai, T.-C. (2016). Robust and efficient content-based music retrieval system. APSIPA Transactions on Signal and Information Processing, vol. 5, no. 1.
+[16]
+Y.-S. Lee, Y.-L. Chiang, P.-R. Lin, C.-H. Lin, and T.-C. Tai, ‘Robust and efficient content-based music retrieval system’, APSIPA Transactions on Signal and Information Processing, vol. 5, no. 1, 2016.
 
-17. Li, N. (2022). Generative Adversarial Network for Musical Notation Recognition during Music Teaching. Computational Intelligence and Neuroscience, vol. 2022, pp. 1–9.
+[17]
+N. Li, ‘Generative Adversarial Network for Musical Notation Recognition during Music Teaching’, Computational Intelligence and Neuroscience, vol. 2022, pp. 1–9, Jun. 2022.
 
-18. March, Pattaya, & Thailand. (2021). Automatic Chord Recognition Technique for a Music Visualizer Application. In 2021 9th International Electrical Engineering Congress (iEECON).
+[18]
+H. Mukherjee et al., ‘Music chord inversion shape identification with LSTM-RNN’, Procedia Computer Science, vol. 167, pp. 607–615, 2020.
 
-19. Mandel, E. (2021). Chord Recognition From DFTs of Down Sampled Audio Signals. In 2021 IEEE Western New York Image and Signal Processing Workshop (WNYISPW).
+[19]
+R. Nishikimi, E. Nakamura, M. Goto, and K. Yoshii, ‘Audio-to-score singing transcription based on a CRNN-HSMM hybrid model’, APSIPA Transactions on Signal and Information Processing, vol. 10, no. 1, 2021.
 
-20. Mukherjee, H., et al. (2020). Music chord inversion shape identification with LSTM-RNN. Procedia Computer Science, vol. 167, pp. 607–615.
+[20]
+Y. Ojima, E. Nakamura, K. Itoyama, and K. Yoshii, ‘Chord-aware automatic music transcription based on hierarchical Bayesian integration of acoustic and language models’, APSIPA Transactions on Signal and Information Processing, vol. 7, no. 1, 2018.
 
-21. Nishikimi, R., Nakamura, E., Goto, M., & Yoshii, K. (2021). Audio-to-score singing transcription based on a CRNN-HSMM hybrid model. APSIPA Transactions on Signal and Information Processing, vol. 10, no. 1.
+[21]
+J. Pauwels, J.-P. Martens, and M. Leman, ‘The Influence of Chord Duration Modeling on Chord and Local Key Extraction’, in 2011 10th International Conference on Machine Learning and Applications and Workshops, 2011, pp. 136–141.
 
-22. Ojima, Y., Nakamura, E., Itoyama, K., & Yoshii, K. (2018). Chord-aware automatic music transcription based on hierarchical Bayesian integration of acoustic and language models. APSIPA Transactions on Signal and Information Processing, vol. 7, no. 1.
+[22]
+A. Perez, H. L. Ma, S. Zawaduk, and M. R. W. Dawson, ‘How Do Artificial Neural Networks Classify Musical Triads? A Case Study in Eluding Bonini’s Paradox’, Cognitive Science, vol. 47, no. 1, Jan. 2023.
 
-23. Pauwels, J., Martens, J.-P., & Leman, M. (2011). The Influence of Chord Duration Modeling on Chord and Local Key Extraction. In 2011 10th International Conference on Machine Learning and Applications and Workshops, pp. 136–141.
+[23]
+J. de Berardinis, A. Meroño-Peñuela, A. Poltronieri, and V. Presutti, ‘ChoCo: a Chord Corpus and a Data Transformation Workflow for Musical Harmony Knowledge Graphs’, Scientific Data, vol. 10, no. 1, Sep. 2023.
 
-24. Perez, A., Ma, H. L., Zawaduk, S., & Dawson, M. R. W. (2023). How Do Artificial Neural Networks Classify Musical Triads? A Case Study in Eluding Bonini's Paradox. Cognitive Science, vol. 47, no. 1.
+[24]
+I. Rida, R. Herault, and G. Gasso, ‘Supervised Music Chord Recognition’, in 2014 13th International Conference on Machine Learning and Applications, 2014, pp. 336–341.
 
-25. de Berardinis, J., Meroño-Peñuela, A., Poltronieri, A., & Presutti, V. (2023). ChoCo: a Chord Corpus and a Data Transformation Workflow for Musical Harmony Knowledge Graphs. Scientific Data, vol. 10, no. 1.
+[25]
+S. Shi, S. Xi, and S.-B. Tsai, ‘Research on Autoarrangement System of Accompaniment Chords Based on Hidden Markov Model with Machine Learning’, Mathematical Problems in Engineering, vol. 2021, pp. 1–10, Oct. 2021.
 
-26. Rida, I., Herault, R., & Gasso, G. (2014). Supervised Music Chord Recognition. In 2014 13th International Conference on Machine Learning and Applications, pp. 336–341.
+[26]
+W. Wang, ‘Music chord sequence recognition method based on audio feature extraction algorithm’, in 2023 IEEE International Conference on Control, Electronics and Computer Technology (ICCECT), 2023.
 
-27. Shi, S., Xi, S., & Tsai, S.-B. (2021). Research on Autoarrangement System of Accompaniment Chords Based on Hidden Markov Model with Machine Learning. Mathematical Problems in Engineering, vol. 2021, pp. 1–10.
+[27]
+Y. Wu and K. Yoshii, ‘Joint Chord and Key Estimation Based on a Hierarchical Variational Autoencoder with Multi-task Learning’, APSIPA Transactions on Signal and Information Processing, vol. 11, no. 1, 2022.
 
-28. Wang, W. (2023). Music chord sequence recognition method based on audio feature extraction algorithm. In 2023 IEEE International Conference on Control, Electronics and Computer Technology (ICCECT).
+[28]
+Y. Yu, R. Zimmermann, Y. Wang, and V. Oria, ‘Recognition and Summarization of Chord Progressions and Their Application to Music Information Retrieval’, in 2012 IEEE International Symposium on Multimedia, 2012, pp. 9–16.
 
-29. Wu, Y., & Yoshii, K. (2022). Joint Chord and Key Estimation Based on a Hierarchical Variational Autoencoder with Multi-task Learning. APSIPA Transactions on Signal and Information Processing, vol. 11, no. 1.
+[29]
+C. Zhuang, ‘GCA:A chord music generation algorithm based on double-layer LSTM’, in 2021 3rd International Conference on Advances in Computer Technology, Information Science and Communication (CTISC), 2021.
 
-30. Yu, Y., Zimmermann, R., Wang, Y., & Oria, V. (2012). Recognition and Summarization of Chord Progressions and Their Application to Music Information Retrieval. In 2012 IEEE International Symposium on Multimedia, pp. 9–16.
+[30]
+G. Brunner, Y. Wang, R. Wattenhofer, and J. Wiesendanger, ‘JamBot: Music Theory Aware Chord Based Generation of Polyphonic Music with LSTMs’, in 2017 IEEE 29th International Conference on Tools with Artificial Intelligence (ICTAI), 2017, pp. 519–526.
 
-31. Zhuang, C. (2021). GCA:A chord music generation algorithm based on double-layer LSTM. In 2021 3rd International Conference on Advances in Computer Technology, Information Science and Communication (CTISC).
+[31]
+T. Gagnon, S. Larouche, and R. Lefebvre, ‘A neural network approach for preclassification in musical chords recognition’, 2003, vol. 2, pp. 2106-2109 Vol.2.
 
-32. Ashley, J., et al. (2011). AN EXPERT GROUND-TRUTH SET FOR AUDIO CHORD RECOGNITION AND MUSIC ANALYSIS. In 12th International Society for Music Information Retrieval Conference (ISMIR 2011).
+[32]
+F. Korzeniowski, D. R. W. Sears, and G. Widmer, ‘A Large-Scale Study of Language Models for Chord Prediction’, CoRR, vol. abs/1804.01849, 2018.
 
-33. Korzeniowski, F., Widmer, G., & Institute of Computational Perception. (2018). Automatic Chord Recognition with Higher-Order Harmonic Language Modelling. In 2018 26th European Signal Processing Conference (EUSIPCO).
+[33]
+Y. Wu, E. Nakamura, and K. Yoshii, ‘A Variational Autoencoder for Joint Chord and Key Estimation from Audio Chromagrams’, 2020, pp. 500–506.
 
-34. Brunner, G., Wang, Y., Wattenhofer, R., & Wiesendanger, J. (2017). JamBot: Music Theory Aware Chord Based Generation of Polyphonic Music with LSTMs. In 2017 IEEE 29th International Conference on Tools with Artificial Intelligence (ICTAI), pp. 519–526.
+[34]
+V. Eremenko, E. Demirel, B. Bozkurt, and X. Serra, ‘Audio-Aligned Jazz Harmony Dataset for Automatic Chord Transcription and Corpus-based Research’, in Proceedings of the 19th International Society for Music Information Retrieval Conference, ISMIR 2018, Paris, France, September 23-27, 2018, 2018, pp. 483–490.
 
-35. Gagnon, T., Larouche, S., & Lefebvre, R. (2003). A neural network approach for preclassification in musical chords recognition. vol. 2, pp. 2106-2109 Vol.2.
+[35]
+N. Orio, ‘Music Retrieval: A Tutorial and Review’, Found. Trends Inf. Retr., vol. 1, no. 1, pp. 1–90, 2006.
 
-36. Korzeniowski, F., Sears, D. R. W., & Widmer, G. (2018). A Large-Scale Study of Language Models for Chord Prediction. CoRR, vol. abs/1804.01849.
+[36]
+Z. Wang et al., ‘POP909: A Pop-Song Dataset for Music Arrangement Generation’, in Proceedings of the 21th International Society for Music Information Retrieval Conference, ISMIR 2020, Montreal, Canada, October 11-16, 2020, 2020, pp. 38–45.
 
-37. Wu, Y., Nakamura, E., & Yoshii, K. (2020). A Variational Autoencoder for Joint Chord and Key Estimation from Audio Chromagrams. pp. 500–506.
+[37]
+L. Oudre, C. Fevotte, and Y. Grenier, ‘Probabilistic Template-Based Chord Recognition’, IEEE Transactions on Audio, Speech, and Language Processing, vol. 19, pp. 2249–2259, Nov. 2011.
 
-38. Mauch, M., Dixon, S., Queen Mary University of London, & Centre for Digital Music. (2010). APPROXIMATE NOTE TRANSCRIPTION FOR THE IMPROVED IDENTIFICATION OF DIFFICULT CHORDS. In Proceedings of the 11th International Society for Music Information Retrieval Conference, ISMIR 2010, Utrecht, Netherlands, August 9-13, 2010, pp. 135–140.
+[38]
+G. R. M., K. S. Rao, and P. P. Das, ‘Harmonic-Percussive Source Separation of Polyphonic Music by Suppressing Impulsive Noise Events’, in 19th Annual Conference of the International Speech Communication Association, Interspeech 2018, Hyderabad, India, September 2-6, 2018, 2018, pp. 831–835.
 
-39. Eremenko, V., Demirel, E., Bozkurt, B., & Serra, X. (2018). Audio-Aligned Jazz Harmony Dataset for Automatic Chord Transcription and Corpus-based Research. In Proceedings of the 19th International Society for Music Information Retrieval Conference, ISMIR 2018, Paris, France, September 23-27, 2018, pp. 483–490.
+[39]
+J. Sleep, ‘Automatic Music Transcription with Convolutional Neural Networks using Intuitive Filter Shapes’, Robert E. Kennedy Library, Cal Poly, 2017.
 
-40. Orio, N. (2006). Music Retrieval: A Tutorial and Review. Found. Trends Inf. Retr., vol. 1, no. 1, pp. 1–90.
+[40]
+J. C. Brown, ‘Calculation of a constant Q spectral transform’, The Journal of the Acoustical Society of America, vol. 89, no. 1, pp. 425–434, Jan. 1991.
 
-41. Wang, Z., et al. (2020). POP909: A Pop-Song Dataset for Music Arrangement Generation. In Proceedings of the 21th International Society for Music Information Retrieval Conference, ISMIR 2020, Montreal, Canada, October 11-16, 2020, pp. 38–45.
+[41]
+Y. Wu, T. Carsault, E. Nakamura, and K. Yoshii, ‘Semi-Supervised Neural Chord Estimation Based on a Variational Autoencoder With Latent Chord Labels and Features’, IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 28, pp. 2956–2966, 2020.
 
-42. Oudre, L., Fevotte, C., & Grenier, Y. (2011). Probabilistic Template-Based Chord Recognition. IEEE Transactions on Audio, Speech, and Language Processing, vol. 19, pp. 2249–2259.
+[42]
+Y. Yu, R. Zimmermann, Y. Wang, and V. Oria, ‘Scalable Content-Based Music Retrieval Using Chord Progression Histogram and Tree-Structure LSH’, IEEE Transactions on Multimedia, vol. 15, pp. 1969–1981, Dec. 2013.
 
-43. R. M., G., Rao, K. S., & Das, P. P. (2018). Harmonic-Percussive Source Separation of Polyphonic Music by Suppressing Impulsive Noise Events. In 19th Annual Conference of the International Speech Communication Association, Interspeech 2018, Hyderabad, India, September 2-6, 2018, pp. 831–835.
+[43]
+L. C. Reghunath and R. Rajan, ‘Predominant audio source separation in polyphonic music’, EURASIP Journal on Audio, Speech, and Music Processing, vol. 2023, no. 1, Nov. 2023.
 
-44. Sleep, J. (2017). Automatic Music Transcription with Convolutional Neural Networks using Intuitive Filter Shapes. Robert E. Kennedy Library, Cal Poly.
+[44]
+E. Tverdokhleb, N. Myronova, and T. Fedoronchak, ‘Music signal processing to obtain its chorded representation’, 2017, pp. 301–304.
 
-45. Brown, J. C. (1991). Calculation of a constant Q spectral transform. The Journal of the Acoustical Society of America, vol. 89, no. 1, pp. 425–434.
+[45]
+J.-Q. Deng and Y.-K. Kwok, ‘LARGE VOCABULARY AUTOMATIC CHORD ESTIMATION WITH AN EVEN CHANCE TRAINING SCHEME’, in Proceedings of the 18th International Society for Music Information Retrieval Conference, ISMIR 2017, Suzhou, China, October 23-27, 2017, 2017, pp. 531–536.
 
-46. Wu, Y., Carsault, T., Nakamura, E., & Yoshii, K. (2020). Semi-Supervised Neural Chord Estimation Based on a Variational Autoencoder With Latent Chord Labels and Features. IEEE/ACM Transactions on Audio, Speech, and Language Processing, vol. 28, pp. 2956–2966.
+[46]
+H. V. Koops, W. B. de Haas, J. Bransen, and A. Volk, ‘Automatic chord label personalization through deep learning of shared harmonic interval profiles’, Neural Comput. Appl., vol. 32, no. 4, pp. 929–939, 2020.
 
-47. Yu, Y., Zimmermann, R., Wang, Y., & Oria, V. (2013). Scalable Content-Based Music Retrieval Using Chord Progression Histogram and Tree-Structure LSH. IEEE Transactions on Multimedia, vol. 15, pp. 1969–1981.
+[47]
+E. Row, J. Tang, and G. Fazekas, ‘JAZZVAR: A Dataset of Variations found within Solo Piano Performances of Jazz Standards for Music Overpainting’, CoRR, vol. abs/2307.09670, 2023.
 
-48. Reghunath, L. C., & Rajan, R. (2023). Predominant audio source separation in polyphonic music. EURASIP Journal on Audio, Speech, and Music Processing, vol. 2023, no. 1.
+[48]
+G. Reis, N. Fonseca, and F. Ferndandez, ‘Genetic Algorithm Approach to Polyphonic Music Transcription’, 2007, pp. 1–6.
 
-49. Tverdokhleb, E., Myronova, N., & Fedoronchak, T. (2017). Music signal processing to obtain its chorded representation. pp. 301–304.
+[49]
+H. Papadopoulos and G. Peeters, ‘Large-Scale Study of Chord Estimation Algorithms Based on Chroma Representation and HMM’, in International Workshop on Content-Based Multimedia Indexing, CBMI ’07, Bordeaux, France, June 25-27, 2007, 2007, pp. 53–60.
 
-50. Deng, J.-Q., & Kwok, Y.-K. (2017). LARGE VOCABULARY AUTOMATIC CHORD ESTIMATION WITH AN EVEN CHANCE TRAINING SCHEME. In Proceedings of the 18th International Society for Music Information Retrieval Conference, ISMIR 2017, Suzhou, China, October 23-27, 2017, pp. 531–536.
+[50]
+L. W. Kong and T. Lee, ‘Chord classification of multi-instrumental music using exemplar-based sparse representation’, 2013, pp. 113–117.
 
-51. Koops, H. V., de Haas, W. B., Bransen, J., & Volk, A. (2020). Automatic chord label personalization through deep learning of shared harmonic interval profiles. Neural Comput. Appl., vol. 32, no. 4, pp. 929–939.
+[51]
+K. O’Hanlon, S. Ewert, J. Pauwels, and M. B. Sandler, ‘Improved template based chord recognition using the CRP feature’, in 2017 IEEE International Conference on Acoustics, Speech and Signal Processing, ICASSP 2017, New Orleans, LA, USA, March 5-9, 2017, 2017, pp. 306–310.
 
-52. Row, E., Tang, J., & Fazekas, G. (2023). JAZZVAR: A Dataset of Variations found within Solo Piano Performances of Jazz Standards for Music Overpainting. CoRR, vol. abs/2307.09670.
+[52]
+L. Oudre, Y. Grenier, and C. Fevotte, ‘Chord Recognition by Fitting Rescaled Chroma Vectors to Chord Templates’, IEEE Transactions on Audio, Speech, and Language Processing, vol. 19, pp. 2222–2233, 2011.
 
-53. Reis, G., Fonseca, N., & Ferndandez, F. (2007). Genetic Algorithm Approach to Polyphonic Music Transcription. pp. 1-6.
+[53]
+E. J. Humphrey, T. Cho, and J. P. Bello, ‘Learning a robust Tonnetz-space transform for automatic chord recognition’, 2024, pp. 453–456.
 
-54. Wotiz, S. H. N. A. A. (2001). Identification of musical chords using CONSTANT-Q spectra. vol. 5, pp. 3373–3376 vol.5.
+[54]
+A. Uemura and J. Katto, ‘Chord recognition using Doubly Nested Circle of Fifths’, 2012, pp. 449–452.
 
-55. Papadopoulos, H., & Peeters, G. (2007). Large-Scale Study of Chord Estimation Algorithms Based on Chroma Representation and HMM. In International Workshop on Content-Based Multimedia Indexing, CBMI '07, Bordeaux, France, June 25-27, 2007, pp. 53–60.
+[55]
+F. Korzeniowski and G. Widmer, ‘On the Futility of Learning Complex Frame-Level Language Models for Chord Recognition’, in AES International Conference Semantic Audio 2017, Erlangen, Germany, June 22-24, 2017, 2017.
 
-56. Kong, L. W., & Lee, T. (2013). Chord classification of multi-instrumental music using exemplar-based sparse representation. pp. 113–117.
+[56]
+S. Liu, ‘Music Tutor: Application of Chord Recognition in Music Teaching’, in 2021 International Conference on Signal Processing and Machine Learning (CONF-SPML), 2021, pp. 154–157.
 
-57. O'Hanlon, K., Ewert, S., Pauwels, J., & Sandler, M. B. (2017). Improved template based chord recognition using the CRP feature. In 2017 IEEE International Conference on Acoustics, Speech and Signal Processing, ICASSP 2017, New Orleans, LA, USA, March 5-9, 2017, pp. 306–310.
+[57]
+T. Hori, K. Nakamura, and S. Sagayama, ‘Music chord recognition from audio data using bidirectional encoder-decoder LSTMs’, in 2017 Asia-Pacific Signal and Information Processing Association Annual Summit and Conference, APSIPA ASC 2017, Kuala Lumpur, Malaysia, December 12-15, 2017, 2017, pp. 1312–1315.
 
-58. Oudre, L., Grenier, Y., & Fevotte, C. (2011). Chord Recognition by Fitting Rescaled Chroma Vectors to Chord Templates. IEEE Transactions on Audio, Speech, and Language Processing, vol. 19, pp. 2222–2233.
+[58]
+H.-T. Cheng, Y.-H. Yang, Y.-C. Lin, I.-B. Liao, and H. H. Chen, ‘Automatic chord recognition for music classification and retrieval’, 2008, pp. 1505–1508.
 
-59. Humphrey, E. J., Cho, T., & Bello, J. P. (2024). Learning a robust Tonnetz-space transform for automatic chord recognition. pp. 453–456.
+[59]
+P. Mabpa, T. Sapaklom, E. Mujjalinvimut, J. Kunthong, and P. N. N. Ayudhya, ‘Automatic Chord Recognition Technique for a Music Visualizer Application’, 2021, pp. 416–419.
 
-60. Uemura, A., & Katto, J. (2012). Chord recognition using Doubly Nested Circle of Fifths. pp. 449–452.
+[60]
+F. Korzeniowski and G. Widnaer, ‘Automatic Chord Recognition with Higher-Order Harmonic Language Modelling’, 2018, pp. 1900–1904.
 
-61. Korzeniowski, F., & Widmer, G. (2017). On the Futility of Learning Complex Frame-Level Language Models for Chord Recognition. In AES International Conference Semantic Audio 2017, Erlangen, Germany, June 22-24, 2017.
+[61]
+J. A. Burgoyne, J. Wild, and I. Fujinaga, ‘An Expert Ground Truth Set for Audio Chord Recognition and Music Analysis’, in Proceedings of the 12th International Society for Music Information Retrieval Conference, ISMIR 2011, Miami, Florida, USA, October 24-28, 2011, 2011, pp. 633–638.
 
-62. Liu, S. (2021). Music Tutor: Application of Chord Recognition in Music Teaching. In 2021 International Conference on Signal Processing and Machine Learning (CONF-SPML), pp. 154–157.
+[62]
+M. Mauch and S. Dixon, ‘Approximate Note Transcription for the Improved Identification of Difficult Chords’, in Proceedings of the 11th International Society for Music Information Retrieval Conference, ISMIR 2010, Utrecht, Netherlands, August 9-13, 2010, 2010, pp. 135–140.
 
-63. Hori, T., Nakamura, K., & Sagayama, S. (2017). Music chord recognition from audio data using bidirectional encoder-decoder LSTMs. In 2017 Asia-Pacific Signal and Information Processing Association Annual Summit and Conference, APSIPA ASC 2017, Kuala Lumpur, Malaysia, December 12-15, 2017, pp. 1312–1315.
-
-64. Cheng, H.-T., Yang, Y.-H., Lin, Y.-C., Liao, I.-B., & Chen, H. H. (2008). Automatic chord recognition for music classification and retrieval. pp. 1505–1508.
+[63]
+S. H. Nawab, S. A. Ayyash, and R. Wotiz, ‘Identification of musical chords using CONSTANT-Q spectra’, 2001, vol. 5, pp. 3373–3376 vol.5.
