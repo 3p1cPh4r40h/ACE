@@ -1,0 +1,40 @@
+Model Statistics for semi_supervised - majmininv
+==================================================
+
+Model Configuration:
+Number of classes: 73
+Epochs: 10
+Loss hit epochs: 50
+Early stop epochs: 200
+
+Model Performance Metrics:
+MACs: 954,776.0
+FLOPs: 1,909,552.0
+GFLOPs: 0.0019
+Parameters: 268927.00
+
+Evaluation Results:
+Accuracy: 0.3781
+F1 Score: 0.1317
+
+Model Summary:
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+SemiSupervisedChordExtractionCNN         --
+├─GaussianNoise: 1-1                     --
+├─BatchNorm2d: 1-2                       2
+├─Conv2d: 1-3                            120
+├─Dropout2d: 1-4                         --
+├─Conv2d: 1-5                            2,616
+├─Dropout2d: 1-6                         --
+├─Conv2d: 1-7                            7,812
+├─Dropout2d: 1-8                         --
+├─Linear: 1-9                            248,960
+├─Linear: 1-10                           1,161
+├─Linear: 1-11                           9,417
+=================================================================
+Total params: 270,088
+Trainable params: 270,088
+Non-trainable params: 0
+=================================================================

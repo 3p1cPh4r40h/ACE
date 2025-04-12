@@ -1,0 +1,40 @@
+Model Statistics for multi_dilation - majmininv
+==================================================
+
+Model Configuration:
+Number of classes: 73
+Epochs: 10
+Loss hit epochs: 50
+Early stop epochs: 200
+
+Model Performance Metrics:
+MACs: 1,106,624.0
+FLOPs: 2,213,248.0
+GFLOPs: 0.0022
+Parameters: 1005307.00
+
+Evaluation Results:
+Accuracy: 0.4910
+F1 Score: 0.1702
+
+Model Summary:
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+MultiDilationChordCNN                    --
+├─GaussianNoise: 1-1                     --
+├─BatchNorm2d: 1-2                       2
+├─MultiDilationBlock: 1-3                --
+│    └─ModuleList: 2-1                   --
+│    │    └─Conv2d: 3-1                  120
+│    │    └─Conv2d: 3-2                  120
+│    │    └─Conv2d: 3-3                  120
+├─BatchNorm2d: 1-4                       72
+├─Dropout2d: 1-5                         --
+├─Linear: 1-6                            995,456
+├─Linear: 1-7                            9,417
+=================================================================
+Total params: 1,005,307
+Trainable params: 1,005,307
+Non-trainable params: 0
+=================================================================

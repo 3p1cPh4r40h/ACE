@@ -1,0 +1,39 @@
+Model Statistics for small_dilation - majmininv
+==================================================
+
+Model Configuration:
+Number of classes: 73
+Epochs: 10
+Loss hit epochs: 50
+Early stop epochs: 200
+
+Model Performance Metrics:
+MACs: 3,268,352.0
+FLOPs: 6,536,704.0
+GFLOPs: 0.0065
+Parameters: 1015423.00
+
+Evaluation Results:
+Accuracy: 0.3316
+F1 Score: 0.1205
+
+Model Summary:
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+SmallDilationModel                       --
+├─GaussianNoise: 1-1                     --
+├─BatchNorm2d: 1-2                       2
+├─Conv2d: 1-3                            120
+├─Dropout2d: 1-4                         --
+├─Conv2d: 1-5                            2,616
+├─Dropout2d: 1-6                         --
+├─Conv2d: 1-7                            7,812
+├─Dropout2d: 1-8                         --
+├─Linear: 1-9                            995,456
+├─Linear: 1-10                           9,417
+=================================================================
+Total params: 1,015,423
+Trainable params: 1,015,423
+Non-trainable params: 0
+=================================================================
