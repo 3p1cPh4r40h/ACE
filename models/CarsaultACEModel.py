@@ -1,8 +1,12 @@
 import time
+import argparse
+import os
+import matplotlib.pyplot as plt
 
 import numpy as np
 import pickle
 from custom_dataset import CustomDataset
+from sklearn.model_selection import train_test_split
 
 import torch
 import torch.nn as nn
@@ -21,6 +25,21 @@ import sys
 # Add this before calling summary() to force UTF-8 encoding
 sys.stdout.reconfigure(encoding='utf-8')
 
+def parse_args():
+    parser = argparse.ArgumentParser(description='Train Carsault ACE Model')
+    parser.add_argument('--epochs', type=int, default=1000,
+                      help='Number of epochs to train (default: 1000)')
+    parser.add_argument('--num_classes', type=int, default=28,
+                      help='Number of classes (default: 28)')
+    parser.add_argument('--model_name', type=str, default='Baseline',
+                      help='Name of the model folder in ModelResults (default: Baseline)')
+    parser.add_argument('--data_type', type=str, default='majmin',
+                      help='Type of data to use (e.g., majmin, majmin7, majmininv, majmin7inv) (default: majmin)')
+    parser.add_argument('--loss_hit_epochs', type=int, default=50,
+                      help='Number of epochs without improvement before reducing learning rate (default: 50)')
+    parser.add_argument('--early_stop_epochs', type=int, default=200,
+                      help='Number of epochs without improvement before early stopping (default: 200)')
+    return parser.parse_args()
 
 def get_device():
     if torch.cuda.is_available():
@@ -28,9 +47,6 @@ def get_device():
     else:
         device = torch.device("cpu")  # Fallback to CPU
     return device
-
-device = get_device()
-print(f"Using device: {device}")
 
 class GaussianNoise(nn.Module):
     def __init__(self, std=0.1):
@@ -82,48 +98,7 @@ class ChordExtractionCNN(nn.Module):
         x = self.fc2(x)          # Output layer
         return x
 
-# Load the data and labels            
-print("Setting up data")
-
-with open('data/train_dataset.pkl', 'rb') as f:
-    train_dataset = pickle.load(f)
-with open('data/val_dataset.pkl', 'rb') as f:
-    val_dataset = pickle.load(f)
-with open('data/test_dataset.pkl', 'rb') as f:
-    test_dataset = pickle.load(f)
-
-# Create DataLoaders for training, testing and validation
-train_dataloader = DataLoader(train_dataset, batch_size=8, shuffle=True, pin_memory=False)
-val_dataloader = DataLoader(val_dataset, batch_size=8, shuffle=False, pin_memory=False)
-test_dataloader = DataLoader(test_dataset, batch_size=8, shuffle=False, pin_memory=False)
-
-# Set up the network
-print("Setting up network")
-
-model = ChordExtractionCNN(num_classes=39).to(device)
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.Adam(model.parameters(), lr=2.1e-5)
-
-inj=torch.randn(1,9,24).to(device)
-# Get MACs and parameters
-macs, params = profile(model, inputs=(inj, ))
-
-# Convert MACs to GFLOPs (1e9 FLOPs = 1 GFLOP)
-flops = 2 * macs
-gflops = flops / 1e9
-
-# Print results
-print(f"MACs: {macs:,}")
-print(f"FLOPs: {flops:,}")
-print(f"GFLOPs: {gflops:.4f}")
-print(f"Parameters: {params:.2f}")
-
-summary(model)
-
-
-num_epochs = 1000  # Set number of epochs (1000 recommended by Carsault et. al.)
-
-def train(model, data, epochs=10, loss_hit_epochs=50, early_stop_epochs=200, device='cpu'):    
+def train(model, criterion, optimizer, train_dataloader, val_dataloader, epochs=1000, loss_hit_epochs=50, early_stop_epochs=200, device='cpu'):    
     worse_loss = 0
     early_stop = 0
     best_loss = float('inf')
@@ -131,7 +106,7 @@ def train(model, data, epochs=10, loss_hit_epochs=50, early_stop_epochs=200, dev
     losses = []
     val_losses = []
 
-    for epoch in range(num_epochs):
+    for epoch in range(epochs):
         model.train()
         running_loss = 0.0
 
@@ -185,8 +160,6 @@ def train(model, data, epochs=10, loss_hit_epochs=50, early_stop_epochs=200, dev
     
     return [model.state_dict(), losses, val_losses]
 
-model_state, losses, val_losses = train(model, train_dataloader, num_epochs, device=device)
-
 def evaluate_model(model, dataloader, device):
     model.eval()  # Set model to evaluation mode
     y_true = []
@@ -209,4 +182,154 @@ def evaluate_model(model, dataloader, device):
     print(f"Accuracy: {acc:.4f}, F1 Score: {f1:.4f}")
     return acc, f1
 
-evaluate_model(model, test_dataloader, device)
+def save_loss_graphs(train_losses, val_losses, model_name, data_type, epochs):
+    # Create ModelResults directory structure
+    results_dir = os.path.join('ModelResults', model_name, data_type)
+    os.makedirs(results_dir, exist_ok=True)
+    
+    # Create the plot
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(1, len(train_losses) + 1), train_losses, label='Training Loss')
+    plt.plot(range(1, len(val_losses) + 1), val_losses, label='Validation Loss')
+    plt.title(f'Training and Validation Losses\nModel: {model_name}, Dataset: {data_type}, Epochs: {epochs}')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss')
+    plt.legend()
+    plt.grid(True)
+    
+    # Save the plot
+    plot_path = os.path.join(results_dir, f'loss_plot_{data_type}.png')
+    plt.savefig(plot_path)
+    plt.close()
+    
+    print(f"Loss plot saved to: {plot_path}")
+
+def save_model_stats(model, macs, params, flops, gflops, accuracy, f1, model_name, data_type, args):
+    # Create ModelResults directory structure
+    results_dir = os.path.join('ModelResults', model_name, data_type)
+    os.makedirs(results_dir, exist_ok=True)
+    
+    # Create stats file path
+    stats_path = os.path.join(results_dir, f'model_stats_{data_type}.txt')
+    
+    # Redirect stdout to capture model summary
+    original_stdout = sys.stdout
+    with open(stats_path, 'w') as f:
+        sys.stdout = f
+        
+        print(f"Model Statistics for {model_name} - {data_type}")
+        print("=" * 50)
+        print("\nModel Configuration:")
+        print(f"Number of classes: {args.num_classes}")
+        print(f"Epochs: {args.epochs}")
+        print(f"Loss hit epochs: {args.loss_hit_epochs}")
+        print(f"Early stop epochs: {args.early_stop_epochs}")
+        
+        print("\nModel Performance Metrics:")
+        print(f"MACs: {macs:,}")
+        print(f"FLOPs: {flops:,}")
+        print(f"GFLOPs: {gflops:.4f}")
+        print(f"Parameters: {params:.2f}")
+        
+        print("\nEvaluation Results:")
+        print(f"Accuracy: {accuracy:.4f}")
+        print(f"F1 Score: {f1:.4f}")
+        
+        print("\nModel Summary:")
+        summary(model)
+        
+        # Reset stdout
+        sys.stdout = original_stdout
+    
+    print(f"Model statistics saved to: {stats_path}")
+
+def main():
+    start_time = time.time()
+    print(f"Starting training at {time.strftime('%Y-%m-%d %H:%M:%S')}")
+    
+    args = parse_args()
+    device = get_device()
+    print(f"Using device: {device}")
+    print(f"Training for {args.epochs} epochs with {args.num_classes} classes")
+    print(f"Model: {args.model_name}")
+    print(f"Dataset: {args.data_type}")
+    print(f"Loss hit epochs: {args.loss_hit_epochs}")
+    print(f"Early stop epochs: {args.early_stop_epochs}")
+
+    # Load the data and labels            
+    print("Setting up data")
+    
+    data_path = os.path.join('data', args.data_type)
+    data_file = os.path.join(data_path, f'{args.data_type}_data.pkl')
+    labels_file = os.path.join(data_path, f'{args.data_type}_labels.pkl')
+
+    if not os.path.exists(data_file) or not os.path.exists(labels_file):
+        raise FileNotFoundError(f"Data files not found in {data_path}. Please ensure the data files exist.")
+
+    with open(data_file, 'rb') as f:
+        data = pickle.load(f)
+    with open(labels_file, 'rb') as f:
+        labels = pickle.load(f)
+
+    data = np.array(data)
+    labels = np.array(labels)
+
+    # Split into 70% train, 15% validation, 15% test
+    X_train, X_temp, y_train, y_temp = train_test_split(data, labels, test_size=0.4, stratify=labels)
+    X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, stratify=y_temp)
+
+    # Convert the split data into PyTorch datasets
+    train_dataset = CustomDataset(X_train, y_train)
+    val_dataset = CustomDataset(X_val, y_val)
+    test_dataset = CustomDataset(X_test, y_test)
+
+    # Create DataLoaders for training and testing
+    train_dataloader = DataLoader(train_dataset, batch_size=128, shuffle=True, pin_memory=True)
+    val_dataloader = DataLoader(val_dataset, batch_size=128, shuffle=False, pin_memory=True)
+    test_dataloader = DataLoader(test_dataset, batch_size=128, shuffle=False, pin_memory=True)
+
+    # Set up the network
+    print("Setting up network")
+
+    model = ChordExtractionCNN(num_classes=args.num_classes).to(device)
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.Adam(model.parameters(), lr=2.1e-5)
+
+    inj=torch.randn(1,9,24).to(device)
+    # Get MACs and parameters
+    macs, params = profile(model, inputs=(inj, ))
+
+    # Convert MACs to GFLOPs (1e9 FLOPs = 1 GFLOP)
+    flops = 2 * macs
+    gflops = flops / 1e9
+
+    # Print results
+    print(f"MACs: {macs:,}")
+    print(f"FLOPs: {flops:,}")
+    print(f"GFLOPs: {gflops:.4f}")
+    print(f"Parameters: {params:.2f}")
+
+    summary(model)
+
+    model_state, losses, val_losses = train(model, criterion, optimizer, train_dataloader, val_dataloader, 
+                                          epochs=args.epochs, 
+                                          loss_hit_epochs=args.loss_hit_epochs,
+                                          early_stop_epochs=args.early_stop_epochs,
+                                          device=device)
+    
+    # Evaluate model and get metrics
+    accuracy, f1 = evaluate_model(model, test_dataloader, device)
+    
+    # Save loss graphs
+    save_loss_graphs(losses, val_losses, args.model_name, args.data_type, args.epochs)
+    
+    # Save model statistics
+    save_model_stats(model, macs, params, flops, gflops, accuracy, f1, args.model_name, args.data_type, args)
+    
+    end_time = time.time()
+    total_time = end_time - start_time
+    print(f"\nTraining completed at {time.strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"Total execution time: {total_time:.2f} seconds ({total_time/60:.2f} minutes)")
+
+if __name__ == "__main__":
+    main()
