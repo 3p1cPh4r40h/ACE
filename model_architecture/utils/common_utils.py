@@ -38,7 +38,7 @@ def save_model_stats(model, macs, params, flops, gflops, accuracy, f1, model_nam
     stats_path = os.path.join(results_dir, f'model_stats_{data_type}.txt')
     
     original_stdout = sys.stdout
-    with open(stats_path, 'w') as f:
+    with open(stats_path, 'w', encoding='utf-8') as f:
         sys.stdout = f
         
         print(f"Model Statistics for {model_name} - {data_type}")

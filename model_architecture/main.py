@@ -9,6 +9,7 @@ import torch.nn as nn
 import torch.optim as optim
 from thop import profile
 from torch.utils.data import DataLoader
+from collections import Counter
 
 from utils.custom_dataset import CustomDataset
 from utils.common_utils import get_device, save_loss_graphs, save_model_stats, evaluate_model
@@ -16,11 +17,12 @@ from utils.training_utils import train, train_sequence_ordering
 from architectures.carsault import ChordExtractionCNN
 from architectures.small_dilation import SmallDilationModel
 from architectures.semi_supervised import SemiSupervisedChordExtractionCNN
+from architectures.multi_dilation import MultiDilationChordCNN
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train ACE Model')
     parser.add_argument('--model_type', type=str, default='small_dilation',
-                      choices=['small_dilation', 'carsault', 'semi_supervised'],
+                      choices=['small_dilation', 'carsault', 'semi_supervised', 'multi_dilation'],
                       help='Type of model to train (default: small_dilation)')
     parser.add_argument('--epochs', type=int, default=1000,
                       help='Number of epochs to train (default: 1000)')
@@ -69,6 +71,14 @@ def main():
     data = np.array(data)
     labels = np.array(labels)
 
+        # Check label distribution
+    label_counts = Counter(labels)
+    print("Label distribution:", label_counts)
+
+    # Ensure all classes have at least 2 samples
+    if any(count < 2 for count in label_counts.values()):
+        raise ValueError("One or more classes have fewer than 2 samples.")
+
     # Split into 70% train, 15% validation, 15% test
     X_train, X_temp, y_train, y_temp = train_test_split(data, labels, test_size=0.4, stratify=labels)
     X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, stratify=y_temp)
@@ -90,9 +100,15 @@ def main():
         model = SmallDilationModel(num_classes=args.num_classes).to(device)
     elif args.model_type == 'carsault':
         model = ChordExtractionCNN(num_classes=args.num_classes).to(device)
-    else:  # semi_supervised
+    elif args.model_type == 'multi_dilation':
+        model = MultiDilationChordCNN(num_classes=args.num_classes).to(device)
+    elif args.model_type == 'semi_supervised':
         model = SemiSupervisedChordExtractionCNN(num_classes=args.num_classes).to(device)
-
+    else:
+        raise ValueError("""Model type does not exist. 
+                         1. Please make sure it is implemented in the 'architectures' folder.
+                         2. Please make sure it is implemented in the 'main.py' file imports and if statement.
+                         3. Please make sure it is correctly indexed in 'run_models.py'.""")
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=2.1e-5)
 
