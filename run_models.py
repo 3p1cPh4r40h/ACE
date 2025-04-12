@@ -12,7 +12,8 @@ model_script = os.path.join(project_root, "model_architecture", "main.py")
 model_types = {
     "semi_supervised": True,
     "carsault": False,
-    "small_dilation": False
+    "small_dilation": False,
+    "multi_dilation": False
 }
 
 def run_model(model_type, pretraining_required, epochs=1000):
@@ -25,7 +26,7 @@ def run_model(model_type, pretraining_required, epochs=1000):
         "majmin": 28,
         "majmin7": 54, 
         "majmininv": 73, 
-        "majmin7inv": 157
+        # "majmin7inv": 157
     }
 
     for dataset, num_classes in datasets.items():
