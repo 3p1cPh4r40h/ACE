@@ -33,8 +33,9 @@ The idea is to use short-time fourier transforms (STFT) to process the data, cre
 - NGram Learning
 
 ## Tests and results
-The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill_Billboard_Project_(Chord_Analysis_Dataset)/) has 4 sets of labels it provides, these are the Major/Minor dataset, Major/Minor/Sevenths dataset, Major/Minor/Inversions dataset and the Major/Minor/Sevenths/Inversions dataset; these datasets have 37, 84, 90 and 213 labels respectively, including an X label to represent no chord values (these are stored as `None`, `"N"` and `"X"` in the original dataset and simplified to just `"X"` in the `clean_data.py` file). For our purposes we will refer to the datasets as M1, M2, M3 and M4 respectively, working from a the base model provided by Carsault [(a different paper)](https://doi.org/10.48550/arXiv.1911.04973).
+The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill_Billboard_Project_(Chord_Analysis_Dataset)/) has 4 sets of labels it provides, these are the Major/Minor dataset, Major/Minor/Sevenths dataset, Major/Minor/Inversions dataset and the Major/Minor/Sevenths/Inversions dataset; these datasets have 28, 54, 73 and 157 labels respectively, including an X label to represent no chord values (these are stored as `None`, `"N"` and `"X"` in the original dataset and simplified to just `"X"` in the `clean_data.py` file). It should be noted that by default this does not cover every single chord label (only including flat labels, and not including every possible modification), and for some labels there are 2 or less examples in the largest label set. For our purposes we will refer to the datasets as M1, M2, M3 and M4 respectively, working from a the base model provided by Carsault [(a different paper)](https://doi.org/10.48550/arXiv.1911.04973).
 
+*Note that for initial tests each model is only run for 10 epochs, as such the models may not have fully trained.
 ### [Base model](10.3390/electronics10212634) performance
 
 | Dataset  | Accuracy | F1 Score | GFLOPS | Params |
@@ -58,6 +59,8 @@ The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill
 - Show 10 examples for each class randomly pulled from training and testing sets (and visualize how they were generated).
 - Try using concurrent dilation layers with different rates (as opposed to a single rate and feeding dilation layers into each other). Can feed into your attention mechanism.
 - Moving around the attention mechnism (early, mid and late attention).
+- Create a program to transpose the data (working from the central 12 bins, moving up 6 semitones and down 6 semitones while adjusting labels accordingly).
+    - Could also add logic to create copies of every piece of data along with all of their labels (i.e. E=Fb, so any instances of the label E could be copied with the label Fb and still be valid); however, this has other possible side effects, as future labels depend on previous labels when transcribing chords.
 
 ## References
 
