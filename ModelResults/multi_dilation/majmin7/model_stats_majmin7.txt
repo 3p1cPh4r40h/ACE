@@ -8,14 +8,14 @@ Loss hit epochs: 50
 Early stop epochs: 200
 
 Model Performance Metrics:
-MACs: 1,104,192.0
-FLOPs: 2,208,384.0
-GFLOPs: 0.0022
-Parameters: 1002856.00
+MACs: 3,623,616.0
+FLOPs: 7,247,232.0
+GFLOPs: 0.0072
+Parameters: 1014556.00
 
 Evaluation Results:
-Accuracy: 0.5328
-F1 Score: 0.3231
+Accuracy: 0.5009
+F1 Score: 0.2984
 
 Model Summary:
 =================================================================
@@ -29,12 +29,13 @@ MultiDilationChordCNN                    --
 │    │    └─Conv2d: 3-1                  120
 │    │    └─Conv2d: 3-2                  120
 │    │    └─Conv2d: 3-3                  120
-├─BatchNorm2d: 1-4                       72
-├─Dropout2d: 1-5                         --
-├─Linear: 1-6                            995,456
-├─Linear: 1-7                            6,966
+├─Conv2d: 1-4                            11,700
+├─BatchNorm2d: 1-5                       72
+├─Dropout2d: 1-6                         --
+├─Linear: 1-7                            995,456
+├─Linear: 1-8                            6,966
 =================================================================
-Total params: 1,002,856
-Trainable params: 1,002,856
+Total params: 1,014,556
+Trainable params: 1,014,556
 Non-trainable params: 0
 =================================================================

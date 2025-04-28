@@ -24,8 +24,8 @@ def run_model(model_type, pretraining_required, epochs=1000):
 
     datasets = {
         "majmin": 28,
-        # "majmin7": 54, 
-        # "majmininv": 73, 
+        "majmin7": 54, 
+        "majmininv": 73, 
         # "majmin7inv": 157 # Requires further processing, currently fails in training
     }
 
