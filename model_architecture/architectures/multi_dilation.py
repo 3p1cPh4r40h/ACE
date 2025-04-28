@@ -88,6 +88,14 @@ class MultiDilationChordCNN(nn.Module):
         # Total channels output by the block
         block_output_channels = self.multi_dilation_block.total_out_channels
 
+        # --- Additional Convolution Layer ---
+        self.conv_after_dilation = nn.Conv2d(
+            in_channels=block_output_channels,  # Output channels from the multi-dilation block
+            out_channels=block_output_channels,  # You can adjust this as needed
+            kernel_size=3,                       # Kernel size for the convolution
+            padding=1                            # Padding to maintain spatial dimensions
+        )
+
         # Optional: Batchnorm after concatenating branches
         self.batchnorm_block_out = nn.BatchNorm2d(block_output_channels)
 
@@ -112,7 +120,7 @@ class MultiDilationChordCNN(nn.Module):
 
         # 2. Multi-Dilation Convolutional Block
         x = self.multi_dilation_block(x) # Shape: (batch, block_output_channels, H, W)
-        # Optional: Apply BatchNorm after block
+        x = self.conv_after_dilation(x)  # Apply the additional convolution layer
         x = self.batchnorm_block_out(x)
         x = torch.relu(x)       # Apply activation *after* the block (or within branches)
         x = self.dropout(x)     # Apply dropout
