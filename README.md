@@ -38,10 +38,10 @@ The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill
 ### Label Set Table
 | Label Set | Included Chord Types | Number of Labels | Labels |
 |-----------|----------------------|------------------|--------|
-| M1 | Major, Minor | 28 | N, C:maj, G:maj, F:maj, D:maj, A:maj, E:maj, Bb:maj, Eb:maj, Ab:maj, A:min, B:maj, D:min, E:min, B:min, Db:maj, G:min, C:min, F:min, Gb:maj, Eb:min, Bb:min, Ab:min, Cb:maj, Db:min, Fb:maj, Gb:min, Cb:min |
-| M2 | Major, Minor, 7th | 54 | N, C:maj, F:maj, G:maj, D:maj, A:maj, E:maj, Bb:maj, Ab:maj, Eb:maj, A:min, B:maj, Db:maj, D:min, E:min, B:min, C:maj7, G:maj7, D:maj7, F:maj7, A:maj7, E:maj7, Eb:maj7, Ab:maj7, D:min7, E:min7, A:min7, Gb:maj, G:min, Bb:maj7, B:maj7, G:min7, C:min, B:min7, Eb:min7, F:min, C:min7, Db:maj7, F:min7, Bb:min7, Eb:min, Bb:min, Gb:maj7, Ab:min7, Ab:min, Cb:maj, Db:min7, Cb:maj7, Fb:maj, Db:min, Gb:min, Cb:min, Gb:min7, Fb:maj7 |
-| M3 | Major, Minor, Inversions | 73 | N, C:maj, G:maj, F:maj, D:maj, A:maj, E:maj, Bb:maj, Eb:maj, Ab:maj, A:min, B:maj, E:min, D:min, B:min, Db:maj, G:min, C:min, Gb:maj, F:min, Eb:min, Bb:min, D:maj/5, Ab:min, F:maj/3, F:maj/5, D:min/5, C:maj/3, Bb:maj/5, D:maj/3, E:maj/3, C:maj/5, G:maj/3, Db:maj/5, G:maj/5, Cb:maj, A:maj/5, A:maj/3, Db:min, E:maj/5, F:min/5, Ab:maj/3, Eb:maj/5, Ab:maj/5, D:min/b3, Bb:maj/3, B:maj/5, Fb:maj, E:min/b3, Gb:maj/5, Eb:maj/3, E:min/5, A:min/b3, Db:maj/3, Gb:min, G:min/5, B:min/5, C:min/b3, Eb:min/5, B:min/b3, B:maj/3, A:min/5, G:min/b3, F:min/b3, Ab:min/5, C:min/5, Gb:maj/3, Eb:min/b3, Cb:maj/5, Ab:min/b3, Db:min/5, Bb:min/5, Cb:min |
-| M4 | Major, Minor, 7th, Inversions | 157| N, C:maj, G:maj, F:maj, D:maj, A:maj, E:maj, Bb:maj, Eb:maj, Ab:maj, A:min, B:maj, B:min, E:min, Db:maj, D:min, G:maj7, C:maj7, D:maj7, F:maj7, A:maj7, E:maj7, Eb:maj7, Ab:maj7, E:min7, D:min7, A:min7, Gb:maj, G:min, G:min7, B:maj7, Bb:maj7, C:min, Eb:min7, B:min7, C:min7, F:min, Db:maj7, F:min7, Bb:min7, Eb:min, Bb:min, Gb:maj7, F:maj/5, F:maj/3, Ab:min7, D:min/5, C:maj/5, Db:maj/5, D:maj/3, E:maj/3, Bb:maj/5, G:maj/3, Ab:min, G:maj/5, C:maj/3, A:maj/5, A:maj/3, E:maj/5, Cb:maj, Db:min7, Ab:maj/3, Ab:maj/5, F:min7/5, Eb:maj/5, D:min/b3, C:maj7/3, Bb:maj/3, Bb:maj7/7, Cb:maj7, Fb:maj, F:min/5, D:min7/5, Bb:maj7/5, E:min/b3, B:maj/5, Gb:maj/5, Db:min, Gb:min, A:min/b3, D:min7/b7, D:maj7/3, F:maj7/3, Eb:maj/3, E:min7/3, G:maj7/3, G:min/5, B:min/5, Db:maj/3, E:maj7/b7, B:min7/b7, G:maj7/3, F:maj7/5, D:maj7/5, Eb:maj7/5, Db:maj7/3, A:maj7/7, A:maj7/5, B:maj7/5, C:maj7/b7, A:maj7/3, D:maj7/b7, A:min7/b7, G:min/b3, E:min7/5, D:min7/b3, B:maj7/b7, G:maj7/b7, Eb:maj7/3, B:min7/b3, G:min7/5, B:maj7/3, A:maj7/b7, Ab:maj7/b7, C:min/5, Gb:maj/3, B:min/b3, Ab:min/5, Gb:maj7/5, B:maj/3, Db:maj7/7, Eb:maj7/b7, C:maj7/5, Bb:maj7/3, A:min7/5, Eb:min/b3, B:min7/5, A:min/5, F:min/b3, Ab:maj7/5, Ab:maj7/3, Db:maj7/b7, Cb:maj/5, E:min7/b3, A:min7/b3, Ab:min/b3, F:min7/b3, C:min7/b3, Eb:min7/b7, Db:min/5, E:maj7/5, Ab:maj7/7, Bb:min7/b7, Bb:min/5, F:maj7/b7, Cb:min, Gb:min7, Fb:maj7, F:maj7/7, Db:maj7/5, Ab:min7/5, G:min7/b3, G:min7/b7 |
+| M-28 | Major, Minor | 28 | N, C:maj, G:maj, F:maj, D:maj, A:maj, E:maj, Bb:maj, Eb:maj, Ab:maj, A:min, B:maj, D:min, E:min, B:min, Db:maj, G:min, C:min, F:min, Gb:maj, Eb:min, Bb:min, Ab:min, Cb:maj, Db:min, Fb:maj, Gb:min, Cb:min |
+| M-54 | Major, Minor, 7th | 54 | N, C:maj, F:maj, G:maj, D:maj, A:maj, E:maj, Bb:maj, Ab:maj, Eb:maj, A:min, B:maj, Db:maj, D:min, E:min, B:min, C:maj7, G:maj7, D:maj7, F:maj7, A:maj7, E:maj7, Eb:maj7, Ab:maj7, D:min7, E:min7, A:min7, Gb:maj, G:min, Bb:maj7, B:maj7, G:min7, C:min, B:min7, Eb:min7, F:min, C:min7, Db:maj7, F:min7, Bb:min7, Eb:min, Bb:min, Gb:maj7, Ab:min7, Ab:min, Cb:maj, Db:min7, Cb:maj7, Fb:maj, Db:min, Gb:min, Cb:min, Gb:min7, Fb:maj7 |
+| M-73 | Major, Minor, Inversions | 73 | N, C:maj, G:maj, F:maj, D:maj, A:maj, E:maj, Bb:maj, Eb:maj, Ab:maj, A:min, B:maj, E:min, D:min, B:min, Db:maj, G:min, C:min, Gb:maj, F:min, Eb:min, Bb:min, D:maj/5, Ab:min, F:maj/3, F:maj/5, D:min/5, C:maj/3, Bb:maj/5, D:maj/3, E:maj/3, C:maj/5, G:maj/3, Db:maj/5, G:maj/5, Cb:maj, A:maj/5, A:maj/3, Db:min, E:maj/5, F:min/5, Ab:maj/3, Eb:maj/5, Ab:maj/5, D:min/b3, Bb:maj/3, B:maj/5, Fb:maj, E:min/b3, Gb:maj/5, Eb:maj/3, E:min/5, A:min/b3, Db:maj/3, Gb:min, G:min/5, B:min/5, C:min/b3, Eb:min/5, B:min/b3, B:maj/3, A:min/5, G:min/b3, F:min/b3, Ab:min/5, C:min/5, Gb:maj/3, Eb:min/b3, Cb:maj/5, Ab:min/b3, Db:min/5, Bb:min/5, Cb:min |
+| M-157 | Major, Minor, 7th, Inversions | 157| N, C:maj, G:maj, F:maj, D:maj, A:maj, E:maj, Bb:maj, Eb:maj, Ab:maj, A:min, B:maj, B:min, E:min, Db:maj, D:min, G:maj7, C:maj7, D:maj7, F:maj7, A:maj7, E:maj7, Eb:maj7, Ab:maj7, E:min7, D:min7, A:min7, Gb:maj, G:min, G:min7, B:maj7, Bb:maj7, C:min, Eb:min7, B:min7, C:min7, F:min, Db:maj7, F:min7, Bb:min7, Eb:min, Bb:min, Gb:maj7, F:maj/5, F:maj/3, Ab:min7, D:min/5, C:maj/5, Db:maj/5, D:maj/3, E:maj/3, Bb:maj/5, G:maj/3, Ab:min, G:maj/5, C:maj/3, A:maj/5, A:maj/3, E:maj/5, Cb:maj, Db:min7, Ab:maj/3, Ab:maj/5, F:min7/5, Eb:maj/5, D:min/b3, C:maj7/3, Bb:maj/3, Bb:maj7/7, Cb:maj7, Fb:maj, F:min/5, D:min7/5, Bb:maj7/5, E:min/b3, B:maj/5, Gb:maj/5, Db:min, Gb:min, A:min/b3, D:min7/b7, D:maj7/3, F:maj7/3, Eb:maj/3, E:min7/3, G:maj7/3, G:min/5, B:min/5, Db:maj/3, E:maj7/b7, B:min7/b7, G:maj7/3, F:maj7/5, D:maj7/5, Eb:maj7/5, Db:maj7/3, A:maj7/7, A:maj7/5, B:maj7/5, C:maj7/b7, A:maj7/3, D:maj7/b7, A:min7/b7, G:min/b3, E:min7/5, D:min7/b3, B:maj7/b7, G:maj7/b7, Eb:maj7/3, B:min7/b3, G:min7/5, B:maj7/3, A:maj7/b7, Ab:maj7/b7, C:min/5, Gb:maj/3, B:min/b3, Ab:min/5, Gb:maj7/5, B:maj/3, Db:maj7/7, Eb:maj7/b7, C:maj7/5, Bb:maj7/3, A:min7/5, Eb:min/b3, B:min7/5, A:min/5, F:min/b3, Ab:maj7/5, Ab:maj7/3, Db:maj7/b7, Cb:maj/5, E:min7/b3, A:min7/b3, Ab:min/b3, F:min7/b3, C:min7/b3, Eb:min7/b7, Db:min/5, E:maj7/5, Ab:maj7/7, Bb:min7/b7, Bb:min/5, F:maj7/b7, Cb:min, Gb:min7, Fb:maj7, F:maj7/7, Db:maj7/5, Ab:min7/5, G:min7/b3, G:min7/b7 |
 
 ### Label Distribution Plots
 The following plots show the distribution of class labels for each dataset:
@@ -54,46 +54,36 @@ The following plots show the distribution of class labels for each dataset:
 *Note that for initial tests each model is only run for 10 epochs, as such the models may not have fully trained.
 ### Model Comparison Table
 
-| Model                     | Label Set | Accuracy | F1 Score | GFLOPs | Parameters |
-|---------------------------|-------------------|----------|----------|--------|------------|
-| [Carsault](10.3390/electronics10212634) | M1 | 0.5022 | 0.4246 | 0.0019 | 263,122 |
-| [Carsault](10.3390/electronics10212634) | M2 | 0.5181 | 0.3207 | 0.0019 | 266,476|
-| [Carsault](10.3390/electronics10212634) | M3| 0.3894| 0.1332 | 0.0019 | 268,927|
-| Small Dilation   | M1                | 0.4785   | 0.4037   | 0.0065 | 1,009,618  |
-| Small Dilation  | M2                | 0.5313   | 0.3415   | 0.0065 | 1,012,972  |
-| Small Dilation | M3                | 0.3316   | 0.1205   | 0.0065 | 1,015,423  |
-| Multi Dilation   | M1                | 0.6535   | 0.5146   | 0.0022 | 999,502    |
-| Multi Dilation  | M2                | 0.5328   | 0.3231   | 0.0022 | 1,002,856  |
-| Multi Dilation| M3                | 0.4910   | 0.1702   | 0.0022 | 1,005,307  |
-| Semi Supervised  | M1                | 0.1191   | 0.0076   | 0.0019 | 263,122    |
-| Semi Supervised | M2                | 0.1191   | 0.0039   | 0.0019 | 266,476    |
-| Semi Supervised | M3               | 0.3781   | 0.1317   | 0.0019 | 268,927    |
+| Model                     | Accuracy | F1 Score | GFLOPs | Parameters |
+|---------------------------|----------|----------|--------|------------|
+| [Carsault](10.3390/electronics10212634) M-28 | 0.6223 | 0.4773 | 0.0019 | 263,122 |
+| Small Dilation M-28                | 0.6331   | 0.4942   | 0.0065 | 1,009,618  |
+| Multi Dilation M-28                | 0.4164   | 0.3974   | 0.0022 | 999,502    |
+| Semi Supervised M-28                | 0.1191   | 0.0076   | 0.0019 | 263,122    |
 
 ### Loss Graphs
 
 | Model                     | Loss Graph |
 |---------------------------|------------|
-| Carsault - Majmin         | ![Carsault - Majmin Loss](ModelResults/carsault/majmin/loss_plot_majmin_classification.png) |
-| Carsault - Majmin7       | ![Carsault - Majmin7 Loss](ModelResults/carsault/majmin7/loss_plot_majmin7_classification.png) |
-| Carsault - Majmininv     | ![Carsault - Majmininv Loss](ModelResults/carsault/majmininv/loss_plot_majmininv_classification.png) |
-| Small Dilation - Majmin   | ![Small Dilation - Majmin Loss](ModelResults/small_dilation/majmin/loss_plot_majmin_classification.png) |
-| Small Dilation - Majmin7  | ![Small Dilation - Majmin7 Loss](ModelResults/small_dilation/majmin7/loss_plot_majmin7_classification.png) |
-| Small Dilation - Majmininv| ![Small Dilation - Majmininv Loss](ModelResults/small_dilation/majmininv/loss_plot_majmininv_classification.png) |
-| Multi Dilation - Majmin   | ![Multi Dilation - Majmin Loss](ModelResults/multi_dilation/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation - Majmin7  | ![Multi Dilation - Majmin7 Loss](ModelResults/multi_dilation/majmin7/loss_plot_majmin7_classification.png) |
-| Multi Dilation - Majmininv| ![Multi Dilation - Majmininv Loss](ModelResults/multi_dilation/majmininv/loss_plot_majmininv_classification.png) |
-| Semi Supervised - Majmin  | ![Semi Supervised - Majmin Loss](ModelResults/semi_supervised/majmin/loss_plot_majmin_classification.png) |
-| Semi Supervised - Majmin7  | ![Semi Supervised - Majmin Loss](ModelResults/semi_supervised/majmin7/loss_plot_majmin7_classification.png) |
-| Semi Supervised - Majmininv  | ![Semi Supervised - Majmin Loss](ModelResults/semi_supervised/majmininv/loss_plot_majmininv_classification.png) |
+| Carsault M-28 | ![Carsault - Majmin Loss](ModelResults/carsault/majmin/loss_plot_majmin_classification.png) |
+| Small Dilation M-28 | ![Small Dilation - M-28](ModelResults/small_dilation/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation M-28 | ![Multi Dilation - M-28](ModelResults/multi_dilation/majmin/loss_plot_majmin_classification.png) |
+| Semi Supervised (sequence) M-28 | ![Semi Supervised (sequence) - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_sequence.png) |
+| Semi Supervised M-28 | ![Semi Supervised - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_classification.png) |
 
 ## Immediate Goals
 -  Find a train/test/val split based on literature
 - CNN-LSTM from the [Caursault et al 2024](10.3390/electronics10212634) paper.
 - Show 10 examples for each class randomly pulled from training and testing sets (and visualize how they were generated).
 - Try using concurrent dilation layers with different rates (as opposed to a single rate and feeding dilation layers into each other). Can feed into your attention mechanism.
-- Moving around the attention mechnism (early, mid and late attention).
+-  Add multi dilation w/ attention (early, mid, late)
+- Add conv block after multi-dilation (experiment with batch-norm position)
 - Create a program to transpose the data (working from the central 12 bins, moving up 6 semitones and down 6 semitones while adjusting labels accordingly).
     - Could also add logic to create copies of every piece of data along with all of their labels (i.e. E=Fb, so any instances of the label E could be copied with the label Fb and still be valid); however, this has other possible side effects, as future labels depend on previous labels when transcribing chords.
+-  CQT explanation ([Link](https://www.ee.columbia.edu/~dpwe/papers/Brown91-cqt.pdf))
+-  Comparison to MIREX standard
+-  Show samples and prediction on samples (for both the pre-training and regular training steps)
+- Experiment with softmax and sigmoid attention (before or after combining branches?)
 
 ## References
 
