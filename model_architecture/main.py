@@ -80,8 +80,8 @@ def main():
         raise ValueError("One or more classes have fewer than 2 samples.")
 
     # Split into 70% train, 15% validation, 15% test
-    X_train, X_temp, y_train, y_temp = train_test_split(data, labels, test_size=0.4, stratify=labels)
-    X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, stratify=y_temp)
+    X_train, X_temp, y_train, y_temp = train_test_split(data, labels, test_size=0.4, stratify=labels, random_state=2025)
+    X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, stratify=y_temp, random_state=2025)
 
     # Convert the split data into PyTorch datasets
     train_dataset = CustomDataset(X_train, y_train)
