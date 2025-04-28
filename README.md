@@ -46,30 +46,32 @@ The [McGill Billboard Project](https://ddmal.music.mcgill.ca/research/The_McGill
 ### Label Distribution Plots
 The following plots show the distribution of class labels for each dataset:
 
-- **M1 (majmin)**: ![Label Distribution for M1](data/majmin/label_distribution_majmin.png)
-- **M2 (majmin7)**: ![Label Distribution for M2](data/majmin7/label_distribution_majmin7.png)
-- **M3 (majmininv)**: ![Label Distribution for M3](data/majmininv/label_distribution_majmininv.png)
-- **M4 (majmin7inv)**: ![Label Distribution for M4](data/majmin7inv/label_distribution_majmin7inv.png)
+- **M-28 (majmin)**: ![Label Distribution for M1](data/majmin/label_distribution_majmin.png)
+- **M-54 (majmin7)**: ![Label Distribution for M2](data/majmin7/label_distribution_majmin7.png)
+- **M-73 (majmininv)**: ![Label Distribution for M3](data/majmininv/label_distribution_majmininv.png)
+- **M-157 (majmin7inv)**: ![Label Distribution for M4](data/majmin7inv/label_distribution_majmin7inv.png)
 
 *Note that for initial tests each model is only run for 10 epochs, as such the models may not have fully trained.
 ### Model Comparison Table
 
-| Model                     | Accuracy | F1 Score | GFLOPs | Parameters |
+#### M-28 Dataset
+| Model (M-28)                     | Accuracy | F1 Score | GFLOPs | Parameters |
 |---------------------------|----------|----------|--------|------------|
-| [Carsault](10.3390/electronics10212634) M-28 | 0.6223 | 0.4773 | 0.0019 | 263,122 |
-| Small Dilation M-28                | 0.6331   | 0.4942   | 0.0065 | 1,009,618  |
-| Multi Dilation M-28                | 0.4164   | 0.3974   | 0.0022 | 999,502    |
-| Semi Supervised M-28                | 0.1191   | 0.0076   | 0.0019 | 263,122    |
+| [Carsault](10.3390/electronics10212634)  | 0.6250 | 0.4836 | 0.0019 | 263,122 |
+| Small Dilation           | 0.6323   | 0.4891   | 0.0065 | 1,009,618  |
+| Multi Dilation               | 0.5521   | 0.3840   | 0.0072 | 1,011,202    |
+| Semi Supervised               | 0.1191   | 0.0076   | 0.0019 | 290,986    |
 
 ### Loss Graphs
 
-| Model                     | Loss Graph |
+#### M-28 Dataset
+| Model (M-28)                     | Loss Graph |
 |---------------------------|------------|
-| Carsault M-28 | ![Carsault - Majmin Loss](ModelResults/carsault/majmin/loss_plot_majmin_classification.png) |
-| Small Dilation M-28 | ![Small Dilation - M-28](ModelResults/small_dilation/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation M-28 | ![Multi Dilation - M-28](ModelResults/multi_dilation/majmin/loss_plot_majmin_classification.png) |
-| Semi Supervised (sequence) M-28 | ![Semi Supervised (sequence) - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_sequence.png) |
-| Semi Supervised M-28 | ![Semi Supervised - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_classification.png) |
+| Carsault | ![Carsault - Majmin Loss](ModelResults/carsault/majmin/loss_plot_majmin_classification.png) |
+| Small Dilation | ![Small Dilation - M-28](ModelResults/small_dilation/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation | ![Multi Dilation - M-28](ModelResults/multi_dilation/majmin/loss_plot_majmin_classification.png) |
+| Semi Supervised (sequence) | ![Semi Supervised (sequence) - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_sequence.png) |
+| Semi Supervised| ![Semi Supervised - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_classification.png) |
 
 ## Immediate Goals
 -  Find a train/test/val split based on literature
