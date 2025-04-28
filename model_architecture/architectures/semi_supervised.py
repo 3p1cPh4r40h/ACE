@@ -31,7 +31,7 @@ class SemiSupervisedChordExtractionCNN(nn.Module):
         self.fc1 = nn.Linear(36 * 3 * 18, 128)
 
         # Task-specific heads
-        self.sequence_head = nn.Linear(128, 9)  # For sequence ordering (9 positions)
+        self.sequence_head = nn.Linear(128, 9*24)  # For sequence ordering (9 positions)
         self.classification_head = nn.Linear(128, num_classes)  # For chord classification
 
     def forward(self, x, task='classification'):
@@ -52,6 +52,6 @@ class SemiSupervisedChordExtractionCNN(nn.Module):
 
         # Task-specific output
         if task == 'sequence':
-            return self.sequence_head(x)
+            return self.sequence_head(x).view(-1,9,24)
         else:
             return self.classification_head(x) 

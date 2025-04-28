@@ -78,16 +78,14 @@ def train_sequence_ordering(model, criterion, optimizer, train_dataloader, val_d
             inputs = inputs.to(device)
             batch_size = inputs.size(0)
             
-            # Shuffle sequences and get original indices
-            shuffled_inputs, original_indices = shuffle_sequence(inputs, device)
+            # Shuffle sequences and get original images
+            shuffled_inputs, original_images = shuffle_sequence(inputs, device)
             
             optimizer.zero_grad()
             outputs = model(shuffled_inputs, task='sequence')
             
-            # Ensure indices are properly formatted for CrossEntropyLoss
-            original_indices = original_indices % 9  # Ensure indices are in range [0,8]
-            
-            loss = criterion(outputs, original_indices)
+            # Calculate loss based on the difference between original images and outputs
+            loss = criterion(outputs, original_images)
             loss.backward()
             optimizer.step()
 
@@ -100,12 +98,10 @@ def train_sequence_ordering(model, criterion, optimizer, train_dataloader, val_d
             for inputs, _ in val_dataloader:
                 inputs = inputs.to(device)
                 batch_size = inputs.size(0)
-                shuffled_inputs, original_indices = shuffle_sequence(inputs, device)
+                shuffled_inputs, original_images = shuffle_sequence(inputs, device)
                 outputs = model(shuffled_inputs, task='sequence')
                 
-                original_indices = original_indices % 9  # Ensure indices are in range [0,8]
-                
-                loss = criterion(outputs, original_indices)
+                loss = criterion(outputs, original_images)
                 val_loss += loss.item()
 
         current_loss = running_loss / len(train_dataloader)
@@ -139,4 +135,4 @@ def shuffle_sequence(sequence, device):
     """Shuffle a sequence and return both shuffled sequence and original indices"""
     batch_size = sequence.size(0)
     indices = torch.randperm(batch_size, device=device)
-    return sequence[indices], indices 
+    return sequence[indices], sequence

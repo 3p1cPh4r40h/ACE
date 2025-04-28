@@ -127,7 +127,7 @@ def main():
     if args.model_type == 'semi_supervised':
         # Pre-training phase (sequence ordering)
         print("Starting sequence ordering pre-training")
-        sequence_criterion = nn.CrossEntropyLoss().to(device)
+        sequence_criterion = nn.MSELoss().to(device)
         sequence_optimizer = optim.Adam(model.parameters(), lr=1e-3)
         
         pretrain_state, pretrain_losses, pretrain_val_losses = train_sequence_ordering(
