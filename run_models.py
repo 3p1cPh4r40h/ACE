@@ -11,9 +11,9 @@ model_script = os.path.join(project_root, "model_architecture", "main.py")
 # List of model types and whether they require pre-training
 model_types = {
     "semi_supervised": True,
-    # "carsault": False,
-    # "small_dilation": False,
-    # "multi_dilation": False
+    "carsault": False,
+    "small_dilation": False,
+    "multi_dilation": False
 }
 
 def run_model(model_type, pretraining_required, epochs=1000):

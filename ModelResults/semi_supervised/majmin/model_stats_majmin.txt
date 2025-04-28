@@ -31,10 +31,10 @@ SemiSupervisedChordExtractionCNN         --
 ├─Conv2d: 1-7                            7,812
 ├─Dropout2d: 1-8                         --
 ├─Linear: 1-9                            248,960
-├─Linear: 1-10                           1,161
+├─Linear: 1-10                           27,864
 ├─Linear: 1-11                           3,612
 =================================================================
-Total params: 264,283
-Trainable params: 264,283
+Total params: 290,986
+Trainable params: 290,986
 Non-trainable params: 0
 =================================================================
