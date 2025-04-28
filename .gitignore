@@ -10,10 +10,6 @@ train_job.sh
 
 data/billboard-2.0-chordino
 data/billboard-2.0.1-mirex
-data/majmin
-data/majmin7
-data/majmininv
-data/majmin7inv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -177,3 +173,15 @@ cython_debug/
 #.idea/
 Model2Files.tar
 Model2Files.tar.gz
+data/majmin/majmin_data.pkl
+data/majmin/majmin_dataset.pkl
+data/majmin/majmin_labels.pkl
+data/majmin7/majmin7_data.pkl
+data/majmin7/majmin7_dataset.pkl
+data/majmin7/majmin7_labels.pkl
+data/majmin7inv/majmin7inv_data.pkl
+data/majmin7inv/majmin7inv_dataset.pkl
+data/majmin7inv/majmin7inv_labels.pkl
+data/majmininv/majmininv_data.pkl
+data/majmininv/majmininv_dataset.pkl
+data/majmininv/majmininv_labels.pkl
