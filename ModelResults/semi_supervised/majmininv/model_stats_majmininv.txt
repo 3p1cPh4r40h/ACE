@@ -14,8 +14,8 @@ GFLOPs: 0.0019
 Parameters: 268927.00
 
 Evaluation Results:
-Accuracy: 0.3781
-F1 Score: 0.1317
+Accuracy: 0.1191
+F1 Score: 0.0029
 
 Model Summary:
 =================================================================
@@ -31,10 +31,10 @@ SemiSupervisedChordExtractionCNN         --
 ├─Conv2d: 1-7                            7,812
 ├─Dropout2d: 1-8                         --
 ├─Linear: 1-9                            248,960
-├─Linear: 1-10                           1,161
+├─Linear: 1-10                           27,864
 ├─Linear: 1-11                           9,417
 =================================================================
-Total params: 270,088
-Trainable params: 270,088
+Total params: 296,791
+Trainable params: 296,791
 Non-trainable params: 0
 =================================================================
