@@ -18,12 +18,12 @@ Models are stored in the `model_architecture/architectures` folder. To add a new
    - Include necessary imports (torch, nn, etc.)
    - Add docstrings explaining the model architecture
 
-3. Import your model in `run_models.py`:
+3. Import your model in `run_models.py` and `test_models.py`:
    ```python
    from model_architecture.architectures.your_model import YourModelClass
    ```
 
-4. Add your model to the `MODEL_TYPES` dictionary in `run_models.py`:
+4. Add your model to the `MODEL_TYPES` dictionary in both `run_models.py` and `test_models.py`:
    ```python
    MODEL_TYPES = {
        "your_model": False,  # Set to True if your model requires pre-training
@@ -31,16 +31,29 @@ Models are stored in the `model_architecture/architectures` folder. To add a new
    }
    ```
 
-5. Your model should accept the following parameters in its constructor:
+5. Add your model to the choices in the argument parsers of both files:
+   ```python
+   parser.add_argument('--model_type', type=str, default='small_dilation',
+                     choices=['small_dilation', 'carsault', 'semi_supervised', 'multi_dilation', 'your_model'],
+                     help='Type of model to train (default: small_dilation)')
+   ```
+
+6. Add model initialization in the model selection logic of both files:
+   ```python
+   elif args.model_type == 'your_model':
+       model = YourModelClass(num_classes=DATASETS[args.data_type]).to(device)
+   ```
+
+7. Your model should accept the following parameters in its constructor:
    - `num_classes`: Number of output classes (chord types)
    - `input_height`: Height of input spectrogram (default=9)
    - `input_width`: Width of input spectrogram (default=24)
 
-6. The model's forward pass should:
+8. The model's forward pass should:
    - Accept input tensors of shape (batch_size, height, width)
    - Return logits of shape (batch_size, num_classes)
 
-7. Common utilities available for models:
+9. Common utilities available for models:
    - `GaussianNoise`: For data augmentation
    - `BatchNorm2d`: For input normalization
    - `Dropout2d`: For regularization
