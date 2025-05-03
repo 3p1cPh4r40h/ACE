@@ -3,7 +3,7 @@ import subprocess
 import time
 
 # Configuration
-EPOCHS = 1000  # Number of epochs for training
+EPOCHS = 10  # Number of epochs for training
 
 def run_models():
     """Run all models with the specified number of epochs."""

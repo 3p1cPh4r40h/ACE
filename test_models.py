@@ -10,6 +10,9 @@ from model_architecture.architectures.carsault import ChordExtractionCNN
 from model_architecture.architectures.small_dilation import SmallDilationModel
 from model_architecture.architectures.semi_supervised import SemiSupervisedChordExtractionCNN
 from model_architecture.architectures.multi_dilation import MultiDilationChordCNN
+from model_architecture.architectures.late_squeeze import LateSqueezeChordCNN
+from model_architecture.architectures.early_squeeze import EarlySqueezeChordCNN
+from model_architecture.architectures.mid_squeeze import MidSqueezeChordCNN
 from model_architecture.utils.training_utils import shuffle_sequence
 
 # Available datasets and their number of classes
@@ -63,10 +66,13 @@ LABEL_SETS = {
 
 # Available model types and whether they require pretraining
 MODEL_TYPES = {
-    "semi_supervised": True,
     "carsault": False,
+    "semi_supervised": False,
     "small_dilation": False,
-    "multi_dilation": False
+    "multi_dilation": False,
+    "late_squeeze": False,
+    "early_squeeze": False,
+    "mid_squeeze": False
 }
 
 def decode_label(label_idx, data_type):
@@ -90,15 +96,21 @@ def decode_label(label_idx, data_type):
     return LABEL_SETS[data_type][label_idx]
 
 def load_model(model_path, model_type, num_classes, device):
-    """Load a saved model from disk."""
-    if model_type == 'small_dilation':
-        model = SmallDilationModel(num_classes=num_classes)
-    elif model_type == 'carsault':
+    """Load a trained model from disk"""
+    if model_type == 'carsault':
         model = ChordExtractionCNN(num_classes=num_classes)
-    elif model_type == 'multi_dilation':
-        model = MultiDilationChordCNN(num_classes=num_classes)
+    elif model_type == 'small_dilation':
+        model = SmallDilationModel(num_classes=num_classes)
     elif model_type == 'semi_supervised':
         model = SemiSupervisedChordExtractionCNN(num_classes=num_classes)
+    elif model_type == 'multi_dilation':
+        model = MultiDilationChordCNN(num_classes=num_classes)
+    elif model_type == 'late_squeeze':
+        model = LateSqueezeChordCNN(num_classes=num_classes)
+    elif model_type == 'early_squeeze':
+        model = EarlySqueezeChordCNN(num_classes=num_classes)
+    elif model_type == 'mid_squeeze':
+        model = MidSqueezeChordCNN(num_classes=num_classes)
     else:
         raise ValueError(f"Unknown model type: {model_type}")
     
@@ -272,10 +284,9 @@ def test_all_models():
     print("-" * 80)
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Test ACE Models')
-    parser.add_argument('--model_type', type=str, default=None,
-                      choices=['small_dilation', 'carsault', 'semi_supervised', 'multi_dilation'],
-                      help='Type of model to test (default: test all models)')
+    parser = argparse.ArgumentParser(description='Test chord recognition models')
+    parser.add_argument('--model_type', type=str, choices=['carsault', 'small_dilation', 'semi_supervised', 'multi_dilation', 'late_squeeze', 'early_squeeze', 'mid_squeeze'],
+                        default='carsault', help='Type of model to test')
     parser.add_argument('--model_name', type=str, default=None,
                       help='Name of the model folder in ModelResults (default: same as model_type)')
     parser.add_argument('--data_type', type=str, default=None,

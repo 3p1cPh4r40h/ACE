@@ -19,30 +19,36 @@ from model_architecture.architectures.carsault import ChordExtractionCNN
 from model_architecture.architectures.small_dilation import SmallDilationModel
 from model_architecture.architectures.semi_supervised import SemiSupervisedChordExtractionCNN
 from model_architecture.architectures.multi_dilation import MultiDilationChordCNN
+from model_architecture.architectures.late_squeeze import LateSqueezeChordCNN
+from model_architecture.architectures.early_squeeze import EarlySqueezeChordCNN
+from model_architecture.architectures.mid_squeeze import MidSqueezeChordCNN
 
 # Get the absolute path to the project root
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 
 # List of model types and whether they require pre-training
 MODEL_TYPES = {
-    "semi_supervised": True,
-    "carsault": False,
-    "small_dilation": False,
-    "multi_dilation": False
+    'carsault': False,
+    'small_dilation': False,
+    'semi_supervised': True,
+    'multi_dilation': False,
+    'late_squeeze': False,
+    'early_squeeze': False,
+    'mid_squeeze': False
 }
 
 # Available datasets and their number of classes
 DATASETS = {
     "majmin": 28,
-    "majmin7": 54, 
-    "majmininv": 73, 
-    "majmin7inv": 157 # Requires further processing, currently fails in training
+#    "majmin7": 54, 
+#    "majmininv": 73, 
+#    "majmin7inv": 157 # Requires further processing, currently fails in training
 }
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train ACE Model')
     parser.add_argument('--model_type', type=str, default='small_dilation',
-                      choices=['small_dilation', 'carsault', 'semi_supervised', 'multi_dilation'],
+                      choices=['small_dilation', 'carsault', 'semi_supervised', 'multi_dilation', 'late_squeeze', 'early_squeeze', 'mid_squeeze'],
                       help='Type of model to train (default: small_dilation)')
     parser.add_argument('--epochs', type=int, default=1000,
                       help='Number of epochs to train (default: 1000)')
@@ -127,6 +133,12 @@ def train_single_model(args):
             model = MultiDilationChordCNN(num_classes=DATASETS[args.data_type]).to(device)
         elif args.model_type == 'semi_supervised':
             model = SemiSupervisedChordExtractionCNN(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'late_squeeze':
+            model = LateSqueezeChordCNN(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'early_squeeze':
+            model = EarlySqueezeChordCNN(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'mid_squeeze':
+            model = MidSqueezeChordCNN(num_classes=DATASETS[args.data_type]).to(device)
         else:
             raise ValueError("""Model type does not exist. 
                             1. Please make sure it is implemented in the 'architectures' folder.

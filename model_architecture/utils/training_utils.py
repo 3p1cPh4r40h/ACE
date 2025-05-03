@@ -66,7 +66,7 @@ def train_sequence_ordering(model, criterion, optimizer, train_dataloader, val_d
     worse_loss = 0
     early_stop = 0
     best_loss = float('inf')
-    best_weights = None
+    best_weights = model.state_dict()
     losses = []
     val_losses = []
 
