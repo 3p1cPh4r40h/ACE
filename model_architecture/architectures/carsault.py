@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from utils.guassian_noise import GaussianNoise
+from model_architecture.utils.guassian_noise import GaussianNoise
 
 class ChordExtractionCNN(nn.Module):
     def __init__(self, num_classes):

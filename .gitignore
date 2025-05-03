@@ -171,8 +171,12 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+# Local legacy files
 Model2Files.tar
 Model2Files.tar.gz
+
+# Dataset files
 data/majmin/majmin_data.pkl
 data/majmin/majmin_dataset.pkl
 data/majmin/majmin_labels.pkl
@@ -185,3 +189,6 @@ data/majmin7inv/majmin7inv_labels.pkl
 data/majmininv/majmininv_data.pkl
 data/majmininv/majmininv_dataset.pkl
 data/majmininv/majmininv_labels.pkl
+
+# Model files
+*.pth

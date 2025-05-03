@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from utils.guassian_noise import GaussianNoise
+from model_architecture.utils.guassian_noise import GaussianNoise
 
 class SemiSupervisedChordExtractionCNN(nn.Module):
     def __init__(self, num_classes):

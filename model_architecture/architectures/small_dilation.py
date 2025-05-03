@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import math # Needed for calculating padding
-from utils.guassian_noise import GaussianNoise
+from model_architecture.utils.guassian_noise import GaussianNoise
 
 class SmallDilationModel(nn.Module):
     """

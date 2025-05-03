@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import math
-from utils.guassian_noise import GaussianNoise
-from utils.squeeze_excitation import SqueezeExcitationBlock
+from model_architecture.utils.guassian_noise import GaussianNoise
+from model_architecture.utils.squeeze_excitation import SqueezeExcitationBlock
 
 class MultiDilationBlock(nn.Module):
     """

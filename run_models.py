@@ -1,54 +1,245 @@
-import subprocess
 import time
+import argparse
 import os
+import pickle
+import numpy as np
+import subprocess
+from sklearn.model_selection import train_test_split
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from thop import profile
+from torch.utils.data import DataLoader
+from collections import Counter
+
+from model_architecture.utils.custom_dataset import CustomDataset
+from model_architecture.utils.common_utils import get_device, save_loss_graphs, save_model_stats, evaluate_model
+from model_architecture.utils.training_utils import train, train_sequence_ordering
+from model_architecture.architectures.carsault import ChordExtractionCNN
+from model_architecture.architectures.small_dilation import SmallDilationModel
+from model_architecture.architectures.semi_supervised import SemiSupervisedChordExtractionCNN
+from model_architecture.architectures.multi_dilation import MultiDilationChordCNN
 
 # Get the absolute path to the project root
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 
-# Path to the main model script
-model_script = os.path.join(project_root, "model_architecture", "main.py")
-
 # List of model types and whether they require pre-training
-model_types = {
+MODEL_TYPES = {
     "semi_supervised": True,
     "carsault": False,
     "small_dilation": False,
     "multi_dilation": False
 }
 
-def run_model(model_type, pretraining_required, epochs=1000):
-    """Runs the main model script with the specified model type."""
-    if not os.path.exists(model_script):
-        print(f"Error: {model_script} not found!")
-        return
+# Available datasets and their number of classes
+DATASETS = {
+    "majmin": 28,
+    "majmin7": 54, 
+    "majmininv": 73, 
+    "majmin7inv": 157 # Requires further processing, currently fails in training
+}
 
-    datasets = {
-        "majmin": 28,
-        "majmin7": 54, 
-        "majmininv": 73, 
-        # "majmin7inv": 157 # Requires further processing, currently fails in training
-    }
+def parse_args():
+    parser = argparse.ArgumentParser(description='Train ACE Model')
+    parser.add_argument('--model_type', type=str, default='small_dilation',
+                      choices=['small_dilation', 'carsault', 'semi_supervised', 'multi_dilation'],
+                      help='Type of model to train (default: small_dilation)')
+    parser.add_argument('--epochs', type=int, default=1000,
+                      help='Number of epochs to train (default: 1000)')
+    parser.add_argument('--model_name', type=str, default='ACE',
+                      help='Name of the model folder in ModelResults (default: ACE)')
+    parser.add_argument('--data_type', type=str, default='majmin',
+                      choices=list(DATASETS.keys()),
+                      help='Type of data to use (e.g., majmin, majmin7, majmininv, majmin7inv) (default: majmin)')
+    parser.add_argument('--loss_hit_epochs', type=int, default=50,
+                      help='Number of epochs without improvement before reducing learning rate (default: 50)')
+    parser.add_argument('--early_stop_epochs', type=int, default=200,
+                      help='Number of epochs without improvement before early stopping (default: 200)')
+    parser.add_argument('--pretrain_epochs', type=int, default=1000,
+                      help='Number of epochs for sequence ordering pre-training (default: 1000)')
+    parser.add_argument('--batch_mode', action='store_true',
+                      help='Run all models sequentially on all datasets')
+    return parser.parse_args()
 
-    for dataset, num_classes in datasets.items():
-        cmd = [
-            "python", model_script,
-            "--model_name", model_type,
-            "--model_type", model_type,
-            "--data_type", dataset,
-            "--num_classes", str(num_classes),
-            "--epochs", str(epochs)
-        ]
+def train_single_model(args):
+    """Train a single model with the given arguments."""
+    start_time = time.time()
+    print(f"Starting training at {time.strftime('%Y-%m-%d %H:%M:%S')}")
+    
+    device = get_device()
+    print(f"Using device: {device}")
+    print(f"Training for {args.epochs} epochs")
+    print(f"Model: {args.model_name}")
+    print(f"Dataset: {args.data_type}")
+    print(f"Number of classes: {DATASETS[args.data_type]}")
+    print(f"Loss hit epochs: {args.loss_hit_epochs}")
+    print(f"Early stop epochs: {args.early_stop_epochs}")
+
+    # Load the data and labels            
+    print("Setting up data")
+    
+    data_path = os.path.join('data', args.data_type)
+    data_file = os.path.join(data_path, f'{args.data_type}_data.pkl')
+    labels_file = os.path.join(data_path, f'{args.data_type}_labels.pkl')
+
+    if not os.path.exists(data_file) or not os.path.exists(labels_file):
+        raise FileNotFoundError(f"Data files not found in {data_path}. Please ensure the data files exist.")
+
+    with open(data_file, 'rb') as f:
+        data = pickle.load(f)
+    with open(labels_file, 'rb') as f:
+        labels = pickle.load(f)
+
+    data = np.array(data)
+    labels = np.array(labels)
+
+    # Check label distribution
+    label_counts = Counter(labels)
+    print("Label distribution:", label_counts)
+
+    try:
+        # Ensure all classes have at least 2 samples
+        if any(count < 2 for count in label_counts.values()):
+            raise ValueError("One or more classes have fewer than 2 samples.")
+
+        # Split into 70% train, 15% validation, 15% test
+        X_train, X_temp, y_train, y_temp = train_test_split(data, labels, test_size=0.4, stratify=labels, random_state=2025)
+        X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.5, stratify=y_temp, random_state=2025)
+
+        # Convert the split data into PyTorch datasets
+        train_dataset = CustomDataset(X_train, y_train)
+        val_dataset = CustomDataset(X_val, y_val)
+        test_dataset = CustomDataset(X_test, y_test)
+
+        # Create DataLoaders for training and testing
+        train_dataloader = DataLoader(train_dataset, batch_size=128, shuffle=True, pin_memory=True)
+        val_dataloader = DataLoader(val_dataset, batch_size=128, shuffle=False, pin_memory=True)
+        test_dataloader = DataLoader(test_dataset, batch_size=128, shuffle=False, pin_memory=True)
+
+        # Set up the network
+        print("Setting up network")
         
-        if pretraining_required:
-            cmd.extend(["--pretrain_epochs", str(epochs)])
-            
-        print(f"Running {model_type} model on {dataset} dataset...")
-        # Run the command from the project root directory
-        subprocess.run(cmd, cwd=project_root)
-        time.sleep(2)  # Small pause between runs
+        if args.model_type == 'small_dilation':
+            model = SmallDilationModel(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'carsault':
+            model = ChordExtractionCNN(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'multi_dilation':
+            model = MultiDilationChordCNN(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'semi_supervised':
+            model = SemiSupervisedChordExtractionCNN(num_classes=DATASETS[args.data_type]).to(device)
+        else:
+            raise ValueError("""Model type does not exist. 
+                            1. Please make sure it is implemented in the 'architectures' folder.
+                            2. Please make sure it is implemented in the 'main.py' file imports and if statement.
+                            3. Please make sure it is correctly indexed in 'run_models.py'.""")
 
-# Run all models sequentially
-for model_type, pretraining_required in model_types.items():
-    # Using 10 epochs for initial testing, 1000 epochs will be used in final training
-    run_model(model_type, pretraining_required, 10)
-    time.sleep(2)  # Small pause between different model types
+        criterion = nn.CrossEntropyLoss()
+        optimizer = optim.Adam(model.parameters(), lr=2.1e-5)
+
+        # Get MACs and parameters
+        inj = torch.randn(1, 9, 24).to(device)
+        macs, params = profile(model, inputs=(inj,))
+        flops = 2 * macs
+        gflops = flops / 1e9
+
+        print(f"MACs: {macs:,}")
+        print(f"FLOPs: {flops:,}")
+        print(f"GFLOPs: {gflops:.4f}")
+        print(f"Parameters: {params:.2f}")
+
+        # Training
+        if args.model_type == 'semi_supervised':
+            # Pre-training phase (sequence ordering)
+            print("Starting sequence ordering pre-training")
+            sequence_criterion = nn.MSELoss().to(device)
+            sequence_optimizer = optim.Adam(model.parameters(), lr=1e-3)
+            
+            pretrain_state, pretrain_losses, pretrain_val_losses = train_sequence_ordering(
+                model, sequence_criterion, sequence_optimizer, train_dataloader, val_dataloader,
+                epochs=args.pretrain_epochs, loss_hit_epochs=args.loss_hit_epochs,
+                early_stop_epochs=args.early_stop_epochs, device=device
+            )
+            
+            # Save pre-training results
+            save_loss_graphs(pretrain_losses, pretrain_val_losses, args.model_name, args.data_type, args.pretrain_epochs, phase='sequence')
+
+            # Save the pre-trained model
+            pretrain_model_save_path = os.path.join('ModelResults', args.model_name, args.data_type, 'pretrained_model.pth')
+            os.makedirs(os.path.dirname(pretrain_model_save_path), exist_ok=True)
+            torch.save({
+                'model_state_dict': pretrain_state,
+                'model_type': args.model_type,
+                'num_classes': DATASETS[args.data_type],
+                'data_type': args.data_type,
+                'phase': 'pretrain'
+            }, pretrain_model_save_path)
+            print(f"Pre-trained model saved to {pretrain_model_save_path}")
+
+            # Load pre-trained weights
+            model.load_state_dict(pretrain_state)
+        
+        # Classification training
+        model_state, losses, val_losses = train(
+            model, criterion, optimizer, train_dataloader, val_dataloader,
+            epochs=args.epochs, loss_hit_epochs=args.loss_hit_epochs,
+            early_stop_epochs=args.early_stop_epochs, device=device
+        )
+        
+        # Save training results
+        save_loss_graphs(losses, val_losses, args.model_name, args.data_type, args.epochs)
+
+        # Evaluate model
+        accuracy, f1 = evaluate_model(model, test_dataloader, device)
+        
+        # Save model statistics
+        save_model_stats(model, macs, params, flops, gflops, accuracy, f1, args.model_name, args.data_type, args)
+        
+        # Save the trained model
+        model_save_path = os.path.join('ModelResults', args.model_name, args.data_type, 'model.pth')
+        os.makedirs(os.path.dirname(model_save_path), exist_ok=True)
+        torch.save({
+            'model_state_dict': model_state,
+            'model_type': args.model_type,
+            'num_classes': DATASETS[args.data_type],
+            'data_type': args.data_type,
+            'accuracy': accuracy,
+            'f1': f1
+        }, model_save_path)
+        print(f"Model saved to {model_save_path}")
+        
+        end_time = time.time()
+        total_time = end_time - start_time
+        print(f"\nTraining completed at {time.strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"Total execution time: {total_time:.2f} seconds ({total_time/60:.2f} minutes)")
+    except Exception as e:
+        print(f"Error: {e}")
+
+def run_batch_models(epochs=1000):
+    """Run all models sequentially on all datasets."""
+    for model_type, pretraining_required in MODEL_TYPES.items():
+        for dataset, num_classes in DATASETS.items():
+            args = argparse.Namespace(
+                model_type=model_type,
+                epochs=epochs,
+                num_classes=num_classes,
+                model_name=model_type,
+                data_type=dataset,
+                loss_hit_epochs=50,
+                early_stop_epochs=200,
+                pretrain_epochs=epochs if pretraining_required else 0
+            )
+            
+            print(f"\nRunning {model_type} model on {dataset} dataset...")
+            train_single_model(args)
+            time.sleep(2)  # Small pause between runs
+
+def main():
+    args = parse_args()
+    
+    if args.batch_mode:
+        run_batch_models(args.epochs)
+    else:
+        train_single_model(args)
+
+if __name__ == "__main__":
+    main()
