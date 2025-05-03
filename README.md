@@ -8,12 +8,60 @@ Place the folders for both the features and labels in the `data` folder in the r
 Note that running `process_data.py` takes a long time; however, `clean_data.py` is much shorter and easier to modify once you have processed the data.
 
 ## Instructions to Add New Model
-Models are stored in the `model_architecture` folder under `architectures`. To add a new model:
-1. The architecture should be definined similarly to `carsault.py` (or `semi_supervised.py` if using semi-supervised techniques).
-2. The model should be imported into `main.py` (see line 16 for an example).
-3. The model should be included in the list of models in the `main.py` arguments (line 25). 
-3. The model should be included in the `if` statement in `main.py` that allocates models (see line 99 for example).
-3. The model (along with whether it requires pretraining or not) should be defined in `run_models.py` in the `model_types` dict on line 12.
+Models are stored in the `model_architecture/architectures` folder. To add a new model:
+
+1. Create a new Python file in the `model_architecture/architectures` folder (e.g., `your_model.py`)
+2. Define your model class following the pattern of existing models:
+   - Inherit from `nn.Module`
+   - Implement `__init__` and `forward` methods
+   - Use appropriate PyTorch layers and utilities
+   - Include necessary imports (torch, nn, etc.)
+   - Add docstrings explaining the model architecture
+
+3. Import your model in `run_models.py`:
+   ```python
+   from model_architecture.architectures.your_model import YourModelClass
+   ```
+
+4. Add your model to the `MODEL_TYPES` dictionary in `run_models.py`:
+   ```python
+   MODEL_TYPES = {
+       "your_model": False,  # Set to True if your model requires pre-training
+       # ... existing models ...
+   }
+   ```
+
+5. Your model should accept the following parameters in its constructor:
+   - `num_classes`: Number of output classes (chord types)
+   - `input_height`: Height of input spectrogram (default=9)
+   - `input_width`: Width of input spectrogram (default=24)
+
+6. The model's forward pass should:
+   - Accept input tensors of shape (batch_size, height, width)
+   - Return logits of shape (batch_size, num_classes)
+
+7. Common utilities available for models:
+   - `GaussianNoise`: For data augmentation
+   - `BatchNorm2d`: For input normalization
+   - `Dropout2d`: For regularization
+   - `SqueezeExcitation`: Custom block with sigmoid or softmax attention
+
+Example model structure:
+```python
+import torch
+import torch.nn as nn
+from model_architecture.utils.guassian_noise import GaussianNoise
+
+class YourModel(nn.Module):
+    def __init__(self, num_classes, input_height=9, input_width=24):
+        super(YourModel, self).__init__()
+        # Your model architecture here
+        self.fc = nn.Linear(some_size, num_classes)
+
+    def forward(self, x):
+        # Your forward pass here
+        return self.fc(x)
+```
 
 ## Idea behind the design
 The [Caursault et al](10.3390/electronics10212634) paper, [Chordify app](https://chordify.net/) and a personal desire for the tool along with an interest in convolutional neural networks and signal processing.
