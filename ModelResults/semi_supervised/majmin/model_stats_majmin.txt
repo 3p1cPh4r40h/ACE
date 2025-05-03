@@ -3,7 +3,7 @@ Model Statistics for semi_supervised - majmin
 
 Model Configuration:
 Number of classes: 28
-Epochs: 10
+Epochs: 1
 Loss hit epochs: 50
 Early stop epochs: 200
 
@@ -14,8 +14,8 @@ GFLOPs: 0.0019
 Parameters: 263122.00
 
 Evaluation Results:
-Accuracy: 0.1191
-F1 Score: 0.0076
+Accuracy: 0.5189
+F1 Score: 0.3257
 
 Model Summary:
 =================================================================

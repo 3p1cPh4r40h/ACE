@@ -3,7 +3,7 @@ Model Statistics for small_dilation - majmininv
 
 Model Configuration:
 Number of classes: 73
-Epochs: 10
+Epochs: 1
 Loss hit epochs: 50
 Early stop epochs: 200
 
@@ -14,8 +14,8 @@ GFLOPs: 0.0065
 Parameters: 1015423.00
 
 Evaluation Results:
-Accuracy: 0.4872
-F1 Score: 0.1981
+Accuracy: 0.1929
+F1 Score: 0.0604
 
 Model Summary:
 =================================================================
