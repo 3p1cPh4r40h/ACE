@@ -3,7 +3,7 @@ Model Statistics for semi_supervised - majmininv
 
 Model Configuration:
 Number of classes: 73
-Epochs: 1
+Epochs: 10
 Loss hit epochs: 50
 Early stop epochs: 200
 
@@ -14,8 +14,8 @@ GFLOPs: 0.0019
 Parameters: 268927.00
 
 Evaluation Results:
-Accuracy: 0.1749
-F1 Score: 0.0499
+Accuracy: 0.3677
+F1 Score: 0.1229
 
 Model Summary:
 =================================================================

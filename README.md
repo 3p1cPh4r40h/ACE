@@ -99,16 +99,18 @@ The following plots show the distribution of class labels for each dataset:
 - **M-73 (majmininv)**: ![Label Distribution for M3](data/majmininv/label_distribution_majmininv.png)
 - **M-157 (majmin7inv)**: ![Label Distribution for M4](data/majmin7inv/label_distribution_majmin7inv.png)
 
+We stratify the test/validation and training datasets to keep the class representation consistent throughout the datasets.
+
 *Note that for initial tests each model is only run for 10 epochs, as such the models may not have fully trained.
 ### Model Comparison Table
 
 #### M-28 Dataset
 | Model (M-28)                     | Accuracy | F1 Score | GFLOPs | Parameters |
 |---------------------------|----------|----------|--------|------------|
-| [Carsault](10.3390/electronics10212634)  | 0.6250 | 0.4836 | 0.0019 | 263,122 |
-| Small Dilation           | 0.6323   | 0.4891   | 0.0065 | 1,009,618  |
-| Multi Dilation               | 0.5521   | 0.3840   | 0.0072 | 1,011,202    |
-| Semi Supervised               | 0.1191   | 0.0076   | 0.0019 | 290,986    |
+| [Carsault](10.3390/electronics10212634)  | 0.6248 | 0.4806 | 0.0019 | 263,122 |
+| Small Dilation           | 0.6337   | 0.4879   | 0.0065 | 1,009,618  |
+| Multi Dilation               | 0.6550   | 0.5138   | 0.0072 | 1,011,202    |
+| Semi Supervised               | 0.5987   | 0.4544   | 0.0019 | 290,986    |
 
 ### Loss Graphs
 

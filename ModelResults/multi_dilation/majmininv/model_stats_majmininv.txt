@@ -3,7 +3,7 @@ Model Statistics for multi_dilation - majmininv
 
 Model Configuration:
 Number of classes: 73
-Epochs: 1
+Epochs: 10
 Loss hit epochs: 50
 Early stop epochs: 200
 
@@ -14,8 +14,8 @@ GFLOPs: 0.0073
 Parameters: 1017007.00
 
 Evaluation Results:
-Accuracy: 0.2107
-F1 Score: 0.0653
+Accuracy: 0.4206
+F1 Score: 0.1936
 
 Model Summary:
 =================================================================

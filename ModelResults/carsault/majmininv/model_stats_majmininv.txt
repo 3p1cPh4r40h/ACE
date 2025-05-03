@@ -3,7 +3,7 @@ Model Statistics for carsault - majmininv
 
 Model Configuration:
 Number of classes: 73
-Epochs: 1
+Epochs: 10
 Loss hit epochs: 50
 Early stop epochs: 200
 
@@ -14,8 +14,8 @@ GFLOPs: 0.0019
 Parameters: 268927.00
 
 Evaluation Results:
-Accuracy: 0.1856
-F1 Score: 0.0567
+Accuracy: 0.3920
+F1 Score: 0.1555
 
 Model Summary:
 =================================================================

@@ -129,7 +129,8 @@ def load_data(data_type):
 def plot_spectrogram(spectrogram, title, save_path=None):
     """Plot a spectrogram and optionally save it."""
     plt.figure(figsize=(10, 4))
-    plt.imshow(spectrogram, aspect='auto', origin='lower')
+    # Transpose the spectrogram to swap X and Y axes
+    plt.imshow(spectrogram.T, aspect='auto', origin='lower')
     plt.title(title)
     plt.colorbar()
     plt.xlabel('Time')
@@ -161,7 +162,7 @@ def save_samples(model, data, labels, device, save_dir, model_type, data_type, i
                 plot_spectrogram(original[0].cpu().numpy(), 
                                f'Original Spectrogram (Label: {true_label})',
                                os.path.join(save_dir, f'sample_{i+1}_original.png'))
-                plot_spectrogram(shuffled_input[0].cpu().numpy(), 
+                plot_spectrogram(shuffled_input[0].cpu().numpy().T, 
                                'Shuffled Input',
                                os.path.join(save_dir, f'sample_{i+1}_shuffled.png'))
                 plot_spectrogram(output[0].cpu().numpy(), 
@@ -219,7 +220,7 @@ def test_single_model(model_type, model_name, data_type, device):
         
         # Test final model
         model_path = os.path.join('ModelResults', model_name, data_type, 'model.pth')
-        print("\nTesting {model_name} model:")
+        print(f"\nTesting {model_name} model:")
         model = load_model(model_path, model_type, DATASETS[data_type], device)
         save_samples(model, data, labels, device, 
                     os.path.join(save_dir, 'final_model'), 
