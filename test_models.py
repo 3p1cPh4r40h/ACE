@@ -158,7 +158,7 @@ def save_samples(model, data, labels, device, save_dir, model_type, data_type, i
                 shuffled_input, original = shuffle_sequence(input_data, device)
                 output = model(shuffled_input, task='sequence')
                 # Plot original, shuffled, and reconstructed
-                plot_spectrogram(input_data[0].cpu().numpy(), 
+                plot_spectrogram(original[0].cpu().numpy(), 
                                f'Original Spectrogram (Label: {true_label})',
                                os.path.join(save_dir, f'sample_{i+1}_original.png'))
                 plot_spectrogram(shuffled_input[0].cpu().numpy(), 

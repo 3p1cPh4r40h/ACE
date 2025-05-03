@@ -73,6 +73,28 @@ The following plots show the distribution of class labels for each dataset:
 | Semi Supervised (sequence) | ![Semi Supervised (sequence) - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_sequence.png) |
 | Semi Supervised| ![Semi Supervised - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_classification.png) |
 
+### Test Results
+
+#### M-28 Dataset
+Below are sample test results showing input spectrograms and prediction probabilities for each model:
+
+| Model (M-28) | Sample Results |
+|--------------|----------------|
+| Carsault | ![Carsault Sample 1](ModelTestResults/carsault/majmin/final_model/sample_1_input.png) ![Carsault Sample 1 Probabilities](ModelTestResults/carsault/majmin/final_model/sample_1_probabilities.png) |
+| Small Dilation | ![Small Dilation Sample 1](ModelTestResults/small_dilation/majmin/final_model/sample_1_input.png) ![Small Dilation Sample 1 Probabilities](ModelTestResults/small_dilation/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation | ![Multi Dilation Sample 1](ModelTestResults/multi_dilation/majmin/final_model/sample_1_input.png) ![Multi Dilation Sample 1 Probabilities](ModelTestResults/multi_dilation/majmin/final_model/sample_1_probabilities.png) |
+| Semi Supervised | ![Semi Supervised Sample 1](ModelTestResults/semi_supervised/majmin/final_model/sample_1_input.png) ![Semi Supervised Sample 1 Probabilities](ModelTestResults/semi_supervised/majmin/final_model/sample_1_probabilities.png) |
+
+*Note: Each sample shows the input spectrogram (left) and the model's predicted probability distribution across all 28 chord classes (right). The true chord label and predicted chord label are shown in the titles.
+
+#### Pretraining Results (M-28 Dataset)
+The semi-supervised model uses a pretraining phase to learn chord sequence patterns. Below are sample results showing the pretraining process:
+
+| Model (M-28) | Pretraining Results |
+|--------------|---------------------|
+| Semi Supervised | ![Original Spectrogram](ModelTestResults/semi_supervised/majmin/pretrained_model/sample_1_original.png) ![Shuffled Spectrogram](ModelTestResults/semi_supervised/majmin/pretrained_model/sample_1_shuffled.png) ![Reconstructed Spectrogram](ModelTestResults/semi_supervised/majmin/pretrained_model/sample_1_reconstructed.png) |
+
+
 ## Immediate Goals
 -  Find a train/test/val split based on literature
 - CNN-LSTM from the [Caursault et al 2024](10.3390/electronics10212634) paper.
