@@ -144,9 +144,13 @@ def save_samples(model, data, labels, device, save_dir, model_type, data_type, i
     """Save input and output samples for a model."""
     os.makedirs(save_dir, exist_ok=True)
     
-    for i in range(10):
-        input_data = torch.from_numpy(data[i]).unsqueeze(0).to(device)
-        true_label = labels[i]
+    # Randomly select 10 samples
+    num_samples = min(10, len(data))  # Ensure we don't try to sample more than available
+    random_indices = np.random.choice(len(data), num_samples, replace=False)
+    
+    for i, idx in enumerate(random_indices):
+        input_data = torch.from_numpy(data[idx]).unsqueeze(0).to(device)
+        true_label = labels[idx]
         
         with torch.no_grad():
             if is_pretrain:
