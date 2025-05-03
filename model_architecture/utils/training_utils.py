@@ -76,7 +76,6 @@ def train_sequence_ordering(model, criterion, optimizer, train_dataloader, val_d
 
         for inputs, _ in train_dataloader:
             inputs = inputs.to(device)
-            batch_size = inputs.size(0)
             
             # Shuffle sequences and get original images
             shuffled_inputs, original_images = shuffle_sequence(inputs, device)
@@ -132,7 +131,17 @@ def train_sequence_ordering(model, criterion, optimizer, train_dataloader, val_d
     return [best_weights, losses, val_losses]
 
 def shuffle_sequence(sequence, device):
-    """Shuffle a sequence and return both shuffled sequence and original indices"""
-    batch_size = sequence.size(0)
-    indices = torch.randperm(batch_size, device=device)
-    return sequence[indices], sequence
+    """Shuffle columns within each sequence and return both shuffled sequence and original indices"""
+    # Get dimensions
+    batch_size, num_rows, num_cols = sequence.size()
+    
+    # Create random permutations for each sequence in the batch
+    indices = torch.stack([torch.randperm(num_cols, device=device) for _ in range(batch_size)])
+    
+    # Create a range of indices for the batch dimension
+    batch_indices = torch.arange(batch_size, device=device).view(-1, 1).expand(-1, num_cols)
+    
+    # Shuffle columns within each sequence
+    shuffled_sequence = sequence[batch_indices, :, indices]
+    
+    return shuffled_sequence, sequence
