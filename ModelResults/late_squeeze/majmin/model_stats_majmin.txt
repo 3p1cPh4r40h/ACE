@@ -14,8 +14,8 @@ GFLOPs: 0.0072
 Parameters: 1011346.00
 
 Evaluation Results:
-Accuracy: 0.6160
-F1 Score: 0.4620
+Accuracy: 0.5643
+F1 Score: 0.4704
 
 Model Summary:
 =================================================================
