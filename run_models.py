@@ -28,8 +28,8 @@ project_root = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 
 # List of model types and whether they require pre-training
 MODEL_TYPES = {
-    'carsault': False,
-    'small_dilation': False,
+    # carsault': False,
+    # small_dilation': False,
     'semi_supervised': True,
     'multi_dilation': False,
     'late_squeeze': False,
@@ -52,8 +52,8 @@ def parse_args():
                       help='Type of model to train (default: small_dilation)')
     parser.add_argument('--epochs', type=int, default=1000,
                       help='Number of epochs to train (default: 1000)')
-    parser.add_argument('--model_name', type=str, default='ACE',
-                      help='Name of the model folder in ModelResults (default: ACE)')
+    parser.add_argument('--model_name', type=str, default='carsault',
+                      help='Name of the model folder in ModelResults (default: carsault)')
     parser.add_argument('--data_type', type=str, default='majmin',
                       choices=list(DATASETS.keys()),
                       help='Type of data to use (e.g., majmin, majmin7, majmininv, majmin7inv) (default: majmin)')
@@ -204,7 +204,7 @@ def train_single_model(args):
         accuracy, f1 = evaluate_model(model, test_dataloader, device)
         
         # Save model statistics
-        save_model_stats(model, macs, params, flops, gflops, accuracy, f1, args.model_name, args.data_type, args)
+        save_model_stats(model, macs, params, flops, gflops, accuracy, f1, args.model_name, args.data_type, args, num_classes=DATASETS[args.data_type])
         
         # Save the trained model
         model_save_path = os.path.join('ModelResults', args.model_name, args.data_type, 'model.pth')

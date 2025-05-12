@@ -31,7 +31,7 @@ def save_loss_graphs(train_losses, val_losses, model_name, data_type, epochs, ph
     
     print(f"Loss plot saved to: {plot_path}")
 
-def save_model_stats(model, macs, params, flops, gflops, accuracy, f1, model_name, data_type, args):
+def save_model_stats(model, macs, params, flops, gflops, accuracy, f1, model_name, data_type, args, num_classes):
     results_dir = os.path.join('ModelResults', model_name, data_type)
     os.makedirs(results_dir, exist_ok=True)
     
@@ -44,7 +44,7 @@ def save_model_stats(model, macs, params, flops, gflops, accuracy, f1, model_nam
         print(f"Model Statistics for {model_name} - {data_type}")
         print("=" * 50)
         print("\nModel Configuration:")
-        print(f"Number of classes: {args.num_classes}")
+        print(f"Number of classes: {num_classes}")
         print(f"Epochs: {args.epochs}")
         print(f"Loss hit epochs: {args.loss_hit_epochs}")
         print(f"Early stop epochs: {args.early_stop_epochs}")

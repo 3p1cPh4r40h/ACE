@@ -3,7 +3,7 @@ Model Statistics for mid_squeeze - majmin
 
 Model Configuration:
 Number of classes: 28
-Epochs: 10
+Epochs: 1000
 Loss hit epochs: 50
 Early stop epochs: 200
 
@@ -14,8 +14,8 @@ GFLOPs: 0.0072
 Parameters: 1011346.00
 
 Evaluation Results:
-Accuracy: 0.5594
-F1 Score: 0.4745
+Accuracy: 0.6498
+F1 Score: 0.5684
 
 Model Summary:
 =================================================================

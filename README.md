@@ -114,16 +114,19 @@ The following plots show the distribution of class labels for each dataset:
 
 We stratify the test/validation and training datasets to keep the class representation consistent throughout the datasets.
 
-*Note that for initial tests each model is only run for 10 epochs, as such the models may not have fully trained.
+*Run for 1000 epochs
 ### Model Comparison Table
 
 #### M-28 Dataset
 | Model (M-28)                     | Accuracy | F1 Score | GFLOPs | Parameters |
 |---------------------------|----------|----------|--------|------------|
-| [Carsault](10.3390/electronics10212634)  | 0.6248 | 0.4806 | 0.0019 | 263,122 |
-| Small Dilation           | 0.6337   | 0.4879   | 0.0065 | 1,009,618  |
-| Multi Dilation               | 0.6550   | 0.5138   | 0.0072 | 1,011,202    |
-| Semi Supervised               | 0.5987   | 0.4544   | 0.0019 | 290,986    |
+| [Carsault](10.3390/electronics10212634)  | 0.6731 | 0.5879 | 0.0019 | 263,122 |
+| Small Dilation           | 0.6874   | 0.6103   | 0.0065 | 1,009,618  |
+| Multi Dilation               | 0.6475   | 0.5631   | 0.0072 | 1,011,202    |
+| Semi Supervised               | 0.6131   | 0.4724   | 0.0019 | 290,986    |
+| Early Squeeze               | 0.6492   | 0.5680   | 0.0072 | 1,011,202    |
+| Mid Squeeze               | 0.6498   | 0.5684   | 0.0072 | 1,011,346    |
+| Late Squeeze               | 0.6441   | 0.5542   | 0.0072 | 1,011,346    |
 
 ### Loss Graphs
 
@@ -134,7 +137,10 @@ We stratify the test/validation and training datasets to keep the class represen
 | Small Dilation | ![Small Dilation - M-28](ModelResults/small_dilation/majmin/loss_plot_majmin_classification.png) |
 | Multi Dilation | ![Multi Dilation - M-28](ModelResults/multi_dilation/majmin/loss_plot_majmin_classification.png) |
 | Semi Supervised (sequence) | ![Semi Supervised (sequence) - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_sequence.png) |
-| Semi Supervised| ![Semi Supervised - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_classification.png) |
+| Semi Supervised | ![Semi Supervised - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_classification.png) |
+| Early Squeeze | ![Early Squeeze - M-28](ModelResults/early_squeeze/majmin/loss_plot_majmin_classification.png) |
+| Mid Squeeze | ![Mid Squeeze - M-28](ModelResults/mid_squeeze/majmin/loss_plot_majmin_classification.png) |
+| Late Squeeze | ![Late Squeeze - M-28](ModelResults/late_squeeze/majmin/loss_plot_majmin_classification.png) |
 
 ### Test Results
 
@@ -147,6 +153,9 @@ Below are sample test results showing input spectrograms and prediction probabil
 | Small Dilation | ![Small Dilation Sample 1](ModelTestResults/small_dilation/majmin/final_model/sample_1_input.png) ![Small Dilation Sample 1 Probabilities](ModelTestResults/small_dilation/majmin/final_model/sample_1_probabilities.png) |
 | Multi Dilation | ![Multi Dilation Sample 1](ModelTestResults/multi_dilation/majmin/final_model/sample_1_input.png) ![Multi Dilation Sample 1 Probabilities](ModelTestResults/multi_dilation/majmin/final_model/sample_1_probabilities.png) |
 | Semi Supervised | ![Semi Supervised Sample 1](ModelTestResults/semi_supervised/majmin/final_model/sample_1_input.png) ![Semi Supervised Sample 1 Probabilities](ModelTestResults/semi_supervised/majmin/final_model/sample_1_probabilities.png) |
+| Early Squeeze | ![Early Squeeze Sample 1](ModelTestResults/early_squeeze/majmin/final_model/sample_1_input.png) ![Early Squeeze Sample 1 Probabilities](ModelTestResults/early_squeeze/majmin/final_model/sample_1_probabilities.png) |
+| Mid Squeeze | ![Mid Squeeze Sample 1](ModelTestResults/mid_squeeze/majmin/final_model/sample_1_input.png) ![Mid Squeeze Sample 1 Probabilities](ModelTestResults/mid_squeeze/majmin/final_model/sample_1_probabilities.png) |
+| Late Squeeze | ![Late Squeeze Sample 1](ModelTestResults/late_squeeze/majmin/final_model/sample_1_input.png) ![Late Squeeze Sample 1 Probabilities](ModelTestResults/late_squeeze/majmin/final_model/sample_1_probabilities.png) |
 
 *Note: Each sample shows the input spectrogram (left) and the model's predicted probability distribution across all 28 chord classes (right). The true chord label and predicted chord label are shown in the titles.
 

@@ -67,7 +67,7 @@ LABEL_SETS = {
 # Available model types and whether they require pretraining
 MODEL_TYPES = {
     "carsault": False,
-    "semi_supervised": False,
+    "semi_supervised": True,
     "small_dilation": False,
     "multi_dilation": False,
     "late_squeeze": False,
@@ -174,7 +174,7 @@ def save_samples(model, data, labels, device, save_dir, model_type, data_type, i
                 plot_spectrogram(original[0].cpu().numpy(), 
                                f'Original Spectrogram (Label: {true_label})',
                                os.path.join(save_dir, f'sample_{i+1}_original.png'))
-                plot_spectrogram(shuffled_input[0].cpu().numpy().T, 
+                plot_spectrogram(shuffled_input[0].cpu().numpy(), 
                                'Shuffled Input',
                                os.path.join(save_dir, f'sample_{i+1}_shuffled.png'))
                 plot_spectrogram(output[0].cpu().numpy(), 
