@@ -58,6 +58,7 @@ Models are stored in the `model_architecture/architectures` folder. To add a new
    - `BatchNorm2d`: For input normalization
    - `Dropout2d`: For regularization
    - `SqueezeExcitation`: Custom block with sigmoid or softmax attention
+   - `MultiDilationBlock`: For applying dilation in parallel
 
 Example model structure:
 ```python
