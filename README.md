@@ -7,6 +7,31 @@ Place the folders for both the features and labels in the `data` folder in the r
 
 Note that running `process_data.py` takes a long time; however, `clean_data.py` is much shorter and easier to modify once you have processed the data.
 
+### Running Models
+You can run models in several ways:
+
+1. Run a single model:
+```bash
+python run_models.py --model_type small_dilation
+```
+
+2. Run multiple models in sequence:
+```bash
+python run_models.py --model_type small_dilation carsault multi_dilation
+```
+
+3. Run all models in batch mode:
+```bash
+python run_models.py --batch_mode
+```
+
+Additional options:
+- `--epochs`: Number of epochs to train (default: 1000)
+- `--data_type`: Type of data to use (majmin, majmin7, majmininv, majmin7inv)
+- `--loss_hit_epochs`: Number of epochs without improvement before reducing learning rate (default: 50)
+- `--early_stop_epochs`: Number of epochs without improvement before early stopping (default: 200)
+- `--pretrain_epochs`: Number of epochs for sequence ordering pre-training (default: 1000)
+
 ## Instructions to Add New Model
 Models are stored in the `model_architecture/architectures` folder. To add a new model:
 
