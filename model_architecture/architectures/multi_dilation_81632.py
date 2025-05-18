@@ -3,21 +3,20 @@ import torch.nn as nn
 import torch.nn.functional as F
 import math
 from model_architecture.utils.guassian_noise import GaussianNoise
-from model_architecture.utils.squeeze_excitation import SqueezeExcitationBlock
 from model_architecture.utils.multi_dilation_block import MultiDilationBlock
 
-class LateSqueezeChordCNN(nn.Module):
+class MultiDilation81632ChordCNN(nn.Module):
     """
     A CNN model for chord extraction using a multi-dilation block
-    to capture features at multiple scales simultaneously.
+    with dilation rates [8, 16, 32] to capture features at multiple scales simultaneously.
     """
     def __init__(self, num_classes, input_height=9, input_width=24,
                  branch_out_channels=12, # Channels per dilation branch
-                 dilations=[1, 2, 4],     # Dilation rates for the block
+                 dilations=[8, 16, 32],     # Dilation rates for the block
                  kernel_size=3,           # Kernel size for dilated convs
                  fc_size=128,             # Size of the first FC layer
                  dropout_rate=0.25):      # Dropout probability
-        super(LateSqueezeChordCNN, self).__init__()
+        super(MultiDilation81632ChordCNN, self).__init__()
 
         if input_height <= 0 or input_width <= 0:
              raise ValueError("input_height and input_width must be positive integers.")
@@ -49,13 +48,6 @@ class LateSqueezeChordCNN(nn.Module):
         # Optional: Batchnorm after concatenating branches
         self.batchnorm_block_out = nn.BatchNorm2d(block_output_channels)
 
-        # --- Late Attention Block ---
-        self.late_attention = SqueezeExcitationBlock(
-            channels=block_output_channels,
-            reduction=16,  # Standard reduction ratio
-            activation="sigmoid"  # Use sigmoid for attention weights
-        )
-
         # Dropout after the multi-dilation block and activation
         self.dropout = nn.Dropout2d(p=dropout_rate)
 
@@ -80,10 +72,6 @@ class LateSqueezeChordCNN(nn.Module):
         x = self.conv_after_dilation(x)  # Apply the additional convolution layer
         x = self.batchnorm_block_out(x)
         x = torch.relu(x)       # Apply activation *after* the block (or within branches)
-        
-        # Apply late attention
-        x = self.late_attention(x)  # Apply channel-wise attention
-        
         x = self.dropout(x)     # Apply dropout
 
         # 3. Flatten
@@ -97,4 +85,4 @@ class LateSqueezeChordCNN(nn.Module):
         # x = F.dropout(x, p=0.5, training=self.training)
         x = self.fc2(x)          # Output layer (logits)
 
-        return x
+        return x 
