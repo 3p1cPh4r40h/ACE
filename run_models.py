@@ -82,7 +82,7 @@ DATASETS = {
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train ACE Model')
-    parser.add_argument('--model_type', type=str, default='small_dilation',
+    parser.add_argument('--model_type', type=str, nargs='+', default=['small_dilation'],
                       choices=['small_dilation', 'small_dilation_first', 'small_dilation_second', 'small_dilation_last',
                               'carsault', 'semi_supervised', 'multi_dilation', 'multi_dilation_248', 'multi_dilation_2832',
                               'multi_dilation_4816', 'multi_dilation_81632',
@@ -91,7 +91,7 @@ def parse_args():
                               'multi_dilation_late_squeeze_softmax', 'multi_dilation_late_squeeze_sigmoid',
                               'late_squeeze', 'early_squeeze', 'mid_squeeze',
                               'late_squeeze_softmax', 'early_squeeze_softmax', 'mid_squeeze_softmax'],
-                      help='Type of model to train (default: small_dilation)')
+                      help='Type(s) of model(s) to train (default: small_dilation). Can specify multiple models.')
     parser.add_argument('--epochs', type=int, default=1000,
                       help='Number of epochs to train (default: 1000)')
     parser.add_argument('--model_name', type=str, default='carsault',
@@ -106,7 +106,7 @@ def parse_args():
     parser.add_argument('--pretrain_epochs', type=int, default=1000,
                       help='Number of epochs for sequence ordering pre-training (default: 1000)')
     parser.add_argument('--batch_mode', action='store_true',
-                      help='Run all models sequentially on all datasets')
+                      help='Run all models sequentially on all datasets, note that this will override the model_type, but a data_type can be provided')
     return parser.parse_args()
 
 def train_single_model(args):
@@ -131,24 +131,26 @@ def train_single_model(args):
     labels_file = os.path.join(data_path, f'{args.data_type}_labels.pkl')
 
     if not os.path.exists(data_file) or not os.path.exists(labels_file):
-        raise FileNotFoundError(f"Data files not found in {data_path}. Please ensure the data files exist.")
-
-    with open(data_file, 'rb') as f:
-        data = pickle.load(f)
-    with open(labels_file, 'rb') as f:
-        labels = pickle.load(f)
-
-    data = np.array(data)
-    labels = np.array(labels)
-
-    # Check label distribution
-    label_counts = Counter(labels)
-    print("Label distribution:", label_counts)
+        print(f"Error: Data files not found in {data_path}. Please ensure the data files exist.")
+        return False
 
     try:
+        with open(data_file, 'rb') as f:
+            data = pickle.load(f)
+        with open(labels_file, 'rb') as f:
+            labels = pickle.load(f)
+
+        data = np.array(data)
+        labels = np.array(labels)
+
+        # Check label distribution
+        label_counts = Counter(labels)
+        print("Label distribution:", label_counts)
+
         # Ensure all classes have at least 2 samples
         if any(count < 2 for count in label_counts.values()):
-            raise ValueError("One or more classes have fewer than 2 samples.")
+            print("Error: One or more classes have fewer than 2 samples.")
+            return False
 
         # Split into 70% train, 15% validation, 15% test
         X_train, X_temp, y_train, y_temp = train_test_split(data, labels, test_size=0.4, stratify=labels, random_state=2025)
@@ -214,10 +216,8 @@ def train_single_model(args):
         elif args.model_type == 'mid_squeeze_softmax':
             model = MidSqueezeSoftmaxChordCNN(num_classes=DATASETS[args.data_type]).to(device)
         else:
-            raise ValueError("""Model type does not exist. 
-                            1. Please make sure it is implemented in the 'architectures' folder.
-                            2. Please make sure it is implemented in the 'main.py' file imports and if statement.
-                            3. Please make sure it is correctly indexed in 'run_models.py'.""")
+            print("Error: Model type does not exist.")
+            return False
 
         criterion = nn.CrossEntropyLoss()
         optimizer = optim.Adam(model.parameters(), lr=2.1e-5)
@@ -297,19 +297,36 @@ def train_single_model(args):
         total_time = end_time - start_time
         print(f"\nTraining completed at {time.strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"Total execution time: {total_time:.2f} seconds ({total_time/60:.2f} minutes)")
+        return True
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Error training {args.model_type} on {args.data_type}: {str(e)}")
+        return False
 
-def run_batch_models(epochs=1000, model_type=None, data_type=None):
-    """Run models sequentially on datasets.
-    If model_type is provided, only run that model.
+def run_batch_models(epochs=1000, data_type=None):
+    """Run all models sequentially on the specified dataset.
     If data_type is provided, only run on that dataset.
-    If neither is provided, run all models on all datasets."""
-    models_to_run = [model_type] if model_type else MODEL_TYPES.keys()
-    datasets_to_run = [data_type] if data_type else DATASETS.keys()
+    If data_type is not provided, run on all datasets."""
+    # Get list of models to run - always run all models in batch mode
+    models_to_run = list(MODEL_TYPES.keys())
     
+    # Get list of datasets to run
+    if data_type:
+        if data_type not in DATASETS:
+            print(f"Error: Dataset '{data_type}' not found in available datasets.")
+            return
+        datasets_to_run = [data_type]
+    else:
+        datasets_to_run = list(DATASETS.keys())
+
+    print(f"Running {len(models_to_run)} models on {len(datasets_to_run)} datasets")
+    print(f"Models: {models_to_run}")
+    print(f"Datasets: {datasets_to_run}")
+    
+    results = {}
     for model_type in models_to_run:
+        results[model_type] = {}
         for dataset in datasets_to_run:
+            print(f"\nRunning {model_type} model on {dataset} dataset...")
             args = argparse.Namespace(
                 model_type=model_type,
                 epochs=epochs,
@@ -321,17 +338,40 @@ def run_batch_models(epochs=1000, model_type=None, data_type=None):
                 pretrain_epochs=epochs if MODEL_TYPES[model_type] else 0
             )
             
-            print(f"\nRunning {model_type} model on {dataset} dataset...")
-            train_single_model(args)
+            success = train_single_model(args)
+            results[model_type][dataset] = "Success" if success else "Failed"
             time.sleep(2)  # Small pause between runs
+    
+    # Print summary
+    print("\n\nSummary of Results:")
+    print("-" * 80)
+    print(f"{'Model Type':<30} {'Dataset':<15} {'Status':<10}")
+    print("-" * 80)
+    for model_type in results:
+        for dataset in results[model_type]:
+            print(f"{model_type:<30} {dataset:<15} {results[model_type][dataset]:<10}")
+    print("-" * 80)
 
 def main():
     args = parse_args()
     
     if args.batch_mode:
-        run_batch_models(args.epochs, args.model_type, args.data_type)
+        # You run all models on a single dataset or all datasets in batch mode
+        run_batch_models(args.epochs, args.data_type)
     else:
-        train_single_model(args)
+        # Run each specified model
+        for model_type in args.model_type:
+            print(f"\nTraining model: {model_type}")
+            model_args = argparse.Namespace(
+                model_type=model_type,
+                epochs=args.epochs,
+                model_name=model_type,  # Use model_type as the model_name
+                data_type=args.data_type,
+                loss_hit_epochs=args.loss_hit_epochs,
+                early_stop_epochs=args.early_stop_epochs,
+                pretrain_epochs=args.pretrain_epochs
+            )
+            train_single_model(model_args)
 
 if __name__ == "__main__":
     main()
