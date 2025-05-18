@@ -6,10 +6,11 @@ from model_architecture.utils.guassian_noise import GaussianNoise
 from model_architecture.utils.squeeze_excitation import SqueezeExcitationBlock
 from model_architecture.utils.multi_dilation_block import MultiDilationBlock
 
-class MidSqueezeChordCNN(nn.Module):
+class MidSqueezeSoftmaxChordCNN(nn.Module):
     """
     A CNN model for chord extraction using a multi-dilation block
     with mid attention applied between the multi-dilation block and additional convolution.
+    Uses softmax activation for attention weights.
     """
     def __init__(self, num_classes, input_height=9, input_width=24,
                  branch_out_channels=12, # Channels per dilation branch
@@ -17,7 +18,7 @@ class MidSqueezeChordCNN(nn.Module):
                  kernel_size=3,           # Kernel size for dilated convs
                  fc_size=128,             # Size of the first FC layer
                  dropout_rate=0.25):      # Dropout probability
-        super(MidSqueezeChordCNN, self).__init__()
+        super(MidSqueezeSoftmaxChordCNN, self).__init__()
 
         if input_height <= 0 or input_width <= 0:
              raise ValueError("input_height and input_width must be positive integers.")
@@ -42,7 +43,7 @@ class MidSqueezeChordCNN(nn.Module):
         self.mid_attention = SqueezeExcitationBlock(
             channels=block_output_channels,
             reduction=16,  # Standard reduction ratio
-            activation="sigmoid"  # Use sigmoid for attention weights
+            activation="softmax"  # Use softmax for attention weights
         )
 
         # --- Additional Convolution Layer ---
