@@ -144,15 +144,34 @@ We stratify the test/validation and training datasets to keep the class represen
 ### Model Comparison Table
 
 #### M-28 Dataset
-| Model (M-28)                     | Accuracy | F1 Score | GFLOPs | Parameters |
-|---------------------------|----------|----------|--------|------------|
-| [Carsault](10.3390/electronics10212634)  | 0.6731 | 0.5879 | 0.0019 | 263,122 |
-| Small Dilation           | 0.6874   | 0.6103   | 0.0065 | 1,009,618  |
-| Multi Dilation               | 0.6475   | 0.5631   | 0.0072 | 1,011,202    |
-| Semi Supervised               | 0.6131   | 0.4724   | 0.0019 | 290,986    |
-| Early Squeeze               | 0.6492   | 0.5680   | 0.0072 | 1,011,202    |
-| Mid Squeeze               | 0.6498   | 0.5684   | 0.0072 | 1,011,346    |
-| Late Squeeze               | 0.6441   | 0.5542   | 0.0072 | 1,011,346    |
+| Model (M-28)                    | Accuracy | F1 Score | GFLOPs | Parameters |
+|--------------------------------|----------|----------|--------|------------|
+| [Carsault](10.3390/electronics10212634) | 0.6731   | 0.5879   | 0.0019 | 263,122    |
+| Small Dilation                 | 0.6874   | 0.6103   | 0.0065 | 1,009,618  |
+| Small Dilation First           | ?        | ?        | ?      | ?          |
+| Small Dilation Second          | ?        | ?        | ?      | ?          |
+| Small Dilation Last            | ?        | ?        | ?      | ?          |
+| Small Dilation First Two       | ?        | ?        | ?      | ?          |
+| Small Dilation Last Two        | ?        | ?        | ?      | ?          |
+| Small Dilation First Last      | ?        | ?        | ?      | ?          |
+| Multi Dilation                 | 0.6475   | 0.5631   | 0.0072 | 1,011,202  |
+| Multi Dilation 248             | ?        | ?        | ?      | ?          |
+| Multi Dilation 2832            | ?        | ?        | ?      | ?          |
+| Multi Dilation 4816            | ?        | ?        | ?      | ?          |
+| Multi Dilation 81632           | ?        | ?        | ?      | ?          |
+| Semi Supervised                | 0.6131   | 0.4724   | 0.0019 | 290,986    |
+| Early Squeeze                  | 0.6492   | 0.5680   | 0.0072 | 1,011,202  |
+| Mid Squeeze                    | 0.6498   | 0.5684   | 0.0072 | 1,011,346  |
+| Late Squeeze                   | 0.6441   | 0.5542   | 0.0072 | 1,011,346  |
+| Early Squeeze Softmax          | ?        | ?        | ?      | ?          |
+| Mid Squeeze Softmax            | ?        | ?        | ?      | ?          |
+| Late Squeeze Softmax           | ?        | ?        | ?      | ?          |
+| Multi Dilation Early Squeeze Softmax | ?        | ?        | ?      | ?          |
+| Multi Dilation Early Squeeze Sigmoid | ?        | ?        | ?      | ?          |
+| Multi Dilation Mid Squeeze Softmax   | ?        | ?        | ?      | ?          |
+| Multi Dilation Mid Squeeze Sigmoid   | ?        | ?        | ?      | ?          |
+| Multi Dilation Late Squeeze Softmax  | ?        | ?        | ?      | ?          |
+| Multi Dilation Late Squeeze Sigmoid  | ?        | ?        | ?      | ?          |
 
 ### Loss Graphs
 
@@ -161,12 +180,31 @@ We stratify the test/validation and training datasets to keep the class represen
 |---------------------------|------------|
 | Carsault | ![Carsault - Majmin Loss](ModelResults/carsault/majmin/loss_plot_majmin_classification.png) |
 | Small Dilation | ![Small Dilation - M-28](ModelResults/small_dilation/majmin/loss_plot_majmin_classification.png) |
+| Small Dilation First | ![Small Dilation First - M-28](ModelResults/small_dilation_first/majmin/loss_plot_majmin_classification.png) |
+| Small Dilation Second | ![Small Dilation Second - M-28](ModelResults/small_dilation_second/majmin/loss_plot_majmin_classification.png) |
+| Small Dilation Last | ![Small Dilation Last - M-28](ModelResults/small_dilation_last/majmin/loss_plot_majmin_classification.png) |
+| Small Dilation First Two | ![Small Dilation First Two - M-28](ModelResults/small_dilation_first_two/majmin/loss_plot_majmin_classification.png) |
+| Small Dilation Last Two | ![Small Dilation Last Two - M-28](ModelResults/small_dilation_last_two/majmin/loss_plot_majmin_classification.png) |
+| Small Dilation First Last | ![Small Dilation First Last - M-28](ModelResults/small_dilation_first_last/majmin/loss_plot_majmin_classification.png) |
 | Multi Dilation | ![Multi Dilation - M-28](ModelResults/multi_dilation/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation 248 | ![Multi Dilation 248 - M-28](ModelResults/multi_dilation_248/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation 2832 | ![Multi Dilation 2832 - M-28](ModelResults/multi_dilation_2832/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation 4816 | ![Multi Dilation 4816 - M-28](ModelResults/multi_dilation_4816/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation 81632 | ![Multi Dilation 81632 - M-28](ModelResults/multi_dilation_81632/majmin/loss_plot_majmin_classification.png) |
 | Semi Supervised (sequence) | ![Semi Supervised (sequence) - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_sequence.png) |
 | Semi Supervised | ![Semi Supervised - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_classification.png) |
 | Early Squeeze | ![Early Squeeze - M-28](ModelResults/early_squeeze/majmin/loss_plot_majmin_classification.png) |
 | Mid Squeeze | ![Mid Squeeze - M-28](ModelResults/mid_squeeze/majmin/loss_plot_majmin_classification.png) |
 | Late Squeeze | ![Late Squeeze - M-28](ModelResults/late_squeeze/majmin/loss_plot_majmin_classification.png) |
+| Early Squeeze Softmax | ![Early Squeeze Softmax - M-28](ModelResults/early_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
+| Mid Squeeze Softmax | ![Mid Squeeze Softmax - M-28](ModelResults/mid_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
+| Late Squeeze Softmax | ![Late Squeeze Softmax - M-28](ModelResults/late_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation Early Squeeze Softmax | ![Multi Dilation Early Squeeze Softmax - M-28](ModelResults/multi_dilation_early_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation Early Squeeze Sigmoid | ![Multi Dilation Early Squeeze Sigmoid - M-28](ModelResults/multi_dilation_early_squeeze_sigmoid/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation Mid Squeeze Softmax | ![Multi Dilation Mid Squeeze Softmax - M-28](ModelResults/multi_dilation_mid_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation Mid Squeeze Sigmoid | ![Multi Dilation Mid Squeeze Sigmoid - M-28](ModelResults/multi_dilation_mid_squeeze_sigmoid/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation Late Squeeze Softmax | ![Multi Dilation Late Squeeze Softmax - M-28](ModelResults/multi_dilation_late_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation Late Squeeze Sigmoid | ![Multi Dilation Late Squeeze Sigmoid - M-28](ModelResults/multi_dilation_late_squeeze_sigmoid/majmin/loss_plot_majmin_classification.png) |
 
 ### Test Results
 

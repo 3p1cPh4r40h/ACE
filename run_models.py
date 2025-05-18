@@ -53,6 +53,9 @@ MODEL_TYPES = {
     "small_dilation_first": False,
     "small_dilation_second": False,
     "small_dilation_last": False,
+    "small_dilation_first_two": False,
+    "small_dilation_last_two": False,
+    "small_dilation_first_last": False,
     "multi_dilation": False,
     "multi_dilation_248": False,
     "multi_dilation_2832": False,
@@ -84,6 +87,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Train ACE Model')
     parser.add_argument('--model_type', type=str, nargs='+', default=['small_dilation'],
                       choices=['small_dilation', 'small_dilation_first', 'small_dilation_second', 'small_dilation_last',
+                              'small_dilation_first_two', 'small_dilation_last_two', 'small_dilation_first_last',
                               'carsault', 'semi_supervised', 'multi_dilation', 'multi_dilation_248', 'multi_dilation_2832',
                               'multi_dilation_4816', 'multi_dilation_81632',
                               'multi_dilation_early_squeeze_softmax', 'multi_dilation_early_squeeze_sigmoid',
@@ -177,6 +181,12 @@ def train_single_model(args):
             model = SmallDilationSecondModel(num_classes=DATASETS[args.data_type]).to(device)
         elif args.model_type == 'small_dilation_last':
             model = SmallDilationLastModel(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'small_dilation_first_two':
+            model = SmallDilationFirstTwoModel(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'small_dilation_last_two':
+            model = SmallDilationLastTwoModel(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'small_dilation_first_last':
+            model = SmallDilationFirstLastModel(num_classes=DATASETS[args.data_type]).to(device)
         elif args.model_type == 'carsault':
             model = ChordExtractionCNN(num_classes=DATASETS[args.data_type]).to(device)
         elif args.model_type == 'multi_dilation':
