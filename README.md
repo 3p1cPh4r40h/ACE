@@ -140,7 +140,6 @@ The following plots show the distribution of class labels for each dataset:
 
 We stratify the test/validation and training datasets to keep the class representation consistent throughout the datasets.
 
-*Run for 1000 epochs
 ### Model Comparison Table
 
 #### M-28 Dataset
@@ -148,30 +147,34 @@ We stratify the test/validation and training datasets to keep the class represen
 |--------------------------------|----------|----------|--------|------------|
 | [Carsault](10.3390/electronics10212634) | 0.6731   | 0.5879   | 0.0019 | 263,122    |
 | Small Dilation                 | 0.6874   | 0.6103   | 0.0065 | 1,009,618  |
-| Small Dilation First           | ?        | ?        | ?      | ?          |
-| Small Dilation Second          | ?        | ?        | ?      | ?          |
-| Small Dilation Last            | ?        | ?        | ?      | ?          |
-| Small Dilation First Two       | ?        | ?        | ?      | ?          |
-| Small Dilation Last Two        | ?        | ?        | ?      | ?          |
-| Small Dilation First Last      | ?        | ?        | ?      | ?          |
+| Small Dilation First*          | 0.6347   | 0.4959   | 0.0065 | 1,009,618  |
+| Small Dilation Second*         | 0.6333   | 0.4971   | 0.0065 | 1,009,618  |
+| Small Dilation Last*           | 0.6360   | 0.4968   | 0.0065 | 1,009,618  |
+| Small Dilation First Two*      | 0.6341   | 0.4935   | 0.0065 | 1,009,618  |
+| Small Dilation Last Two*       | 0.6332   | 0.4921   | 0.0065 | 1,009,618  |
+| Small Dilation First Last*     | 0.6335   | 0.4935   | 0.0065 | 1,009,618  |
 | Multi Dilation                 | 0.6475   | 0.5631   | 0.0072 | 1,011,202  |
-| Multi Dilation 248             | ?        | ?        | ?      | ?          |
-| Multi Dilation 2832            | ?        | ?        | ?      | ?          |
-| Multi Dilation 4816            | ?        | ?        | ?      | ?          |
-| Multi Dilation 81632           | ?        | ?        | ?      | ?          |
+| Multi Dilation 248             | 0.6575   | 0.5202   | 0.0072 | 1,011,202  |
+| Multi Dilation 2832            | 0.6567   | 0.5164   | 0.0072 | 1,011,202  |
+| Multi Dilation 4816            | 0.6561   | 0.5135   | 0.0072 | 1,011,202  |
+| Multi Dilation 81632           | 0.6553   | 0.5151   | 0.0072 | 1,011,202  |
 | Semi Supervised                | 0.6131   | 0.4724   | 0.0019 | 290,986    |
 | Early Squeeze                  | 0.6492   | 0.5680   | 0.0072 | 1,011,202  |
 | Mid Squeeze                    | 0.6498   | 0.5684   | 0.0072 | 1,011,346  |
 | Late Squeeze                   | 0.6441   | 0.5542   | 0.0072 | 1,011,346  |
-| Early Squeeze Softmax          | ?        | ?        | ?      | ?          |
-| Mid Squeeze Softmax            | ?        | ?        | ?      | ?          |
-| Late Squeeze Softmax           | ?        | ?        | ?      | ?          |
-| Multi Dilation Early Squeeze Softmax | ?        | ?        | ?      | ?          |
-| Multi Dilation Early Squeeze Sigmoid | ?        | ?        | ?      | ?          |
-| Multi Dilation Mid Squeeze Softmax   | ?        | ?        | ?      | ?          |
-| Multi Dilation Mid Squeeze Sigmoid   | ?        | ?        | ?      | ?          |
-| Multi Dilation Late Squeeze Softmax  | ?        | ?        | ?      | ?          |
-| Multi Dilation Late Squeeze Sigmoid  | ?        | ?        | ?      | ?          |
+| Early Squeeze Softmax*         | 0.6341   | 0.4847   | 0.0072 | 1,011,202  |
+| Mid Squeeze Softmax*           | 0.4917   | 0.2711   | 0.0072 | 1,011,202  |
+| Late Squeeze Softmax*          | 0.5644   | 0.2709   | 0.0072 | 1,011,202  |
+| Multi Dilation Early Squeeze Softmax* | 0.6341 | 0.4847 | 0.0072 | 1,011,202  |
+| Multi Dilation Early Squeeze Sigmoid* | 0.6236 | 0.4767 | 0.0072 | 1,011,202  |
+| Multi Dilation Mid Squeeze Softmax* | 0.4917 | 0.2711 | 0.0072 | 1,011,202  |
+| Multi Dilation Mid Squeeze Sigmoid* | 0.6262 | 0.4792 | 0.0072 | 1,011,202  |
+| Multi Dilation Late Squeeze Softmax* | 0.5644 | 0.2709 | 0.0072 | 1,011,202  |
+| Multi Dilation Late Squeeze Sigmoid* | 0.1952 | 0.0874 | 0.0072 | 1,011,202  |
+
+*Models marked with an asterisk were only run for 10 epochs.
+
+*See the model_stats_majmin.txt file in each ModelResults/<model_name>/majmin/ directory for full details.*
 
 ### Loss Graphs
 
@@ -215,13 +218,32 @@ Below are sample test results showing input spectrograms and prediction probabil
 |--------------|----------------|
 | Carsault | ![Carsault Sample 1](ModelTestResults/carsault/majmin/final_model/sample_1_input.png) ![Carsault Sample 1 Probabilities](ModelTestResults/carsault/majmin/final_model/sample_1_probabilities.png) |
 | Small Dilation | ![Small Dilation Sample 1](ModelTestResults/small_dilation/majmin/final_model/sample_1_input.png) ![Small Dilation Sample 1 Probabilities](ModelTestResults/small_dilation/majmin/final_model/sample_1_probabilities.png) |
+| Small Dilation First* | ![Small Dilation First Sample 1](ModelTestResults/small_dilation_first/majmin/final_model/sample_1_input.png) ![Small Dilation First Sample 1 Probabilities](ModelTestResults/small_dilation_first/majmin/final_model/sample_1_probabilities.png) |
+| Small Dilation Second* | ![Small Dilation Second Sample 1](ModelTestResults/small_dilation_second/majmin/final_model/sample_1_input.png) ![Small Dilation Second Sample 1 Probabilities](ModelTestResults/small_dilation_second/majmin/final_model/sample_1_probabilities.png) |
+| Small Dilation Last* | ![Small Dilation Last Sample 1](ModelTestResults/small_dilation_last/majmin/final_model/sample_1_input.png) ![Small Dilation Last Sample 1 Probabilities](ModelTestResults/small_dilation_last/majmin/final_model/sample_1_probabilities.png) |
+| Small Dilation First Two* | ![Small Dilation First Two Sample 1](ModelTestResults/small_dilation_first_two/majmin/final_model/sample_1_input.png) ![Small Dilation First Two Sample 1 Probabilities](ModelTestResults/small_dilation_first_two/majmin/final_model/sample_1_probabilities.png) |
+| Small Dilation Last Two* | ![Small Dilation Last Two Sample 1](ModelTestResults/small_dilation_last_two/majmin/final_model/sample_1_input.png) ![Small Dilation Last Two Sample 1 Probabilities](ModelTestResults/small_dilation_last_two/majmin/final_model/sample_1_probabilities.png) |
+| Small Dilation First Last* | ![Small Dilation First Last Sample 1](ModelTestResults/small_dilation_first_last/majmin/final_model/sample_1_input.png) ![Small Dilation First Last Sample 1 Probabilities](ModelTestResults/small_dilation_first_last/majmin/final_model/sample_1_probabilities.png) |
 | Multi Dilation | ![Multi Dilation Sample 1](ModelTestResults/multi_dilation/majmin/final_model/sample_1_input.png) ![Multi Dilation Sample 1 Probabilities](ModelTestResults/multi_dilation/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation 248 | ![Multi Dilation 248 Sample 1](ModelTestResults/multi_dilation_248/majmin/final_model/sample_1_input.png) ![Multi Dilation 248 Sample 1 Probabilities](ModelTestResults/multi_dilation_248/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation 2832 | ![Multi Dilation 2832 Sample 1](ModelTestResults/multi_dilation_2832/majmin/final_model/sample_1_input.png) ![Multi Dilation 2832 Sample 1 Probabilities](ModelTestResults/multi_dilation_2832/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation 4816 | ![Multi Dilation 4816 Sample 1](ModelTestResults/multi_dilation_4816/majmin/final_model/sample_1_input.png) ![Multi Dilation 4816 Sample 1 Probabilities](ModelTestResults/multi_dilation_4816/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation 81632 | ![Multi Dilation 81632 Sample 1](ModelTestResults/multi_dilation_81632/majmin/final_model/sample_1_input.png) ![Multi Dilation 81632 Sample 1 Probabilities](ModelTestResults/multi_dilation_81632/majmin/final_model/sample_1_probabilities.png) |
 | Semi Supervised | ![Semi Supervised Sample 1](ModelTestResults/semi_supervised/majmin/final_model/sample_1_input.png) ![Semi Supervised Sample 1 Probabilities](ModelTestResults/semi_supervised/majmin/final_model/sample_1_probabilities.png) |
 | Early Squeeze | ![Early Squeeze Sample 1](ModelTestResults/early_squeeze/majmin/final_model/sample_1_input.png) ![Early Squeeze Sample 1 Probabilities](ModelTestResults/early_squeeze/majmin/final_model/sample_1_probabilities.png) |
 | Mid Squeeze | ![Mid Squeeze Sample 1](ModelTestResults/mid_squeeze/majmin/final_model/sample_1_input.png) ![Mid Squeeze Sample 1 Probabilities](ModelTestResults/mid_squeeze/majmin/final_model/sample_1_probabilities.png) |
 | Late Squeeze | ![Late Squeeze Sample 1](ModelTestResults/late_squeeze/majmin/final_model/sample_1_input.png) ![Late Squeeze Sample 1 Probabilities](ModelTestResults/late_squeeze/majmin/final_model/sample_1_probabilities.png) |
+| Early Squeeze Softmax* | ![Early Squeeze Softmax Sample 1](ModelTestResults/early_squeeze_softmax/majmin/final_model/sample_1_input.png) ![Early Squeeze Softmax Sample 1 Probabilities](ModelTestResults/early_squeeze_softmax/majmin/final_model/sample_1_probabilities.png) |
+| Mid Squeeze Softmax* | ![Mid Squeeze Softmax Sample 1](ModelTestResults/mid_squeeze_softmax/majmin/final_model/sample_1_input.png) ![Mid Squeeze Softmax Sample 1 Probabilities](ModelTestResults/mid_squeeze_softmax/majmin/final_model/sample_1_probabilities.png) |
+| Late Squeeze Softmax* | ![Late Squeeze Softmax Sample 1](ModelTestResults/late_squeeze_softmax/majmin/final_model/sample_1_input.png) ![Late Squeeze Softmax Sample 1 Probabilities](ModelTestResults/late_squeeze_softmax/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation Early Squeeze Softmax* | ![Multi Dilation Early Squeeze Softmax Sample 1](ModelTestResults/multi_dilation_early_squeeze_softmax/majmin/final_model/sample_1_input.png) ![Multi Dilation Early Squeeze Softmax Sample 1 Probabilities](ModelTestResults/multi_dilation_early_squeeze_softmax/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation Early Squeeze Sigmoid* | ![Multi Dilation Early Squeeze Sigmoid Sample 1](ModelTestResults/multi_dilation_early_squeeze_sigmoid/majmin/final_model/sample_1_input.png) ![Multi Dilation Early Squeeze Sigmoid Sample 1 Probabilities](ModelTestResults/multi_dilation_early_squeeze_sigmoid/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation Mid Squeeze Softmax* | ![Multi Dilation Mid Squeeze Softmax Sample 1](ModelTestResults/multi_dilation_mid_squeeze_softmax/majmin/final_model/sample_1_input.png) ![Multi Dilation Mid Squeeze Softmax Sample 1 Probabilities](ModelTestResults/multi_dilation_mid_squeeze_softmax/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation Mid Squeeze Sigmoid* | ![Multi Dilation Mid Squeeze Sigmoid Sample 1](ModelTestResults/multi_dilation_mid_squeeze_sigmoid/majmin/final_model/sample_1_input.png) ![Multi Dilation Mid Squeeze Sigmoid Sample 1 Probabilities](ModelTestResults/multi_dilation_mid_squeeze_sigmoid/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation Late Squeeze Softmax* | ![Multi Dilation Late Squeeze Softmax Sample 1](ModelTestResults/multi_dilation_late_squeeze_softmax/majmin/final_model/sample_1_input.png) ![Multi Dilation Late Squeeze Softmax Sample 1 Probabilities](ModelTestResults/multi_dilation_late_squeeze_softmax/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation Late Squeeze Sigmoid* | ![Multi Dilation Late Squeeze Sigmoid Sample 1](ModelTestResults/multi_dilation_late_squeeze_sigmoid/majmin/final_model/sample_1_input.png) ![Multi Dilation Late Squeeze Sigmoid Sample 1 Probabilities](ModelTestResults/multi_dilation_late_squeeze_sigmoid/majmin/final_model/sample_1_probabilities.png) |
 
-*Note: Each sample shows the input spectrogram (left) and the model's predicted probability distribution across all 28 chord classes (right). The true chord label and predicted chord label are shown in the titles.
+*Note: Each sample shows the input spectrogram (left) and the model's predicted probability distribution across all 28 chord classes (right). The true chord label and predicted chord label are shown in the titles. Models marked with an asterisk were only run for 10 epochs.
 
 #### Pretraining Results (M-28 Dataset)
 The semi-supervised model uses a pretraining phase to learn chord sequence patterns. Below are sample results showing the pretraining process:
