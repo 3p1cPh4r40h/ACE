@@ -154,10 +154,10 @@ We stratify the test/validation and training datasets to keep the class represen
 | Small Dilation Last Two*       | 0.6332   | 0.4921   | 0.0065 | 1,009,618  |
 | Small Dilation First Last*     | 0.6335   | 0.4935   | 0.0065 | 1,009,618  |
 | Multi Dilation                 | 0.6475   | 0.5631   | 0.0072 | 1,011,202  |
-| Multi Dilation 248             | 0.6575   | 0.5202   | 0.0072 | 1,011,202  |
-| Multi Dilation 2832            | 0.6567   | 0.5164   | 0.0072 | 1,011,202  |
-| Multi Dilation 4816            | 0.6561   | 0.5135   | 0.0072 | 1,011,202  |
-| Multi Dilation 81632           | 0.6553   | 0.5151   | 0.0072 | 1,011,202  |
+| Multi Dilation 248*             | 0.6575   | 0.5202   | 0.0072 | 1,011,202  |
+| Multi Dilation 2832*            | 0.6567   | 0.5164   | 0.0072 | 1,011,202  |
+| Multi Dilation 4816*            | 0.6561   | 0.5135   | 0.0072 | 1,011,202  |
+| Multi Dilation 81632*           | 0.6553   | 0.5151   | 0.0072 | 1,011,202  |
 | Semi Supervised                | 0.6131   | 0.4724   | 0.0019 | 290,986    |
 | Early Squeeze                  | 0.6492   | 0.5680   | 0.0072 | 1,011,202  |
 | Mid Squeeze                    | 0.6498   | 0.5684   | 0.0072 | 1,011,346  |
@@ -225,10 +225,10 @@ Below are sample test results showing input spectrograms and prediction probabil
 | Small Dilation Last Two* | ![Small Dilation Last Two Sample 1](ModelTestResults/small_dilation_last_two/majmin/final_model/sample_1_input.png) ![Small Dilation Last Two Sample 1 Probabilities](ModelTestResults/small_dilation_last_two/majmin/final_model/sample_1_probabilities.png) |
 | Small Dilation First Last* | ![Small Dilation First Last Sample 1](ModelTestResults/small_dilation_first_last/majmin/final_model/sample_1_input.png) ![Small Dilation First Last Sample 1 Probabilities](ModelTestResults/small_dilation_first_last/majmin/final_model/sample_1_probabilities.png) |
 | Multi Dilation | ![Multi Dilation Sample 1](ModelTestResults/multi_dilation/majmin/final_model/sample_1_input.png) ![Multi Dilation Sample 1 Probabilities](ModelTestResults/multi_dilation/majmin/final_model/sample_1_probabilities.png) |
-| Multi Dilation 248 | ![Multi Dilation 248 Sample 1](ModelTestResults/multi_dilation_248/majmin/final_model/sample_1_input.png) ![Multi Dilation 248 Sample 1 Probabilities](ModelTestResults/multi_dilation_248/majmin/final_model/sample_1_probabilities.png) |
-| Multi Dilation 2832 | ![Multi Dilation 2832 Sample 1](ModelTestResults/multi_dilation_2832/majmin/final_model/sample_1_input.png) ![Multi Dilation 2832 Sample 1 Probabilities](ModelTestResults/multi_dilation_2832/majmin/final_model/sample_1_probabilities.png) |
-| Multi Dilation 4816 | ![Multi Dilation 4816 Sample 1](ModelTestResults/multi_dilation_4816/majmin/final_model/sample_1_input.png) ![Multi Dilation 4816 Sample 1 Probabilities](ModelTestResults/multi_dilation_4816/majmin/final_model/sample_1_probabilities.png) |
-| Multi Dilation 81632 | ![Multi Dilation 81632 Sample 1](ModelTestResults/multi_dilation_81632/majmin/final_model/sample_1_input.png) ![Multi Dilation 81632 Sample 1 Probabilities](ModelTestResults/multi_dilation_81632/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation 248* | ![Multi Dilation 248 Sample 1](ModelTestResults/multi_dilation_248/majmin/final_model/sample_1_input.png) ![Multi Dilation 248 Sample 1 Probabilities](ModelTestResults/multi_dilation_248/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation 2832* | ![Multi Dilation 2832 Sample 1](ModelTestResults/multi_dilation_2832/majmin/final_model/sample_1_input.png) ![Multi Dilation 2832 Sample 1 Probabilities](ModelTestResults/multi_dilation_2832/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation 4816* | ![Multi Dilation 4816 Sample 1](ModelTestResults/multi_dilation_4816/majmin/final_model/sample_1_input.png) ![Multi Dilation 4816 Sample 1 Probabilities](ModelTestResults/multi_dilation_4816/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation 81632* | ![Multi Dilation 81632 Sample 1](ModelTestResults/multi_dilation_81632/majmin/final_model/sample_1_input.png) ![Multi Dilation 81632 Sample 1 Probabilities](ModelTestResults/multi_dilation_81632/majmin/final_model/sample_1_probabilities.png) |
 | Semi Supervised | ![Semi Supervised Sample 1](ModelTestResults/semi_supervised/majmin/final_model/sample_1_input.png) ![Semi Supervised Sample 1 Probabilities](ModelTestResults/semi_supervised/majmin/final_model/sample_1_probabilities.png) |
 | Early Squeeze | ![Early Squeeze Sample 1](ModelTestResults/early_squeeze/majmin/final_model/sample_1_input.png) ![Early Squeeze Sample 1 Probabilities](ModelTestResults/early_squeeze/majmin/final_model/sample_1_probabilities.png) |
 | Mid Squeeze | ![Mid Squeeze Sample 1](ModelTestResults/mid_squeeze/majmin/final_model/sample_1_input.png) ![Mid Squeeze Sample 1 Probabilities](ModelTestResults/mid_squeeze/majmin/final_model/sample_1_probabilities.png) |
