@@ -11,6 +11,11 @@ train_job.sh
 data/billboard-2.0-chordino
 data/billboard-2.0.1-mirex
 
+# Job files
+jobs/
+run_job.sh
+run_all_jobs.sh
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -1,0 +1,549 @@
+created virtual environment CPython3.12.4.final.0-64 in 1614ms
+  creator CPython3Posix(dest=/localscratch/rmfrost.62515780.0/env, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, via=copy, app_data_dir=/home/rmfrost/.local/share/virtualenv)
+    added seed packages: pip==25.1.1
+  activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator
+Looking in links: /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic, /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/torch-2.6.0+computecanada-cp312-cp312-linux_x86_64.whl (from -r requirements.txt (line 1))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/torchvision-0.21.0+computecanada-cp312-cp312-linux_x86_64.whl (from -r requirements.txt (line 2))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/pandas-2.2.3+computecanada-cp312-cp312-linux_x86_64.whl (from -r requirements.txt (line 3))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/numpy-2.2.2+computecanada-cp312-cp312-linux_x86_64.whl (from -r requirements.txt (line 4))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/matplotlib-3.10.0+computecanada-cp312-cp312-linux_x86_64.whl (from -r requirements.txt (line 5))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/thop-0.1.1.post2209072238+computecanada-py3-none-any.whl (from -r requirements.txt (line 6))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/scikit_learn-1.6.1+computecanada-cp312-cp312-linux_x86_64.whl (from -r requirements.txt (line 7))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/torchinfo-1.8.0+computecanada-py3-none-any.whl (from -r requirements.txt (line 8))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/filelock-3.18.0+computecanada-py3-none-any.whl (from torch->-r requirements.txt (line 1))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/typing_extensions-4.13.2+computecanada-py3-none-any.whl (from torch->-r requirements.txt (line 1))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/setuptools-80.8.0+computecanada-py3-none-any.whl (from torch->-r requirements.txt (line 1))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/sympy-1.13.1+computecanada-py3-none-any.whl (from torch->-r requirements.txt (line 1))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/networkx-3.5+computecanada-py3-none-any.whl (from torch->-r requirements.txt (line 1))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/jinja2-3.1.6+computecanada-py3-none-any.whl (from torch->-r requirements.txt (line 1))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/fsspec-2025.5.1+computecanada-py3-none-any.whl (from torch->-r requirements.txt (line 1))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/mpmath-1.3.0+computecanada-py3-none-any.whl (from sympy==1.13.1->torch->-r requirements.txt (line 1))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/Pillow_SIMD-9.5.0.post2+computecanada-cp312-cp312-linux_x86_64.whl (from torchvision->-r requirements.txt (line 2))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/python_dateutil-2.9.0.post0+computecanada-py2.py3-none-any.whl (from pandas->-r requirements.txt (line 3))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pytz-2025.2+computecanada-py2.py3-none-any.whl (from pandas->-r requirements.txt (line 3))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/tzdata-2025.2+computecanada-py2.py3-none-any.whl (from pandas->-r requirements.txt (line 3))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/contourpy-1.3.1+computecanada-cp312-cp312-linux_x86_64.whl (from matplotlib->-r requirements.txt (line 5))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/cycler-0.12.1+computecanada-py3-none-any.whl (from matplotlib->-r requirements.txt (line 5))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/fonttools-4.58.1+computecanada-cp312-cp312-linux_x86_64.whl (from matplotlib->-r requirements.txt (line 5))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/kiwisolver-1.4.8+computecanada-cp312-cp312-linux_x86_64.whl (from matplotlib->-r requirements.txt (line 5))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/packaging-24.2+computecanada-py3-none-any.whl (from matplotlib->-r requirements.txt (line 5))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/x86-64-v3/pillow-11.1.0+computecanada-cp312-cp312-linux_x86_64.whl (from matplotlib->-r requirements.txt (line 5))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/pyparsing-3.2.1+computecanada-py3-none-any.whl (from matplotlib->-r requirements.txt (line 5))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/gentoo2023/generic/scipy-1.15.1+computecanada-cp312-cp312-linux_x86_64.whl (from scikit-learn->-r requirements.txt (line 7))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/joblib-1.4.2+computecanada-py3-none-any.whl (from scikit-learn->-r requirements.txt (line 7))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/threadpoolctl-3.6.0+computecanada-py3-none-any.whl (from scikit-learn->-r requirements.txt (line 7))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/six-1.17.0+computecanada-py2.py3-none-any.whl (from python-dateutil>=2.8.2->pandas->-r requirements.txt (line 3))
+Processing /cvmfs/soft.computecanada.ca/custom/python/wheelhouse/generic/MarkupSafe-2.1.5+computecanada-cp312-cp312-linux_x86_64.whl (from jinja2->torch->-r requirements.txt (line 1))
+Installing collected packages: pytz, mpmath, tzdata, typing-extensions, threadpoolctl, sympy, six, setuptools, pyparsing, pillow-simd, pillow, packaging, numpy, networkx, MarkupSafe, kiwisolver, joblib, fsspec, fonttools, filelock, cycler, scipy, python-dateutil, jinja2, contourpy, torch, scikit-learn, pandas, matplotlib, torchvision, thop, torchinfo
+
+Successfully installed MarkupSafe-2.1.5+computecanada contourpy-1.3.1+computecanada cycler-0.12.1+computecanada filelock-3.18.0+computecanada fonttools-4.58.1+computecanada fsspec-2025.5.1+computecanada jinja2-3.1.6+computecanada joblib-1.4.2+computecanada kiwisolver-1.4.8+computecanada matplotlib-3.10.0+computecanada mpmath-1.3.0+computecanada networkx-3.5+computecanada numpy-2.2.2+computecanada packaging-24.2+computecanada pandas-2.2.3+computecanada pillow-11.1.0+computecanada pillow-simd-9.5.0.post2+computecanada pyparsing-3.2.1+computecanada python-dateutil-2.9.0.post0+computecanada pytz-2025.2+computecanada scikit-learn-1.6.1+computecanada scipy-1.15.1+computecanada setuptools-80.8.0+computecanada six-1.17.0+computecanada sympy-1.13.1+computecanada thop-0.1.1.post2209072238+computecanada threadpoolctl-3.6.0+computecanada torch-2.6.0+computecanada torchinfo-1.8.0+computecanada torchvision-0.21.0+computecanada typing-extensions-4.13.2+computecanada tzdata-2025.2+computecanada
+cdr2481.int.cedar.computecanada.ca
+ Static hostname: cdr2481.int.cedar.computecanada.ca
+       Icon name: computer-server
+         Chassis: server 🖳
+      Machine ID: 135352b42ec4476fb2414f72a0620478
+         Boot ID: 2a85980fed8b4dfcb706a5851a5dd357
+Operating System: AlmaLinux 9.3 (Shamrock Pampas Cat)
+     CPE OS Name: cpe:/o:almalinux:almalinux:9::baseos
+          Kernel: Linux 5.14.0-362.24.2.el9_3.x86_64
+    Architecture: x86-64
+ Hardware Vendor: Dell Inc.
+  Hardware Model: PowerEdge C4140
+Firmware Version: 2.18.1
+Mon Jun  2 14:08:28 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.54.15              Driver Version: 550.54.15      CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-SXM2-32GB           On  |   00000000:18:00.0 Off |                    0 |
+| N/A   38C    P0             42W /  300W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  Tesla V100-SXM2-32GB           On  |   00000000:3B:00.0 Off |                    0 |
+| N/A   34C    P0             43W /  300W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   2  Tesla V100-SXM2-32GB           On  |   00000000:86:00.0 Off |                    0 |
+| N/A   36C    P0             41W /  300W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   3  Tesla V100-SXM2-32GB           On  |   00000000:AF:00.0 Off |                    0 |
+| N/A   38C    P0             42W /  300W |       0MiB /  32768MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Job ID: 62515780
+Allocated GPUs: 0,1,2,3
+Running on: cdr2481.int.cedar.computecanada.ca
+Starting at: Mon Jun  2 14:08:28 PDT 2025
+starting training...
+
+Training model: multi_dilation_early_squeeze_softmax
+Starting training at 2025-06-02 14:08:32
+Using device: cuda
+Training for 1000 epochs
+Model: multi_dilation_early_squeeze_softmax
+Dataset: majmin
+Number of classes: 28
+Loss hit epochs: 50
+Early stop epochs: 200
+Setting up data
+Label distribution: Counter({np.str_('N'): 54716, np.str_('C:maj'): 44978, np.str_('G:maj'): 40613, np.str_('F:maj'): 40217, np.str_('D:maj'): 37902, np.str_('A:maj'): 34889, np.str_('E:maj'): 30587, np.str_('Bb:maj'): 21331, np.str_('Eb:maj'): 17877, np.str_('Ab:maj'): 17768, np.str_('A:min'): 14686, np.str_('B:maj'): 13947, np.str_('D:min'): 13846, np.str_('E:min'): 13432, np.str_('B:min'): 11867, np.str_('Db:maj'): 11757, np.str_('G:min'): 8302, np.str_('C:min'): 6837, np.str_('F:min'): 5921, np.str_('Gb:maj'): 5832, np.str_('Eb:min'): 5336, np.str_('Bb:min'): 3595, np.str_('Ab:min'): 1558, np.str_('Cb:maj'): 709, np.str_('Db:min'): 636, np.str_('Fb:maj'): 203, np.str_('Gb:min'): 151, np.str_('Cb:min'): 7})
+Setting up network
+[INFO] Register count_normalization() for <class 'torch.nn.modules.batchnorm.BatchNorm2d'>.
+[INFO] Register count_convNd() for <class 'torch.nn.modules.conv.Conv2d'>.
+[INFO] Register count_linear() for <class 'torch.nn.modules.linear.Linear'>.
+MACs: 3,620,288.0
+FLOPs: 7,240,576.0
+GFLOPs: 0.0072
+Parameters: 1011202.00
+Epoch 1, Training Loss: 1.8275538454923568, Validation Loss: 1.4765018863930344
+Epoch 2, Training Loss: 1.3772227212081047, Validation Loss: 1.3611820024700219
+Epoch 3, Training Loss: 1.3181170893689496, Validation Loss: 1.317385835401859
+Epoch 4, Training Loss: 1.2903093244039914, Validation Loss: 1.2920052996917024
+Epoch 5, Training Loss: 1.271004699979984, Validation Loss: 1.2775079827122702
+Epoch 6, Training Loss: 1.2568798114717725, Validation Loss: 1.262883329540906
+Epoch 7, Training Loss: 1.2451140450014488, Validation Loss: 1.2528423247729172
+Epoch 8, Training Loss: 1.235197256783589, Validation Loss: 1.245213824145309
+Epoch 9, Training Loss: 1.2267223013532085, Validation Loss: 1.2363625150537092
+Epoch 10, Training Loss: 1.2191715467939137, Validation Loss: 1.2295891389375277
+Epoch 11, Training Loss: 1.2121927063279165, Validation Loss: 1.2225392872576595
+Epoch 12, Training Loss: 1.2060590395522317, Validation Loss: 1.2160524793156011
+Epoch 13, Training Loss: 1.200490515737923, Validation Loss: 1.2124991563037246
+Epoch 14, Training Loss: 1.1944201196247268, Validation Loss: 1.2062787011805352
+Epoch 15, Training Loss: 1.1896063946360445, Validation Loss: 1.2050750579342537
+Epoch 16, Training Loss: 1.1843414888297836, Validation Loss: 1.19778026129874
+Epoch 17, Training Loss: 1.178942698151731, Validation Loss: 1.1952271274703459
+Epoch 18, Training Loss: 1.1750516024804714, Validation Loss: 1.1913816057207858
+Epoch 19, Training Loss: 1.1713311630426564, Validation Loss: 1.1902122663588246
+Epoch 20, Training Loss: 1.1670631191579965, Validation Loss: 1.1853333768904375
+Epoch 21, Training Loss: 1.163588734224314, Validation Loss: 1.1823162929593354
+Epoch 22, Training Loss: 1.1596489584932974, Validation Loss: 1.1772263635333866
+Epoch 23, Training Loss: 1.1555431389155604, Validation Loss: 1.1759096923644827
+Epoch 24, Training Loss: 1.1519921269810853, Validation Loss: 1.1741244919120768
+Epoch 25, Training Loss: 1.1487696331025499, Validation Loss: 1.1716189227562428
+Epoch 26, Training Loss: 1.1450936656753112, Validation Loss: 1.168457578732775
+Epoch 27, Training Loss: 1.141963242571334, Validation Loss: 1.1666956030890803
+Epoch 28, Training Loss: 1.138277004964947, Validation Loss: 1.1642080820204488
+Epoch 29, Training Loss: 1.1354723055271938, Validation Loss: 1.159984999380404
+Epoch 30, Training Loss: 1.1323724571985565, Validation Loss: 1.1587460784028831
+Epoch 31, Training Loss: 1.1291984470497156, Validation Loss: 1.1593426698429672
+Epoch 32, Training Loss: 1.125900382257327, Validation Loss: 1.1576141299145468
+Epoch 33, Training Loss: 1.1236690557324012, Validation Loss: 1.1523034678860296
+Epoch 34, Training Loss: 1.1205539150767119, Validation Loss: 1.150908269091901
+Epoch 35, Training Loss: 1.1178157032919682, Validation Loss: 1.1493503782576506
+Epoch 36, Training Loss: 1.1147542078127546, Validation Loss: 1.1460407735743563
+Epoch 37, Training Loss: 1.1111758989986713, Validation Loss: 1.1464738440712847
+Epoch 38, Training Loss: 1.1086617025547594, Validation Loss: 1.1443320469603897
+Epoch 39, Training Loss: 1.105270385991232, Validation Loss: 1.1392200008076214
+Epoch 40, Training Loss: 1.1028888630667768, Validation Loss: 1.1391242046874213
+Epoch 41, Training Loss: 1.101351704272055, Validation Loss: 1.1368975766355944
+Epoch 42, Training Loss: 1.0974674089816066, Validation Loss: 1.1399734633712715
+Epoch 43, Training Loss: 1.0951237861990597, Validation Loss: 1.1388786516481788
+Epoch 44, Training Loss: 1.0931069716160897, Validation Loss: 1.134029330981475
+Epoch 45, Training Loss: 1.0899310538695715, Validation Loss: 1.135179921528091
+Epoch 46, Training Loss: 1.0876991732760282, Validation Loss: 1.1330045204308703
+Epoch 47, Training Loss: 1.0846475313798962, Validation Loss: 1.1292275685121753
+Epoch 48, Training Loss: 1.0822476661360252, Validation Loss: 1.127564324226884
+Epoch 49, Training Loss: 1.0793564183189566, Validation Loss: 1.1260650455121541
+Epoch 50, Training Loss: 1.0770657347548085, Validation Loss: 1.1241407406031256
+Epoch 51, Training Loss: 1.0743254833511433, Validation Loss: 1.1248088746349791
+Epoch 52, Training Loss: 1.0718197141572514, Validation Loss: 1.122186833354424
+Epoch 53, Training Loss: 1.0697504617931008, Validation Loss: 1.1206127524707974
+Epoch 54, Training Loss: 1.066864489817243, Validation Loss: 1.1195543864975401
+Epoch 55, Training Loss: 1.0634081532198074, Validation Loss: 1.1185443850446877
+Epoch 56, Training Loss: 1.0624221362996789, Validation Loss: 1.1163407604840472
+Epoch 57, Training Loss: 1.0596098778639664, Validation Loss: 1.1149925580429831
+Epoch 58, Training Loss: 1.057536124657345, Validation Loss: 1.1145996097734712
+Epoch 59, Training Loss: 1.0559021281000631, Validation Loss: 1.112485143633606
+Epoch 60, Training Loss: 1.051811857752592, Validation Loss: 1.1125949138884426
+Epoch 61, Training Loss: 1.050057870348848, Validation Loss: 1.1100469342845396
+Epoch 62, Training Loss: 1.0478838151156515, Validation Loss: 1.110719318011345
+Epoch 63, Training Loss: 1.045906084299973, Validation Loss: 1.1079146698490823
+Epoch 64, Training Loss: 1.0433682484159674, Validation Loss: 1.1065193012896355
+Epoch 65, Training Loss: 1.040719079412347, Validation Loss: 1.1080985952552647
+Epoch 66, Training Loss: 1.0379922611633716, Validation Loss: 1.105061557465609
+Epoch 67, Training Loss: 1.0346995060268993, Validation Loss: 1.104709644088506
+Epoch 68, Training Loss: 1.033093382416772, Validation Loss: 1.101969493547854
+Epoch 69, Training Loss: 1.0313038247928867, Validation Loss: 1.1005082431775945
+Epoch 70, Training Loss: 1.0289024005305911, Validation Loss: 1.1012105159772805
+Epoch 71, Training Loss: 1.0265219932977203, Validation Loss: 1.101326204940137
+Epoch 72, Training Loss: 1.0243852942102798, Validation Loss: 1.0976652622554959
+Epoch 73, Training Loss: 1.0223601391277828, Validation Loss: 1.0963202560512468
+Epoch 74, Training Loss: 1.0200745921613115, Validation Loss: 1.0958218845152257
+Epoch 75, Training Loss: 1.017644911561725, Validation Loss: 1.0948719696082112
+Epoch 76, Training Loss: 1.0149549006474936, Validation Loss: 1.0959305328246942
+Epoch 77, Training Loss: 1.0132182156917888, Validation Loss: 1.0944303140500793
+Epoch 78, Training Loss: 1.010736263036285, Validation Loss: 1.0934851052535277
+Epoch 79, Training Loss: 1.0082618245507349, Validation Loss: 1.093629884105539
+Epoch 80, Training Loss: 1.0062059558090948, Validation Loss: 1.0924895689680052
+Epoch 81, Training Loss: 1.0035648230556657, Validation Loss: 1.0930755188206112
+Epoch 82, Training Loss: 1.0015439789884049, Validation Loss: 1.0907438040443782
+Epoch 83, Training Loss: 0.9998464924711371, Validation Loss: 1.088367783591608
+Epoch 84, Training Loss: 0.9973661222165674, Validation Loss: 1.0869477430259948
+Epoch 85, Training Loss: 0.9959383068974635, Validation Loss: 1.0869189754003934
+Epoch 86, Training Loss: 0.993600620975512, Validation Loss: 1.0863663710259461
+Epoch 87, Training Loss: 0.9920343367059472, Validation Loss: 1.0851523132377348
+Epoch 88, Training Loss: 0.9899861963125103, Validation Loss: 1.0839430976212854
+Epoch 89, Training Loss: 0.987799680581664, Validation Loss: 1.0835119323146045
+Epoch 90, Training Loss: 0.9854642377479716, Validation Loss: 1.0803893680027932
+Epoch 91, Training Loss: 0.9829969350784713, Validation Loss: 1.081021922378487
+Epoch 92, Training Loss: 0.9806193766100272, Validation Loss: 1.082400436271864
+Epoch 93, Training Loss: 0.9791533384427166, Validation Loss: 1.080331075573366
+Epoch 94, Training Loss: 0.9759720092087625, Validation Loss: 1.0799054300054534
+Epoch 95, Training Loss: 0.9747948482176055, Validation Loss: 1.0789325019775327
+Epoch 96, Training Loss: 0.9728309560563682, Validation Loss: 1.0766852772003428
+Epoch 97, Training Loss: 0.9701737338675319, Validation Loss: 1.076744798664263
+Epoch 98, Training Loss: 0.9689223080071012, Validation Loss: 1.0745899239788481
+Epoch 99, Training Loss: 0.9666906524390785, Validation Loss: 1.0768240398019138
+Epoch 100, Training Loss: 0.9634418677376063, Validation Loss: 1.0733306367251203
+Epoch 101, Training Loss: 0.9622140098415045, Validation Loss: 1.07367687562382
+Epoch 102, Training Loss: 0.9592050720168798, Validation Loss: 1.073255582108139
+Epoch 103, Training Loss: 0.9582506878683715, Validation Loss: 1.0715748436935766
+Epoch 104, Training Loss: 0.9570722556435187, Validation Loss: 1.0715443070220416
+Epoch 105, Training Loss: 0.9545879388087971, Validation Loss: 1.072638818065436
+Epoch 106, Training Loss: 0.9530554564882454, Validation Loss: 1.0697149750582022
+Epoch 107, Training Loss: 0.95022161369979, Validation Loss: 1.0695341214496112
+Epoch 108, Training Loss: 0.9473561923483952, Validation Loss: 1.0685804082822667
+Epoch 109, Training Loss: 0.9457249175151853, Validation Loss: 1.068490232016715
+Epoch 110, Training Loss: 0.9445824934966939, Validation Loss: 1.0694176675051368
+Epoch 111, Training Loss: 0.942473380567857, Validation Loss: 1.0683631296775467
+Epoch 112, Training Loss: 0.9407881757066332, Validation Loss: 1.067591403935281
+Epoch 113, Training Loss: 0.9395527455855435, Validation Loss: 1.0655858165540404
+Epoch 114, Training Loss: 0.9370708257485676, Validation Loss: 1.0680556697433705
+Epoch 115, Training Loss: 0.9342446975001828, Validation Loss: 1.0644336452391154
+Epoch 116, Training Loss: 0.9332520684491957, Validation Loss: 1.0649759333611863
+Epoch 117, Training Loss: 0.9317876623533562, Validation Loss: 1.0632956077793514
+Epoch 118, Training Loss: 0.9296200671125144, Validation Loss: 1.0628242656214988
+Epoch 119, Training Loss: 0.9282791393713035, Validation Loss: 1.0631594480246223
+Epoch 120, Training Loss: 0.9261150507597096, Validation Loss: 1.0610267387127146
+Epoch 121, Training Loss: 0.924064467129269, Validation Loss: 1.06238613329558
+Epoch 122, Training Loss: 0.9216664890614282, Validation Loss: 1.0612946450710297
+Epoch 123, Training Loss: 0.9204028738574397, Validation Loss: 1.0610054261505106
+Epoch 124, Training Loss: 0.9178508405289167, Validation Loss: 1.0597194470568951
+Epoch 125, Training Loss: 0.9158720616787368, Validation Loss: 1.0603507763828075
+Epoch 126, Training Loss: 0.9145351952164951, Validation Loss: 1.0605007572758496
+Epoch 127, Training Loss: 0.9125150331713695, Validation Loss: 1.0590963876679083
+Epoch 128, Training Loss: 0.9114776156849627, Validation Loss: 1.0589436591501689
+Epoch 129, Training Loss: 0.9087085696482061, Validation Loss: 1.0574659807270284
+Epoch 130, Training Loss: 0.9078915635800073, Validation Loss: 1.0584825316345459
+Epoch 131, Training Loss: 0.9057266154052377, Validation Loss: 1.0557332881479875
+Epoch 132, Training Loss: 0.9046286606301615, Validation Loss: 1.0568261866283948
+Epoch 133, Training Loss: 0.9021068754966545, Validation Loss: 1.056623661003405
+Epoch 134, Training Loss: 0.8995709154986626, Validation Loss: 1.0565988362499599
+Epoch 135, Training Loss: 0.8978711514973264, Validation Loss: 1.0550187782988907
+Epoch 136, Training Loss: 0.8974057706894427, Validation Loss: 1.054553702515148
+Epoch 137, Training Loss: 0.8952608036020894, Validation Loss: 1.0539929984671823
+Epoch 138, Training Loss: 0.8942143166906433, Validation Loss: 1.0531153815868506
+Epoch 139, Training Loss: 0.8907012328464009, Validation Loss: 1.0545932897120134
+Epoch 140, Training Loss: 0.8887090711485155, Validation Loss: 1.0533074622864842
+Epoch 141, Training Loss: 0.8894097427859169, Validation Loss: 1.054404395453445
+Epoch 142, Training Loss: 0.8862586072062384, Validation Loss: 1.0520884214503519
+Epoch 143, Training Loss: 0.8853955441807416, Validation Loss: 1.0517414056989143
+Epoch 144, Training Loss: 0.8825087085186384, Validation Loss: 1.0503200639589252
+Epoch 145, Training Loss: 0.881540269904814, Validation Loss: 1.0511894195358733
+Epoch 146, Training Loss: 0.8806053952918411, Validation Loss: 1.0502310321357589
+Epoch 147, Training Loss: 0.8780516380774499, Validation Loss: 1.0509019067360499
+Epoch 148, Training Loss: 0.8764701624268609, Validation Loss: 1.0512791185491928
+Epoch 149, Training Loss: 0.8744420839219372, Validation Loss: 1.0495120345882054
+Epoch 150, Training Loss: 0.8738000961288658, Validation Loss: 1.0493003255311493
+Epoch 151, Training Loss: 0.871923573142196, Validation Loss: 1.0485612504329522
+Epoch 152, Training Loss: 0.8700569977113907, Validation Loss: 1.0485697269937786
+Epoch 153, Training Loss: 0.8674933014363189, Validation Loss: 1.0479755092796177
+Epoch 154, Training Loss: 0.8663072716669562, Validation Loss: 1.0473847929647706
+Epoch 155, Training Loss: 0.8650344129558393, Validation Loss: 1.0476605839882056
+Epoch 156, Training Loss: 0.8635312177123244, Validation Loss: 1.0482836486071265
+Epoch 157, Training Loss: 0.8620785515731202, Validation Loss: 1.0465227746531824
+Epoch 158, Training Loss: 0.8600330921988191, Validation Loss: 1.0468887950716577
+Epoch 159, Training Loss: 0.8580662287986157, Validation Loss: 1.0466544141676433
+Epoch 160, Training Loss: 0.8561839398788764, Validation Loss: 1.0471686881896844
+Epoch 161, Training Loss: 0.855307396767642, Validation Loss: 1.0462100142223922
+Epoch 162, Training Loss: 0.8540575331908857, Validation Loss: 1.045619614028001
+Epoch 163, Training Loss: 0.851310049397257, Validation Loss: 1.0452515439734817
+Epoch 164, Training Loss: 0.8514098164486243, Validation Loss: 1.0435951303970847
+Epoch 165, Training Loss: 0.8495351606314118, Validation Loss: 1.0439780872512328
+Epoch 166, Training Loss: 0.8469484351859009, Validation Loss: 1.0437640121056178
+Epoch 167, Training Loss: 0.846553558288289, Validation Loss: 1.0441888735985025
+Epoch 168, Training Loss: 0.8444129634811132, Validation Loss: 1.0437360751263611
+Epoch 169, Training Loss: 0.8431690645472474, Validation Loss: 1.0425154687136329
+Epoch 170, Training Loss: 0.8408669791181772, Validation Loss: 1.0429290110520333
+Epoch 171, Training Loss: 0.8388202849260169, Validation Loss: 1.0429953299359027
+Epoch 172, Training Loss: 0.8369847693815204, Validation Loss: 1.0415997892867224
+Epoch 173, Training Loss: 0.8369592437339028, Validation Loss: 1.041980992369665
+Epoch 174, Training Loss: 0.8344066747937251, Validation Loss: 1.0413874706518018
+Epoch 175, Training Loss: 0.8326444579642905, Validation Loss: 1.0417570597946146
+Epoch 176, Training Loss: 0.8329101600022701, Validation Loss: 1.0423380270973885
+Epoch 177, Training Loss: 0.830228826268027, Validation Loss: 1.040818955489852
+Epoch 178, Training Loss: 0.8280552717802584, Validation Loss: 1.0414019436225253
+Epoch 179, Training Loss: 0.8277584055063342, Validation Loss: 1.040958250216455
+Epoch 180, Training Loss: 0.8251604680092997, Validation Loss: 1.0414984078460416
+Epoch 181, Training Loss: 0.8236684213386384, Validation Loss: 1.0415699756743184
+Epoch 182, Training Loss: 0.8220258521031979, Validation Loss: 1.0401044775184483
+Epoch 183, Training Loss: 0.8202419637139461, Validation Loss: 1.0411136317219907
+Epoch 184, Training Loss: 0.8209031616910919, Validation Loss: 1.0402856344632119
+Epoch 185, Training Loss: 0.8178875301043635, Validation Loss: 1.0408608021842405
+Epoch 186, Training Loss: 0.8168095585750892, Validation Loss: 1.0395744750094613
+Epoch 187, Training Loss: 0.8163167218865348, Validation Loss: 1.0393755880072921
+Epoch 188, Training Loss: 0.8153793800452737, Validation Loss: 1.039102864713722
+Epoch 189, Training Loss: 0.812285835281388, Validation Loss: 1.0396316517196327
+Epoch 190, Training Loss: 0.8099109878281033, Validation Loss: 1.0386280337748088
+Epoch 191, Training Loss: 0.8101253995158214, Validation Loss: 1.0396480220772097
+Epoch 192, Training Loss: 0.808121164418418, Validation Loss: 1.0385136111201019
+Epoch 193, Training Loss: 0.8068353624646046, Validation Loss: 1.0381766618294304
+Epoch 194, Training Loss: 0.8052928724162758, Validation Loss: 1.0376156722104648
+Epoch 195, Training Loss: 0.8029642064701991, Validation Loss: 1.0377046856873546
+Epoch 196, Training Loss: 0.8019922336938764, Validation Loss: 1.0375542311117179
+Epoch 197, Training Loss: 0.7999400527751767, Validation Loss: 1.0379446493383901
+Epoch 198, Training Loss: 0.7985135454930081, Validation Loss: 1.03769908326582
+Epoch 199, Training Loss: 0.7982242063670216, Validation Loss: 1.0380515517630617
+Epoch 200, Training Loss: 0.7960330909783905, Validation Loss: 1.0375949254773122
+Epoch 201, Training Loss: 0.7950499344585997, Validation Loss: 1.037657508611015
+Epoch 202, Training Loss: 0.7944109142380061, Validation Loss: 1.0366253912614913
+Epoch 203, Training Loss: 0.7914594170830265, Validation Loss: 1.0372194550661655
+Epoch 204, Training Loss: 0.7917052753677829, Validation Loss: 1.0379036787824711
+Epoch 205, Training Loss: 0.788794081578569, Validation Loss: 1.035870274212367
+Epoch 206, Training Loss: 0.7881951032270407, Validation Loss: 1.037243583325224
+Epoch 207, Training Loss: 0.7873540324753041, Validation Loss: 1.0370255896307963
+Epoch 208, Training Loss: 0.7837039419729176, Validation Loss: 1.0360402238236164
+Epoch 209, Training Loss: 0.7831687741846317, Validation Loss: 1.0360054528978875
+Epoch 210, Training Loss: 0.7819441583633644, Validation Loss: 1.0351496542230623
+Epoch 211, Training Loss: 0.7809676442056646, Validation Loss: 1.0354578848668792
+Epoch 212, Training Loss: 0.7803429921357412, Validation Loss: 1.0350031124682149
+Epoch 213, Training Loss: 0.7770423463985892, Validation Loss: 1.0365518463521282
+Epoch 214, Training Loss: 0.7766888036341609, Validation Loss: 1.0369121683839304
+Epoch 215, Training Loss: 0.775404347170805, Validation Loss: 1.0356900202198613
+Epoch 216, Training Loss: 0.7737514546543997, Validation Loss: 1.0345982089846246
+Epoch 217, Training Loss: 0.7720912585904892, Validation Loss: 1.0356182492543065
+Epoch 218, Training Loss: 0.7719053801221768, Validation Loss: 1.0354650991872825
+Epoch 219, Training Loss: 0.7704710158326611, Validation Loss: 1.0349096231639883
+Epoch 220, Training Loss: 0.7679483057202956, Validation Loss: 1.035372898937268
+Epoch 221, Training Loss: 0.7662719900589247, Validation Loss: 1.0357592353249658
+Epoch 222, Training Loss: 0.7643106111992036, Validation Loss: 1.0362606813980677
+Epoch 223, Training Loss: 0.7632611133123618, Validation Loss: 1.0350975772796567
+Epoch 224, Training Loss: 0.7634046270322666, Validation Loss: 1.0343334346096495
+Epoch 225, Training Loss: 0.7615098615653446, Validation Loss: 1.034982627978896
+Epoch 226, Training Loss: 0.7603049744249165, Validation Loss: 1.034688969508519
+Epoch 227, Training Loss: 0.759001249833138, Validation Loss: 1.033309107537389
+Epoch 228, Training Loss: 0.7574715803454292, Validation Loss: 1.0345946282231375
+Epoch 229, Training Loss: 0.7574373582583838, Validation Loss: 1.0349783351992499
+Epoch 230, Training Loss: 0.7551116721433074, Validation Loss: 1.034596277229633
+Epoch 231, Training Loss: 0.751262658637989, Validation Loss: 1.0356842287735686
+Epoch 232, Training Loss: 0.7528928147219017, Validation Loss: 1.034002307065682
+Epoch 233, Training Loss: 0.7510556533808164, Validation Loss: 1.0346041287718377
+Epoch 234, Training Loss: 0.7498799416348131, Validation Loss: 1.0345489722274472
+Epoch 235, Training Loss: 0.7488991854195254, Validation Loss: 1.0341677050570592
+Epoch 236, Training Loss: 0.7466655507918962, Validation Loss: 1.034622923743426
+Epoch 237, Training Loss: 0.7459963622918921, Validation Loss: 1.0351810217069717
+Epoch 238, Training Loss: 0.743615245254591, Validation Loss: 1.03516628366991
+Epoch 239, Training Loss: 0.7437661017880134, Validation Loss: 1.0339545011520386
+Epoch 240, Training Loss: 0.7418447395470149, Validation Loss: 1.0354264628422294
+Epoch 241, Training Loss: 0.740347465640323, Validation Loss: 1.0343677003901648
+Epoch 242, Training Loss: 0.738756210580399, Validation Loss: 1.0342861949401314
+Epoch 243, Training Loss: 0.7375832571264982, Validation Loss: 1.03411485167599
+Epoch 244, Training Loss: 0.7362118892599945, Validation Loss: 1.0342770736031546
+Epoch 245, Training Loss: 0.7346078077592336, Validation Loss: 1.0336719663362317
+Epoch 246, Training Loss: 0.7337618977274182, Validation Loss: 1.0347793413570001
+Epoch 247, Training Loss: 0.732106540639199, Validation Loss: 1.0338218823116803
+Epoch 248, Training Loss: 0.7306909421553962, Validation Loss: 1.0351991575408446
+Epoch 249, Training Loss: 0.7283643687086849, Validation Loss: 1.0346075684911362
+Epoch 250, Training Loss: 0.7294817773855274, Validation Loss: 1.034275652638385
+Epoch 251, Training Loss: 0.7272552102112394, Validation Loss: 1.034211452707939
+Epoch 252, Training Loss: 0.7264850329306797, Validation Loss: 1.0357645245315636
+Epoch 253, Training Loss: 0.7238949739418322, Validation Loss: 1.0355012605283254
+Epoch 254, Training Loss: 0.7240989466259186, Validation Loss: 1.0352385865114526
+Epoch 255, Training Loss: 0.7229843740122343, Validation Loss: 1.0346235642858201
+Epoch 256, Training Loss: 0.722674679747863, Validation Loss: 1.0345899378854917
+Epoch 257, Training Loss: 0.7201961764275419, Validation Loss: 1.0344832405074393
+Epoch 258, Training Loss: 0.7183580001195272, Validation Loss: 1.0340726385541612
+Epoch 259, Training Loss: 0.717711091678012, Validation Loss: 1.0347365964421986
+Epoch 260, Training Loss: 0.715723332104134, Validation Loss: 1.0359828511154419
+Epoch 261, Training Loss: 0.7149717765570572, Validation Loss: 1.0339890336591886
+Epoch 262, Training Loss: 0.7140314034156038, Validation Loss: 1.034738741462277
+Epoch 263, Training Loss: 0.712172111415044, Validation Loss: 1.035790402079027
+Epoch 264, Training Loss: 0.7122903850168238, Validation Loss: 1.0349127554793875
+Epoch 265, Training Loss: 0.7098081571533377, Validation Loss: 1.034754624605843
+Epoch 266, Training Loss: 0.7079799129604297, Validation Loss: 1.0350972888031378
+Epoch 267, Training Loss: 0.7073714097783648, Validation Loss: 1.0357774548377832
+Epoch 268, Training Loss: 0.7066805644398391, Validation Loss: 1.0348830325191731
+Epoch 269, Training Loss: 0.7064268241049299, Validation Loss: 1.0352494314022382
+Epoch 270, Training Loss: 0.7049599667888277, Validation Loss: 1.0353786995151912
+Epoch 271, Training Loss: 0.7034541564261128, Validation Loss: 1.034959047368642
+Epoch 272, Training Loss: 0.7010090884751707, Validation Loss: 1.0361966591193483
+Epoch 273, Training Loss: 0.700122646579282, Validation Loss: 1.0357990864259619
+Epoch 274, Training Loss: 0.6989981988401688, Validation Loss: 1.0361242180581212
+Epoch 275, Training Loss: 0.698019890787431, Validation Loss: 1.0349434757797167
+Epoch 276, Training Loss: 0.6973895584557381, Validation Loss: 1.0347219606794023
+Weight Optimization Hit
+Epoch 277, Training Loss: 0.6927904813457886, Validation Loss: 1.0342320327473218
+Epoch 278, Training Loss: 0.6905985154425976, Validation Loss: 1.0346020881844098
+Epoch 279, Training Loss: 0.6906960318236851, Validation Loss: 1.0350182720545607
+Epoch 280, Training Loss: 0.6894739478024046, Validation Loss: 1.0358534408811075
+Epoch 281, Training Loss: 0.689012442168087, Validation Loss: 1.0345573547324762
+Epoch 282, Training Loss: 0.6883740608572628, Validation Loss: 1.034458851332784
+Epoch 283, Training Loss: 0.6877131771189036, Validation Loss: 1.034383504337587
+Epoch 284, Training Loss: 0.6872303711255613, Validation Loss: 1.0351105382183468
+Epoch 285, Training Loss: 0.6856202813714549, Validation Loss: 1.035101491096624
+Epoch 286, Training Loss: 0.6848281014402818, Validation Loss: 1.0356016495267661
+Epoch 287, Training Loss: 0.6864745580247961, Validation Loss: 1.0348059438729353
+Epoch 288, Training Loss: 0.6853297533071362, Validation Loss: 1.0346971800898443
+Epoch 289, Training Loss: 0.6853275432172703, Validation Loss: 1.0355883576909812
+Epoch 290, Training Loss: 0.6847370208942348, Validation Loss: 1.0353166316545108
+Epoch 291, Training Loss: 0.6824597558049881, Validation Loss: 1.0353987000280769
+Epoch 292, Training Loss: 0.682435081681944, Validation Loss: 1.0355969899046056
+Epoch 293, Training Loss: 0.6809440843740213, Validation Loss: 1.0353846735110854
+Epoch 294, Training Loss: 0.681339884092106, Validation Loss: 1.0352361030399302
+Epoch 295, Training Loss: 0.6811678555959225, Validation Loss: 1.0364160494552017
+Epoch 296, Training Loss: 0.6794477398874811, Validation Loss: 1.035474104054459
+Epoch 297, Training Loss: 0.6803299154992887, Validation Loss: 1.035760943105958
+Epoch 298, Training Loss: 0.6777144919807643, Validation Loss: 1.0356776409660542
+Epoch 299, Training Loss: 0.6783522465711628, Validation Loss: 1.0359455860922928
+Epoch 300, Training Loss: 0.6762456559647867, Validation Loss: 1.034939539797791
+Epoch 301, Training Loss: 0.6765200185936252, Validation Loss: 1.0359841404186982
+Epoch 302, Training Loss: 0.675900588695828, Validation Loss: 1.0354979127894537
+Epoch 303, Training Loss: 0.6749542187985825, Validation Loss: 1.0358909273047965
+Epoch 304, Training Loss: 0.6757377086824693, Validation Loss: 1.0363164033564352
+Epoch 305, Training Loss: 0.6748878379579817, Validation Loss: 1.0362852625029997
+Epoch 306, Training Loss: 0.6740357981114445, Validation Loss: 1.0360642210022653
+Epoch 307, Training Loss: 0.6730480505950825, Validation Loss: 1.0361986118770907
+Epoch 308, Training Loss: 0.6716997175855336, Validation Loss: 1.0368790917077768
+Epoch 309, Training Loss: 0.6710588844318355, Validation Loss: 1.035701957004648
+Epoch 310, Training Loss: 0.6713295339458832, Validation Loss: 1.037070061336985
+Epoch 311, Training Loss: 0.6711714626908192, Validation Loss: 1.0357555053858372
+Epoch 312, Training Loss: 0.6699998560694488, Validation Loss: 1.036689362486093
+Epoch 313, Training Loss: 0.6691694398693387, Validation Loss: 1.0372024773721242
+Epoch 314, Training Loss: 0.6687318837769959, Validation Loss: 1.036248670813101
+Epoch 315, Training Loss: 0.6688234152457397, Validation Loss: 1.0365483220407226
+Epoch 316, Training Loss: 0.6689872146067846, Validation Loss: 1.0378950483951728
+Epoch 317, Training Loss: 0.6677937195908724, Validation Loss: 1.0372568272614546
+Epoch 318, Training Loss: 0.6674617439674467, Validation Loss: 1.0365766682830693
+Epoch 319, Training Loss: 0.6659819786484417, Validation Loss: 1.0367052814090485
+Epoch 320, Training Loss: 0.6647415404366251, Validation Loss: 1.0367809006928734
+Epoch 321, Training Loss: 0.6658830790189869, Validation Loss: 1.037412208434931
+Epoch 322, Training Loss: 0.6644623836324297, Validation Loss: 1.0366907493317692
+Epoch 323, Training Loss: 0.6643256226704978, Validation Loss: 1.0373768508434296
+Epoch 324, Training Loss: 0.6630215883919124, Validation Loss: 1.0374381217617843
+Epoch 325, Training Loss: 0.6635292780930617, Validation Loss: 1.0380286105329943
+Weight Optimization Hit
+Epoch 326, Training Loss: 0.6613441936346592, Validation Loss: 1.037150794417081
+Epoch 327, Training Loss: 0.6595934474202584, Validation Loss: 1.0371104676411345
+Epoch 328, Training Loss: 0.6589177520106873, Validation Loss: 1.0381567347016507
+Epoch 329, Training Loss: 0.657960599635969, Validation Loss: 1.037904554173807
+Epoch 330, Training Loss: 0.6587559250265553, Validation Loss: 1.0370569290556948
+Epoch 331, Training Loss: 0.658094971666429, Validation Loss: 1.0371704514976332
+Epoch 332, Training Loss: 0.6576393559478231, Validation Loss: 1.0382386590444943
+Epoch 333, Training Loss: 0.658364822550183, Validation Loss: 1.0377943435253207
+Epoch 334, Training Loss: 0.6569939671618693, Validation Loss: 1.037089043008916
+Epoch 335, Training Loss: 0.6577394080167582, Validation Loss: 1.0377324307363345
+Epoch 336, Training Loss: 0.6566612446817294, Validation Loss: 1.0377451784929526
+Epoch 337, Training Loss: 0.657810755579031, Validation Loss: 1.037198490751155
+Epoch 338, Training Loss: 0.6569695123778302, Validation Loss: 1.0376920074971605
+Epoch 339, Training Loss: 0.6552190119841637, Validation Loss: 1.0377156181587814
+Epoch 340, Training Loss: 0.6565297129066763, Validation Loss: 1.0374766988342519
+Epoch 341, Training Loss: 0.6545588741201765, Validation Loss: 1.0376140501837876
+Epoch 342, Training Loss: 0.6545732217661849, Validation Loss: 1.0377924948681696
+Epoch 343, Training Loss: 0.6547187355484471, Validation Loss: 1.038128524935677
+Epoch 344, Training Loss: 0.6553678770195918, Validation Loss: 1.0378875890980193
+Epoch 345, Training Loss: 0.6545422524075433, Validation Loss: 1.0371094827532437
+Epoch 346, Training Loss: 0.6540914951731125, Validation Loss: 1.0376937557063728
+Epoch 347, Training Loss: 0.6542809443857898, Validation Loss: 1.03800014649261
+Epoch 348, Training Loss: 0.6527930289202525, Validation Loss: 1.0386744598990363
+Epoch 349, Training Loss: 0.6538705143562156, Validation Loss: 1.0379580871142384
+Epoch 350, Training Loss: 0.6521881840078501, Validation Loss: 1.0380783635593722
+Epoch 351, Training Loss: 0.652991308419928, Validation Loss: 1.0378984544104521
+Epoch 352, Training Loss: 0.6536394154433309, Validation Loss: 1.0379771687360195
+Epoch 353, Training Loss: 0.6528203224377601, Validation Loss: 1.0381002842051736
+Epoch 354, Training Loss: 0.6514812839202784, Validation Loss: 1.0384664967199555
+Epoch 355, Training Loss: 0.6502929231084489, Validation Loss: 1.0383985065816173
+Epoch 356, Training Loss: 0.6504438116994298, Validation Loss: 1.0383903963652161
+Epoch 357, Training Loss: 0.6522842385393663, Validation Loss: 1.0386362756527234
+Epoch 358, Training Loss: 0.6496356359735727, Validation Loss: 1.038326738189522
+Epoch 359, Training Loss: 0.6498449176771285, Validation Loss: 1.0388081994395402
+Epoch 360, Training Loss: 0.6503707111960998, Validation Loss: 1.0387373352449252
+Epoch 361, Training Loss: 0.648450166180716, Validation Loss: 1.038538771419472
+Epoch 362, Training Loss: 0.648830308735426, Validation Loss: 1.039186501320358
+Epoch 363, Training Loss: 0.649479985071092, Validation Loss: 1.0392607489502197
+Epoch 364, Training Loss: 0.6492297010584462, Validation Loss: 1.0386215705725477
+Epoch 365, Training Loss: 0.6485018669977826, Validation Loss: 1.0388679435492225
+Epoch 366, Training Loss: 0.6482210983085543, Validation Loss: 1.0381122301215913
+Epoch 367, Training Loss: 0.6491488751124317, Validation Loss: 1.0387169947863288
+Epoch 368, Training Loss: 0.6476989361762779, Validation Loss: 1.0393311038488797
+Epoch 369, Training Loss: 0.6473552502325097, Validation Loss: 1.0393124583869924
+Epoch 370, Training Loss: 0.6465553248520792, Validation Loss: 1.038619694520504
+Epoch 371, Training Loss: 0.6456159825748942, Validation Loss: 1.0396498133711165
+Epoch 372, Training Loss: 0.6468609451362128, Validation Loss: 1.0395396413245241
+Epoch 373, Training Loss: 0.6454013180378531, Validation Loss: 1.0394348515441492
+Epoch 374, Training Loss: 0.6443877022993598, Validation Loss: 1.0390158217597472
+Weight Optimization Hit
+Epoch 375, Training Loss: 0.6456480259516777, Validation Loss: 1.0391287737238042
+Epoch 376, Training Loss: 0.6440239319838964, Validation Loss: 1.0388484789800512
+Epoch 377, Training Loss: 0.6440391617454415, Validation Loss: 1.038795204796831
+Epoch 378, Training Loss: 0.6463941493959702, Validation Loss: 1.0388661719298296
+Epoch 379, Training Loss: 0.6442719797293345, Validation Loss: 1.0385537622366776
+Epoch 380, Training Loss: 0.644628061100965, Validation Loss: 1.0390355843521426
+Epoch 381, Training Loss: 0.6463646993054875, Validation Loss: 1.0386416169926316
+Epoch 382, Training Loss: 0.6438444824188865, Validation Loss: 1.039447792559281
+Epoch 383, Training Loss: 0.6424410860214171, Validation Loss: 1.0390083497613254
+Epoch 384, Training Loss: 0.6445019696748356, Validation Loss: 1.0390165504638864
+Epoch 385, Training Loss: 0.6431771148629175, Validation Loss: 1.0390603070803672
+Epoch 386, Training Loss: 0.6413567469229605, Validation Loss: 1.0396717321075768
+Epoch 387, Training Loss: 0.6422552869567854, Validation Loss: 1.03875594625566
+Epoch 388, Training Loss: 0.6425823445328984, Validation Loss: 1.039443360148698
+Epoch 389, Training Loss: 0.6420095913534155, Validation Loss: 1.0397310276051417
+Epoch 390, Training Loss: 0.6424974403037113, Validation Loss: 1.0395594275761448
+Epoch 391, Training Loss: 0.6409888530812445, Validation Loss: 1.0390678860018845
+Epoch 392, Training Loss: 0.6425615053212299, Validation Loss: 1.039830465336696
+Epoch 393, Training Loss: 0.6417657161544846, Validation Loss: 1.0391063614642055
+Epoch 394, Training Loss: 0.6414392563819664, Validation Loss: 1.0397003246549112
+Epoch 395, Training Loss: 0.6413026325466905, Validation Loss: 1.03957530864434
+Epoch 396, Training Loss: 0.6407925961409439, Validation Loss: 1.0398966790407813
+Epoch 397, Training Loss: 0.6419196955257803, Validation Loss: 1.0392321810582885
+Epoch 398, Training Loss: 0.6413127453297294, Validation Loss: 1.0397865319816515
+Epoch 399, Training Loss: 0.6409616006422397, Validation Loss: 1.04024599795554
+Epoch 400, Training Loss: 0.6411409001994598, Validation Loss: 1.039637199517412
+Epoch 401, Training Loss: 0.6408843843330359, Validation Loss: 1.039988718823138
+Epoch 402, Training Loss: 0.639811163756066, Validation Loss: 1.039453255432894
+Epoch 403, Training Loss: 0.640895338263795, Validation Loss: 1.039373378899768
+Epoch 404, Training Loss: 0.6394785468707842, Validation Loss: 1.0396968483260747
+Epoch 405, Training Loss: 0.6397962979591878, Validation Loss: 1.0398735589967796
+Epoch 406, Training Loss: 0.6410898052245905, Validation Loss: 1.0395892392792077
+Epoch 407, Training Loss: 0.6395150575797206, Validation Loss: 1.039468975618357
+Epoch 408, Training Loss: 0.6404630398324163, Validation Loss: 1.0401905500291118
+Epoch 409, Training Loss: 0.6394274232557999, Validation Loss: 1.0395250438315622
+Epoch 410, Training Loss: 0.6382216513433607, Validation Loss: 1.0397910508106678
+Epoch 411, Training Loss: 0.6402983716382068, Validation Loss: 1.0400668801869521
+Epoch 412, Training Loss: 0.6394158789789445, Validation Loss: 1.0399603518270848
+Epoch 413, Training Loss: 0.6397201503690129, Validation Loss: 1.0399228888135768
+Epoch 414, Training Loss: 0.6385522135563658, Validation Loss: 1.0399672351673785
+Epoch 415, Training Loss: 0.6381437859412356, Validation Loss: 1.039776351956604
+Epoch 416, Training Loss: 0.6384362097736188, Validation Loss: 1.040045459290401
+Epoch 417, Training Loss: 0.6381429587676776, Validation Loss: 1.0391886619472237
+Epoch 418, Training Loss: 0.6373153246849249, Validation Loss: 1.0398183574583537
+Epoch 419, Training Loss: 0.639083204744254, Validation Loss: 1.0401325440838476
+Epoch 420, Training Loss: 0.6378901728265465, Validation Loss: 1.0401037187629423
+Epoch 421, Training Loss: 0.6384377178901196, Validation Loss: 1.0396913808036314
+Epoch 422, Training Loss: 0.6381002866015351, Validation Loss: 1.040120598250445
+Epoch 423, Training Loss: 0.6374395082781684, Validation Loss: 1.0402435481880368
+Weight Optimization Hit
+Epoch 424, Training Loss: 0.6376617079187347, Validation Loss: 1.039875050109077
+Epoch 425, Training Loss: 0.6366528743322846, Validation Loss: 1.0398226324728272
+Epoch 426, Training Loss: 0.6365535067067505, Validation Loss: 1.0397302625405092
+Ending Training Early
+Loss plot saved to: ModelResults/multi_dilation_early_squeeze_softmax/majmin/loss_plot_majmin_classification.png
+Accuracy: 0.7015, F1 Score: 0.6323
+Model statistics saved to: ModelResults/multi_dilation_early_squeeze_softmax/majmin/model_stats_majmin.txt
+Model saved to ModelResults/multi_dilation_early_squeeze_softmax/majmin/model.pth
+
+Training completed at 2025-06-02 15:40:24
+Total execution time: 5512.19 seconds (91.87 minutes)
