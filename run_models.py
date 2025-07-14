@@ -16,34 +16,14 @@ from model_architecture.utils.custom_dataset import CustomDataset
 from model_architecture.utils.common_utils import get_device, save_loss_graphs, save_model_stats, evaluate_model
 from model_architecture.utils.training_utils import train, train_sequence_ordering
 from model_architecture.architectures.carsault import ChordExtractionCNN
-from model_architecture.architectures.small_dilation import SmallDilationModel
-from model_architecture.architectures.small_dilation_first import SmallDilationFirstModel
-from model_architecture.architectures.small_dilation_second import SmallDilationSecondModel
-from model_architecture.architectures.small_dilation_last import SmallDilationLastModel
-from model_architecture.architectures.small_dilation_first_two import SmallDilationFirstTwoModel
-from model_architecture.architectures.small_dilation_last_two import SmallDilationLastTwoModel
-from model_architecture.architectures.small_dilation_first_last import SmallDilationFirstLastModel
 from model_architecture.architectures.semi_supervised import SemiSupervisedChordExtractionCNN
 from model_architecture.architectures.multi_dilation import MultiDilationChordCNN
-from model_architecture.architectures.late_squeeze import LateSqueezeChordCNN
-from model_architecture.architectures.early_squeeze import EarlySqueezeChordCNN
-from model_architecture.architectures.mid_squeeze import MidSqueezeChordCNN
-from model_architecture.architectures.late_squeeze_softmax import LateSqueezeSoftmaxChordCNN
-from model_architecture.architectures.early_squeeze_softmax import EarlySqueezeSoftmaxChordCNN
-from model_architecture.architectures.mid_squeeze_softmax import MidSqueezeSoftmaxChordCNN
-from model_architecture.architectures.multi_dilation_248 import MultiDilation248ChordCNN
-from model_architecture.architectures.multi_dilation_2832 import MultiDilation2832ChordCNN
-from model_architecture.architectures.multi_dilation_4816 import MultiDilation4816ChordCNN
-from model_architecture.architectures.multi_dilation_81632 import MultiDilation81632ChordCNN
-from model_architecture.architectures.multi_dilation_early_squeeze_softmax import MultiDilationEarlySqueezeSoftmaxChordCNN
-from model_architecture.architectures.multi_dilation_early_squeeze_sigmoid import MultiDilationEarlySqueezeSigmoidChordCNN
-from model_architecture.architectures.multi_dilation_mid_squeeze_softmax import MultiDilationMidSqueezeSoftmaxChordCNN
-from model_architecture.architectures.multi_dilation_mid_squeeze_sigmoid import MultiDilationMidSqueezeSigmoidChordCNN
-from model_architecture.architectures.multi_dilation_late_squeeze_softmax import MultiDilationLateSqueezeSoftmaxChordCNN
-from model_architecture.architectures.multi_dilation_late_squeeze_sigmoid import MultiDilationLateSqueezeSigmoidChordCNN
-from model_architecture.architectures.deep_multi_dilation_early_squeeze_softmax import DeepMultiDilationEarlySqueezeSoftmaxChordCNN
-from model_architecture.architectures.deep_semi_supervised_multi_dilation import DeepSemiSupervisedMultiDilationChordCNN
-from model_architecture.architectures.hybrid_multi_dilation_early_squeeze_softmax import HybridMultiDilationEarlySqueezeSoftmaxChordCNN
+from model_architecture.architectures.lstm_multi_dilation import LSTMMultiDilationChordCNN
+from model_architecture.architectures.lstm_multi_dilation_A import LSTMMultiDilationChordCNNA
+from model_architecture.architectures.lstm_multi_dilation_B import LSTMMultiDilationChordCNNB
+from model_architecture.architectures.lstm_multi_dilation_C import LSTMMultiDilationChordCNNC
+from model_architecture.architectures.lstm_multi_dilation_D import LSTMMultiDilationChordCNND
+from model_architecture.architectures.lstm_multi_dilation_E import LSTMMultiDilationChordCNNE
 
 # Get the absolute path to the project root
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__)))
@@ -52,33 +32,13 @@ project_root = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 MODEL_TYPES = {
     "carsault": False,
     "semi_supervised": True,
-    "small_dilation": False,
-    "small_dilation_first": False,
-    "small_dilation_second": False,
-    "small_dilation_last": False,
-    "small_dilation_first_two": False,
-    "small_dilation_last_two": False,
-    "small_dilation_first_last": False,
     "multi_dilation": False,
-    "multi_dilation_248": False,
-    "multi_dilation_2832": False,
-    "multi_dilation_4816": False,
-    "multi_dilation_81632": False,
-    "multi_dilation_early_squeeze_softmax": False,
-    "multi_dilation_early_squeeze_sigmoid": False,
-    "multi_dilation_mid_squeeze_softmax": False,
-    "multi_dilation_mid_squeeze_sigmoid": False,
-    "multi_dilation_late_squeeze_softmax": False,
-    "multi_dilation_late_squeeze_sigmoid": False,
-    "late_squeeze": False,
-    "early_squeeze": False,
-    "mid_squeeze": False,
-    "late_squeeze_softmax": False,
-    "early_squeeze_softmax": False,
-    "mid_squeeze_softmax": False,
-    "deep_multi_dilation_early_squeeze_softmax": False,
-    "deep_semi_supervised_multi_dilation": True,
-    "hybrid_multi_dilation_early_squeeze_softmax": False
+    "lstm_multi_dilation": False,
+    "lstm_multi_dilation_A": False,
+    "lstm_multi_dilation_B": False,
+    "lstm_multi_dilation_C": False,
+    "lstm_multi_dilation_D": False,
+    "lstm_multi_dilation_E": False
 }
 
 # Available datasets and their number of classes
@@ -91,19 +51,11 @@ DATASETS = {
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train ACE Model')
-    parser.add_argument('--model_type', type=str, nargs='+', default=['small_dilation'],
-                      choices=['small_dilation', 'small_dilation_first', 'small_dilation_second', 'small_dilation_last',
-                              'small_dilation_first_two', 'small_dilation_last_two', 'small_dilation_first_last',
-                              'carsault', 'semi_supervised', 'multi_dilation', 'multi_dilation_248', 'multi_dilation_2832',
-                              'multi_dilation_4816', 'multi_dilation_81632',
-                              'multi_dilation_early_squeeze_softmax', 'multi_dilation_early_squeeze_sigmoid',
-                              'multi_dilation_mid_squeeze_softmax', 'multi_dilation_mid_squeeze_sigmoid',
-                              'multi_dilation_late_squeeze_softmax', 'multi_dilation_late_squeeze_sigmoid',
-                              'late_squeeze', 'early_squeeze', 'mid_squeeze',
-                              'late_squeeze_softmax', 'early_squeeze_softmax', 'mid_squeeze_softmax',
-                              'deep_multi_dilation_early_squeeze_softmax', 'deep_semi_supervised_multi_dilation',
-                              'hybrid_multi_dilation_early_squeeze_softmax'],
-                      help='Type(s) of model(s) to train (default: small_dilation). Can specify multiple models.')
+    parser.add_argument('--model_type', type=str, nargs='+', default=['carsault'],
+                      choices=['carsault', 'semi_supervised', 'multi_dilation', 'lstm_multi_dilation', 
+                              'lstm_multi_dilation_A', 'lstm_multi_dilation_B', 'lstm_multi_dilation_C', 
+                              'lstm_multi_dilation_D', 'lstm_multi_dilation_E'],
+                      help='Type(s) of model(s) to train (default: carsault). Can specify multiple models.')
     parser.add_argument('--epochs', type=int, default=1000,
                       help='Number of epochs to train (default: 1000)')
     parser.add_argument('--model_name', type=str, default='carsault',
@@ -181,64 +133,24 @@ def train_single_model(args):
         # Set up the network
         print("Setting up network")
         
-        if args.model_type == 'small_dilation':
-            model = SmallDilationModel(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'small_dilation_first':
-            model = SmallDilationFirstModel(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'small_dilation_second':
-            model = SmallDilationSecondModel(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'small_dilation_last':
-            model = SmallDilationLastModel(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'small_dilation_first_two':
-            model = SmallDilationFirstTwoModel(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'small_dilation_last_two':
-            model = SmallDilationLastTwoModel(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'small_dilation_first_last':
-            model = SmallDilationFirstLastModel(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'carsault':
+        if args.model_type == 'carsault':
             model = ChordExtractionCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'multi_dilation':
-            model = MultiDilationChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'multi_dilation_248':
-            model = MultiDilation248ChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'multi_dilation_2832':
-            model = MultiDilation2832ChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'multi_dilation_4816':
-            model = MultiDilation4816ChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'multi_dilation_81632':
-            model = MultiDilation81632ChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'multi_dilation_early_squeeze_softmax':
-            model = MultiDilationEarlySqueezeSoftmaxChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'multi_dilation_early_squeeze_sigmoid':
-            model = MultiDilationEarlySqueezeSigmoidChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'multi_dilation_mid_squeeze_softmax':
-            model = MultiDilationMidSqueezeSoftmaxChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'multi_dilation_mid_squeeze_sigmoid':
-            model = MultiDilationMidSqueezeSigmoidChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'multi_dilation_late_squeeze_softmax':
-            model = MultiDilationLateSqueezeSoftmaxChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'multi_dilation_late_squeeze_sigmoid':
-            model = MultiDilationLateSqueezeSigmoidChordCNN(num_classes=DATASETS[args.data_type]).to(device)
         elif args.model_type == 'semi_supervised':
             model = SemiSupervisedChordExtractionCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'late_squeeze':
-            model = LateSqueezeChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'early_squeeze':
-            model = EarlySqueezeChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'mid_squeeze':
-            model = MidSqueezeChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'late_squeeze_softmax':
-            model = LateSqueezeSoftmaxChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'early_squeeze_softmax':
-            model = EarlySqueezeSoftmaxChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'mid_squeeze_softmax':
-            model = MidSqueezeSoftmaxChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'deep_multi_dilation_early_squeeze_softmax':
-            model = DeepMultiDilationEarlySqueezeSoftmaxChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'deep_semi_supervised_multi_dilation':
-            model = DeepSemiSupervisedMultiDilationChordCNN(num_classes=DATASETS[args.data_type]).to(device)
-        elif args.model_type == 'hybrid_multi_dilation_early_squeeze_softmax':
-            model = HybridMultiDilationEarlySqueezeSoftmaxChordCNN(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'multi_dilation':
+            model = MultiDilationChordCNN(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'lstm_multi_dilation':
+            model = LSTMMultiDilationChordCNN(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'lstm_multi_dilation_A':
+            model = LSTMMultiDilationChordCNNA(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'lstm_multi_dilation_B':
+            model = LSTMMultiDilationChordCNNB(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'lstm_multi_dilation_C':
+            model = LSTMMultiDilationChordCNNC(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'lstm_multi_dilation_D':
+            model = LSTMMultiDilationChordCNND(num_classes=DATASETS[args.data_type]).to(device)
+        elif args.model_type == 'lstm_multi_dilation_E':
+            model = LSTMMultiDilationChordCNNE(num_classes=DATASETS[args.data_type]).to(device)
         else:
             print("Error: Model type does not exist.")
             return False
@@ -258,7 +170,7 @@ def train_single_model(args):
         print(f"Parameters: {params:.2f}")
 
         # Training
-        if args.model_type == 'semi_supervised' or args.model_type == 'deep_semi_supervised_multi_dilation':
+        if args.model_type == 'semi_supervised':
             # Pre-training phase (sequence ordering)
             print("Starting sequence ordering pre-training")
             sequence_criterion = nn.MSELoss().to(device)

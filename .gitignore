@@ -180,6 +180,7 @@ cython_debug/
 # Local legacy files
 Model2Files.tar
 Model2Files.tar.gz
+README.old
 
 # Dataset files
 data/majmin/majmin_data.pkl

@@ -12,12 +12,12 @@ You can run models in several ways:
 
 1. Run a single model:
 ```bash
-python run_models.py --model_type small_dilation
+python run_models.py --model_type carsault
 ```
 
 2. Run multiple models in sequence:
 ```bash
-python run_models.py --model_type small_dilation carsault multi_dilation
+python run_models.py --model_type carsault semi_supervised multi_dilation lstm_multi_dilation lstm_multi_dilation_A lstm_multi_dilation_B lstm_multi_dilation_C lstm_multi_dilation_D lstm_multi_dilation_E
 ```
 
 3. Run all models in batch mode:
@@ -58,9 +58,11 @@ Models are stored in the `model_architecture/architectures` folder. To add a new
 
 5. Add your model to the choices in the argument parsers of both files:
    ```python
-   parser.add_argument('--model_type', type=str, default='small_dilation',
-                     choices=['small_dilation', 'carsault', 'semi_supervised', 'multi_dilation', 'your_model'],
-                     help='Type of model to train (default: small_dilation)')
+   parser.add_argument('--model_type', type=str, default='carsault',
+                     choices=['carsault', 'semi_supervised', 'multi_dilation', 'lstm_multi_dilation', 
+                             'lstm_multi_dilation_A', 'lstm_multi_dilation_B', 'lstm_multi_dilation_C', 
+                             'lstm_multi_dilation_D', 'lstm_multi_dilation_E', 'your_model'],
+                     help='Type of model to train (default: carsault)')
    ```
 
 6. Add model initialization in the model selection logic of both files:
@@ -191,53 +193,8 @@ We stratify the test/validation and training datasets to keep the class represen
 | Model (M-28)                    | Accuracy | F1 Score | GFLOPs | Parameters |
 |--------------------------------|----------|----------|--------|------------|
 | [Carsault](10.3390/electronics10212634) | 0.6354   | 0.5426   | 0.0019 | 263,122    |
-| Small Dilation                 | 0.6874   | 0.6103   | 0.0065 | 1,009,618  |
-| Small Dilation First           | N/A      | N/A      | N/A    | N/A        |
-| Small Dilation Second          | N/A      | N/A      | N/A    | N/A        |
-| Small Dilation Last            | 0.5564   | 0.5809   | 0.0065 | 1,009,618  |
-| Small Dilation First Two       | 0.6868   | 0.6147   | 0.0065 | 1,009,618  |
-| Small Dilation Last Two        | N/A      | N/A      | N/A    | N/A        |
-| Small Dilation First Last      | 0.6857   | 0.6068   | 0.0065 | 1,009,618  |
 | Multi Dilation                 | 0.6940   | 0.6272   | 0.0072 | 1,011,202  |
-| Multi Dilation 248             | N/A      | N/A      | N/A    | N/A        |
-| Multi Dilation 2832            | 0.6278   | 0.5714   | 0.0072 | 1,011,202  |
-| Multi Dilation 4816            | 0.6956   | 0.6268   | 0.0072 | 1,011,202  |
-| Multi Dilation 81632           | 0.5861   | 0.5571   | 0.0072 | 1,011,202  |
 | Semi Supervised                | 0.6131   | 0.4724   | 0.0019 | 290,986    |
-| Early Squeeze                  | 0.5176   | 0.4904   | 0.0072 | 1,011,202  |
-| Mid Squeeze                    | 0.6945   | 0.6255   | 0.0072 | 1,011,346  |
-| Late Squeeze                   | 0.6912   | 0.6196   | 0.0072 | 1,011,346  |
-| Early Squeeze Softmax          | N/A      | N/A      | N/A    | N/A        |
-| Mid Squeeze Softmax            | N/A      | N/A      | N/A    | N/A        |
-| Late Squeeze Softmax           | N/A      | N/A      | N/A    | N/A        |
-| Multi Dilation Early Squeeze Softmax | 0.7015   | 0.6323   | 0.0072 | 1,011,202  |
-| Multi Dilation Early Squeeze Sigmoid | N/A      | N/A      | N/A    | N/A        |
-| Multi Dilation Mid Squeeze Softmax   | N/A      | N/A      | N/A    | N/A        |
-| Multi Dilation Mid Squeeze Sigmoid   | N/A      | N/A      | N/A    | N/A        |
-| Multi Dilation Late Squeeze Softmax  | 0.5971   | 0.2901   | 0.0072 | 1,011,202  |
-| Multi Dilation Late Squeeze Sigmoid  | N/A      | N/A      | N/A    | N/A        |
-
-### Key Findings from 1000 Epoch Results
-
-#### Top Performing Models (by Accuracy):
-1. **Multi Dilation Early Squeeze Softmax**: 70.15% accuracy, 63.23% F1 Score
-2. **Multi Dilation 4816**: 69.56% accuracy, 62.68% F1 Score  
-3. **Mid Squeeze**: 69.45% accuracy, 62.55% F1 Score
-4. **Multi Dilation**: 69.40% accuracy, 62.72% F1 Score
-5. **Late Squeeze**: 69.12% accuracy, 61.96% F1 Score
-
-#### Notable Observations:
-- **Multi-dilation architectures** generally outperform simpler models
-- **Squeeze-excitation blocks** work best when placed in the middle or late stages of the network
-- **Early squeeze-excitation** significantly hurts performance (51.76% accuracy)
-- **Softmax activation** in squeeze-excitation provides better results than sigmoid
-- **Small dilation models** show consistent but slightly lower performance (68.57-68.74% accuracy)
-- **Carsault baseline** (63.54% accuracy) is efficient but outperformed by more complex architectures
-
-#### Model Efficiency:
-- **Most Efficient**: Carsault (263K parameters, 0.0019 GFLOPs)
-- **Best Accuracy**: Multi Dilation Early Squeeze Softmax (1.01M parameters, 0.0072 GFLOPs)
-- **Good Balance**: Mid Squeeze (69.45% accuracy with 1.01M parameters)
 
 ### Loss Graphs
 
@@ -245,32 +202,9 @@ We stratify the test/validation and training datasets to keep the class represen
 | Model (M-28)                     | Loss Graph |
 |---------------------------|------------|
 | Carsault | ![Carsault - Majmin Loss](ModelResults/carsault/majmin/loss_plot_majmin_classification.png) |
-| Small Dilation | ![Small Dilation - M-28](ModelResults/small_dilation/majmin/loss_plot_majmin_classification.png) |
-| Small Dilation First | ![Small Dilation First - M-28](ModelResults/small_dilation_first/majmin/loss_plot_majmin_classification.png) |
-| Small Dilation Second | ![Small Dilation Second - M-28](ModelResults/small_dilation_second/majmin/loss_plot_majmin_classification.png) |
-| Small Dilation Last | ![Small Dilation Last - M-28](ModelResults/small_dilation_last/majmin/loss_plot_majmin_classification.png) |
-| Small Dilation First Two | ![Small Dilation First Two - M-28](ModelResults/small_dilation_first_two/majmin/loss_plot_majmin_classification.png) |
-| Small Dilation Last Two | ![Small Dilation Last Two - M-28](ModelResults/small_dilation_last_two/majmin/loss_plot_majmin_classification.png) |
-| Small Dilation First Last | ![Small Dilation First Last - M-28](ModelResults/small_dilation_first_last/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation | ![Multi Dilation - M-28](ModelResults/multi_dilation/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation 248 | ![Multi Dilation 248 - M-28](ModelResults/multi_dilation_248/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation 2832 | ![Multi Dilation 2832 - M-28](ModelResults/multi_dilation_2832/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation 4816 | ![Multi Dilation 4816 - M-28](ModelResults/multi_dilation_4816/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation 81632 | ![Multi Dilation 81632 - M-28](ModelResults/multi_dilation_81632/majmin/loss_plot_majmin_classification.png) |
 | Semi Supervised (sequence) | ![Semi Supervised (sequence) - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_sequence.png) |
 | Semi Supervised | ![Semi Supervised - M-28](ModelResults/semi_supervised/majmin/loss_plot_majmin_classification.png) |
-| Early Squeeze | ![Early Squeeze - M-28](ModelResults/early_squeeze/majmin/loss_plot_majmin_classification.png) |
-| Mid Squeeze | ![Mid Squeeze - M-28](ModelResults/mid_squeeze/majmin/loss_plot_majmin_classification.png) |
-| Late Squeeze | ![Late Squeeze - M-28](ModelResults/late_squeeze/majmin/loss_plot_majmin_classification.png) |
-| Early Squeeze Softmax | ![Early Squeeze Softmax - M-28](ModelResults/early_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
-| Mid Squeeze Softmax | ![Mid Squeeze Softmax - M-28](ModelResults/mid_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
-| Late Squeeze Softmax | ![Late Squeeze Softmax - M-28](ModelResults/late_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation Early Squeeze Softmax | ![Multi Dilation Early Squeeze Softmax - M-28](ModelResults/multi_dilation_early_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation Early Squeeze Sigmoid | ![Multi Dilation Early Squeeze Sigmoid - M-28](ModelResults/multi_dilation_early_squeeze_sigmoid/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation Mid Squeeze Softmax | ![Multi Dilation Mid Squeeze Softmax - M-28](ModelResults/multi_dilation_mid_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation Mid Squeeze Sigmoid | ![Multi Dilation Mid Squeeze Sigmoid - M-28](ModelResults/multi_dilation_mid_squeeze_sigmoid/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation Late Squeeze Softmax | ![Multi Dilation Late Squeeze Softmax - M-28](ModelResults/multi_dilation_late_squeeze_softmax/majmin/loss_plot_majmin_classification.png) |
-| Multi Dilation Late Squeeze Sigmoid | ![Multi Dilation Late Squeeze Sigmoid - M-28](ModelResults/multi_dilation_late_squeeze_sigmoid/majmin/loss_plot_majmin_classification.png) |
+| Multi Dilation | ![Multi Dilation - M-28](ModelResults/multi_dilation/majmin/loss_plot_majmin_classification.png) |
 
 ### Test Results
 
@@ -280,12 +214,8 @@ Below are sample test results showing input spectrograms and prediction probabil
 | Model (M-28) | Sample Results |
 |--------------|----------------|
 | Carsault | ![Carsault Sample 1](ModelTestResults/carsault/majmin/final_model/sample_1_input.png) ![Carsault Sample 1 Probabilities](ModelTestResults/carsault/majmin/final_model/sample_1_probabilities.png) |
-| Small Dilation | ![Small Dilation Sample 1](ModelTestResults/small_dilation/majmin/final_model/sample_1_input.png) ![Small Dilation Sample 1 Probabilities](ModelTestResults/small_dilation/majmin/final_model/sample_1_probabilities.png) |
-| Multi Dilation | ![Multi Dilation Sample 1](ModelTestResults/multi_dilation/majmin/final_model/sample_1_input.png) ![Multi Dilation Sample 1 Probabilities](ModelTestResults/multi_dilation/majmin/final_model/sample_1_probabilities.png) |
 | Semi Supervised | ![Semi Supervised Sample 1](ModelTestResults/semi_supervised/majmin/final_model/sample_1_input.png) ![Semi Supervised Sample 1 Probabilities](ModelTestResults/semi_supervised/majmin/final_model/sample_1_probabilities.png) |
-| Early Squeeze | ![Early Squeeze Sample 1](ModelTestResults/early_squeeze/majmin/final_model/sample_1_input.png) ![Early Squeeze Sample 1 Probabilities](ModelTestResults/early_squeeze/majmin/final_model/sample_1_probabilities.png) |
-| Mid Squeeze | ![Mid Squeeze Sample 1](ModelTestResults/mid_squeeze/majmin/final_model/sample_1_input.png) ![Mid Squeeze Sample 1 Probabilities](ModelTestResults/mid_squeeze/majmin/final_model/sample_1_probabilities.png) |
-| Late Squeeze | ![Late Squeeze Sample 1](ModelTestResults/late_squeeze/majmin/final_model/sample_1_input.png) ![Late Squeeze Sample 1 Probabilities](ModelTestResults/late_squeeze/majmin/final_model/sample_1_probabilities.png) |
+| Multi Dilation | ![Multi Dilation Sample 1](ModelTestResults/multi_dilation/majmin/final_model/sample_1_input.png) ![Multi Dilation Sample 1 Probabilities](ModelTestResults/multi_dilation/majmin/final_model/sample_1_probabilities.png) |
 
 *Note: Each sample shows the input spectrogram (left) and the model's predicted probability distribution across all 28 chord classes (right). The true chord label and predicted chord label are shown in the titles.
 
